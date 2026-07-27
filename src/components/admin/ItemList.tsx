@@ -35,6 +35,26 @@ function hasMissingTranslation(item: Record<string, unknown>, fields: FieldConfi
   });
 }
 
+const EDIT_ICON = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="15" height="15">
+    <path
+      d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const DELETE_ICON = (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="15" height="15">
+    <path
+      d="M4 7h16M9 7V4h6v3M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13M10 11v6M14 11v6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 function SortableRow({
   item,
   fields,
@@ -47,11 +67,13 @@ function SortableRow({
   onDelete: () => void;
 }) {
   const { t } = useTranslation();
+  const [showMissingHint, setShowMissingHint] = useState(false);
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
     id: item.id,
   });
   const style = { transform: CSS.Transform.toString(transform), transition };
   const name = typeof item.name === "string" ? item.name : "(untitled)";
+  const missing = hasMissingTranslation(item, fields);
 
   return (
     <li className="admin-row" ref={setNodeRef} style={style}>
@@ -60,14 +82,30 @@ function SortableRow({
       </span>
       <span className="admin-row-name">{name}</span>
       {!item.published && <span className="badge draft">{t("common.draft")}</span>}
-      {hasMissingTranslation(item, fields) && (
-        <span className="badge missing">{t("common.translationIncomplete")}</span>
+      {missing && (
+        <span className="missing-indicator-wrap">
+          <button
+            type="button"
+            className="icon-btn missing-indicator"
+            onClick={() => setShowMissingHint((v) => !v)}
+            aria-label={t("common.translationIncomplete")}
+          >
+            !
+          </button>
+          {showMissingHint && <span className="missing-tooltip">{t("common.translationIncomplete")}</span>}
+        </span>
       )}
-      <button type="button" onClick={onEdit}>
-        {t("common.edit")}
+      <button type="button" className="icon-btn" onClick={onEdit} aria-label={t("common.edit")} title={t("common.edit")}>
+        {EDIT_ICON}
       </button>
-      <button type="button" onClick={onDelete}>
-        {t("common.delete")}
+      <button
+        type="button"
+        className="icon-btn"
+        onClick={onDelete}
+        aria-label={t("common.delete")}
+        title={t("common.delete")}
+      >
+        {DELETE_ICON}
       </button>
     </li>
   );
