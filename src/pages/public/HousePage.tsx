@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { subscribeHouseShowcase } from "../../firebase/houseShowcase";
 import { localized } from "../../utils/localized";
+import { ImageStrip } from "../../components/ImageStrip";
 import type { HouseShowcase, Locale } from "../../types/content";
 
 export function HousePage() {
@@ -36,43 +37,39 @@ export function HousePage() {
       </p>
 
       {rest.length > 0 && (
-        <div className="image-strip" style={{ marginBottom: "2rem" }}>
-          {rest.map((img) => (
-            <img key={img.publicId} src={img.url} alt={img.alt_en ?? ""} loading="lazy" />
-          ))}
+        <div style={{ marginBottom: "2rem" }}>
+          <ImageStrip images={rest} />
         </div>
       )}
 
       <section className="cta-band">
         <h2>{t("house.ctaTitle")}</h2>
         <p>{t("house.ctaBody")}</p>
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+        <div className="cta-actions">
           {showcase.airbnbUrl && (
             <a href={showcase.airbnbUrl} target="_blank" rel="noreferrer" className="hero-cta" style={{ textDecoration: "none" }}>
               {t("house.bookAirbnb")}
             </a>
           )}
-          {showcase.contactUrl && (
-            <a href={showcase.contactUrl} target="_blank" rel="noreferrer" className="hero-cta" style={{ textDecoration: "none" }}>
-              {t("house.contactUs")}
-            </a>
+          {(showcase.contactUrl || showcase.contactPhone || showcase.contactEmail) && (
+            <div className="contact-card">
+              {showcase.contactUrl ? (
+                <a href={showcase.contactUrl} target="_blank" rel="noreferrer" className="contact-card-title">
+                  {t("house.contactLabel")}
+                </a>
+              ) : (
+                <span className="contact-card-title">{t("house.contactLabel")}</span>
+              )}
+              <div className="contact-card-details">
+                {showcase.contactPhone && (
+                  <a href={`tel:${showcase.contactPhone.replace(/\s+/g, "")}`}>{showcase.contactPhone}</a>
+                )}
+                {showcase.contactPhone && showcase.contactEmail && <span> · </span>}
+                {showcase.contactEmail && <a href={`mailto:${showcase.contactEmail}`}>{showcase.contactEmail}</a>}
+              </div>
+            </div>
           )}
         </div>
-        {(showcase.contactPhone || showcase.contactEmail) && (
-          <p style={{ marginTop: "1.5rem", color: "rgba(251,247,240,0.8)" }}>
-            {showcase.contactPhone && (
-              <a href={`tel:${showcase.contactPhone.replace(/\s+/g, "")}`} style={{ color: "inherit" }}>
-                {showcase.contactPhone}
-              </a>
-            )}
-            {showcase.contactPhone && showcase.contactEmail && "  ·  "}
-            {showcase.contactEmail && (
-              <a href={`mailto:${showcase.contactEmail}`} style={{ color: "inherit" }}>
-                {showcase.contactEmail}
-              </a>
-            )}
-          </p>
-        )}
       </section>
     </div>
   );

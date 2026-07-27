@@ -22,21 +22,19 @@ export function ActivitiesPage() {
   const lang = i18n.language as Locale;
   const [items, setItems] = useState<Activity[]>([]);
   const [category, setCategory] = useState<ActivityCategory | "all">("all");
-  const [sundayOnly, setSundayOnly] = useState(false);
   const [sortByDistance, setSortByDistance] = useState(false);
 
   useEffect(() => subscribePublished<Activity>("activities", setItems), []);
 
   const visible = useMemo(() => {
     let list = items.filter((a) => category === "all" || a.categories.includes(category));
-    if (sundayOnly) list = list.filter((a) => a.openOnSunday);
     if (sortByDistance) {
       list = [...list].sort(
         (a, b) => (a.distanceDriveMin ?? Infinity) - (b.distanceDriveMin ?? Infinity),
       );
     }
     return list;
-  }, [items, category, sundayOnly, sortByDistance]);
+  }, [items, category, sortByDistance]);
 
   return (
     <div>
@@ -53,10 +51,6 @@ export function ActivitiesPage() {
               </option>
             ))}
           </select>
-        </label>
-        <label className="filter-toggle">
-          <input type="checkbox" checked={sundayOnly} onChange={(e) => setSundayOnly(e.target.checked)} />
-          {t("activities.filters.sunday")}
         </label>
         <label className="filter-toggle">
           <input

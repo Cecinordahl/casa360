@@ -184,7 +184,8 @@
     "ctaTitle": "Klar for å booke?",
     "ctaBody": "Sjekk tilgjengelighet på Airbnb, eller ta direkte kontakt med Sotogrande Exclusive.",
     "bookAirbnb": "Book på Airbnb",
-    "contactUs": "Kontakt Sotogrande Exclusive"
+    "contactUs": "Kontakt Sotogrande Exclusive",
+    "contactLabel": "Sotogrande Exclusive"
   },
   "field": {
     "name": "Navn",

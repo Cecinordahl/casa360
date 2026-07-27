@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { subscribePublished } from "../../firebase/crud";
 import { localized } from "../../utils/localized";
@@ -10,27 +10,17 @@ export function RestaurantsPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as Locale;
   const [items, setItems] = useState<Restaurant[]>([]);
-  const [sundayOnly, setSundayOnly] = useState(false);
 
   useEffect(() => subscribePublished<Restaurant>("restaurants", setItems), []);
-
-  const visible = useMemo(
-    () => items.filter((r) => !sundayOnly || r.openOnSunday),
-    [items, sundayOnly],
-  );
 
   return (
     <div>
       <h1>{t("restaurants.title")}</h1>
-      <label className="filter-toggle">
-        <input type="checkbox" checked={sundayOnly} onChange={(e) => setSundayOnly(e.target.checked)} />
-        {t("common.openOnSunday")}
-      </label>
 
-      {visible.length === 0 && <p>{t("common.empty")}</p>}
+      {items.length === 0 && <p>{t("common.empty")}</p>}
 
       <ul className="card-list">
-        {visible.map((r) => (
+        {items.map((r) => (
           <li className="card" key={r.id}>
             <ImageStrip images={r.images} />
             <h2>{r.name}</h2>
