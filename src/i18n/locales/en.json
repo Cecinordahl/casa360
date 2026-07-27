@@ -36,6 +36,8 @@
     "copy": "Copy",
     "copied": "Copied",
     "signOut": "Sign out",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "signIn": "Sign in",
     "draft": "Draft",
     "missingTranslation": "Missing {{lang}} translation",

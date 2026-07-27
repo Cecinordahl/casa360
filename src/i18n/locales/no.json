@@ -36,6 +36,8 @@
     "copy": "Kopier",
     "copied": "Kopiert",
     "signOut": "Logg ut",
+    "openMenu": "Åpne meny",
+    "closeMenu": "Lukk meny",
     "signIn": "Logg inn",
     "draft": "Utkast",
     "missingTranslation": "Mangler {{lang}}-oversettelse",

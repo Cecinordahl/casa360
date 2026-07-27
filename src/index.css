@@ -131,6 +131,32 @@ button:disabled {
   white-space: nowrap;
 }
 
+.app-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--color-ink);
+  font-size: 1.4rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0;
+  margin-left: auto;
+}
+
+.mobile-menu-toggle:hover {
+  background: transparent;
+}
+
 .app-nav {
   display: flex;
   gap: 1.25rem;
@@ -157,6 +183,53 @@ button:disabled {
 .app-nav a.active {
   color: var(--color-ink);
   border-bottom-color: var(--color-accent);
+}
+
+/* Below this width the full nav would wrap onto several lines and eat a
+   lot of the screen (this is a mobile-first app, so that's not a corner
+   case) — collapse it into a hamburger-triggered dropdown instead. */
+@media (max-width: 759px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .app-nav-group {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.5rem 1.5rem 1.5rem;
+    box-shadow: 0 16px 24px rgba(20, 17, 14, 0.1);
+  }
+
+  .app-nav-group.open {
+    display: flex;
+  }
+
+  .app-nav {
+    flex-direction: column;
+    gap: 0;
+    overflow-x: visible;
+  }
+
+  .app-nav a {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.85rem;
+  }
+
+  .header-actions {
+    margin-left: 0;
+    margin-top: 0.75rem;
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 .app-main {
@@ -216,11 +289,17 @@ button:disabled {
 
 /* ---- Language toggle ---- */
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
 .lang-toggle {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-left: auto;
 }
 
 .lang-btn {
