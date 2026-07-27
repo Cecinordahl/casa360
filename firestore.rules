@@ -1,0 +1,110 @@
+rules_version = '2';
+
+// See RULES.md for how to deploy this file and how to add an admin.
+// See SCHEMA.md "Guest-code gate design" for why houseManual/{code}/... is
+// shaped the way it is.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---- Helpers -----------------------------------------------------
+
+    // True only for signed-in users whose UID has a document in /admins.
+    // This is the ENTIRE admin allowlist mechanism: being signed in with
+    // Firebase Auth is not enough by itself, you must also be listed here.
+    // (Without this check, any random person who created a Firebase Auth
+    // account — e.g. via a leaked API key and the sign-up flow — could
+    // write to every collection. The API key is not a secret, see
+    // src/firebase/config.ts, so this allowlist is doing real work.)
+    function isAdmin() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Reads appConfig/settings without that document needing to be
+    // publicly readable itself — get() inside a rule always has
+    // rule-evaluation-level access, independent of the target doc's own
+    // rules. This is what lets us keep the guest code out of any publicly
+    // reachable document while still checking it against a client-supplied
+    // path segment below.
+    function currentGuestCode() {
+      return get(/databases/$(database)/documents/appConfig/settings).data.currentGuestCode;
+    }
+
+    // ---- Public guide content -----------------------------------------
+    // Anyone can read (this is the whole point of the public guide).
+    // Only an allowlisted admin can write.
+
+    match /restaurants/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /groceries/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /activities/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /practicalInfo/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ---- House manual gated content ------------------------------------
+    // Section titles ("WiFi", "Arrival", ...) are static UI strings (see
+    // src/i18n), not Firestore data — the fixed section keys don't need
+    // their own admin-only metadata collection, so there isn't one.
+    // The {code} path segment IS the access control: a request can only
+    // reach this document if the caller already knows the current guest
+    // code and used it to build the path (see SCHEMA.md). We additionally
+    // check it server-side so a stale/incorrect code in the URL can never
+    // read real content, and so writes can only ever target the CURRENT
+    // code's path (an admin editing house manual content always edits
+    // through the live code — see the admin panel's "rotate code" flow for
+    // how the content gets copied over on rotation).
+
+    match /houseManual/{code}/sections/{sectionKey} {
+      // Guests can only ever read the LIVE code's path.
+      allow read: if code == currentGuestCode();
+
+      // Admins can write to ANY code's path, not just the current one.
+      // This is needed for code rotation: the admin panel copies content
+      // from the old code path to the new one (seeding the new path,
+      // cleaning up the old one) as part of a single rotate operation,
+      // both before and after appConfig.currentGuestCode is flipped.
+      // Restricting admin writes to "only the current code" would make
+      // that copy impossible. Guests never get write access at all, so
+      // this doesn't weaken the guest-facing gate.
+      allow write: if isAdmin();
+    }
+
+    // ---- App config (holds the live guest code) ------------------------
+    // Never publicly readable — see currentGuestCode() above for why that's
+    // safe rather than limiting.
+
+    match /appConfig/{docId} {
+      allow read, write: if isAdmin();
+    }
+
+    // ---- Admin allowlist -------------------------------------------------
+    // Admins may read the allowlist (so the admin UI can show who has
+    // access) but must NOT be able to write it from the client — granting
+    // yourself/others admin rights has to happen out-of-band (Firebase
+    // Console or CLI) so a compromised admin session can't add a new admin.
+    // See RULES.md for how to add an admin.
+
+    match /admins/{uid} {
+      allow read: if isAdmin();
+      allow write: if false;
+    }
+
+    // Deny everything else by default (implicit in Firestore rules — there
+    // is no catch-all "allow" unless a match block grants it — but stated
+    // here for clarity).
+  }
+}

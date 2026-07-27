@@ -1,0 +1,179 @@
+{
+  "app": {
+    "title": "Hoyo 17 Guest Guide"
+  },
+  "nav": {
+    "guide": "Guide",
+    "restaurants": "Restaurants",
+    "groceries": "Shops & pharmacy",
+    "activities": "Things to do",
+    "practical": "Practical info",
+    "houseManual": "House manual",
+    "admin": "Admin",
+    "privacy": "Privacy"
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "Something went wrong. Please try again.",
+    "empty": "Nothing here yet.",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "back": "Back",
+    "map": "Map",
+    "website": "Website",
+    "book": "Book",
+    "openOnSunday": "Open on Sundays",
+    "closedOnSunday": "Closed on Sundays",
+    "walk": "{{min}} min walk",
+    "drive": "{{min}} min drive",
+    "hostNote": "Host's tip",
+    "language": "Language",
+    "copy": "Copy",
+    "copied": "Copied",
+    "signOut": "Sign out",
+    "signIn": "Sign in",
+    "draft": "Draft",
+    "missingTranslation": "Missing {{lang}} translation",
+    "translationIncomplete": "Translation incomplete",
+    "confirmDelete": "Delete this item? This cannot be undone.",
+    "all": "All"
+  },
+  "guide": {
+    "disclaimer": "Recommendations are provided in good faith by your hosts and may change without notice. They are not guarantees — please verify opening hours and confirm bookings directly before you go."
+  },
+  "restaurants": {
+    "title": "Restaurants",
+    "priceLevel": "Price",
+    "cuisine": {
+      "spanish": "Spanish",
+      "seafood": "Seafood",
+      "tapas": "Tapas",
+      "italian": "Italian",
+      "international": "International",
+      "steakhouse": "Steakhouse",
+      "beach_club_food": "Beach club",
+      "other": "Other"
+    }
+  },
+  "groceries": {
+    "title": "Shops & pharmacy",
+    "type": {
+      "supermarket": "Supermarket",
+      "small_shop": "Small shop",
+      "pharmacy": "Pharmacy",
+      "other": "Other"
+    }
+  },
+  "activities": {
+    "title": "Things to do",
+    "season": "Season",
+    "category": {
+      "golf": "Golf",
+      "tennis_padel": "Tennis & padel",
+      "beach_club": "Beach club",
+      "beach": "Beach",
+      "running": "Running",
+      "family": "Family",
+      "fitness": "Fitness",
+      "other": "Other"
+    },
+    "filters": {
+      "category": "Category",
+      "sunday": "Open on Sunday",
+      "sortByDistance": "Sort by distance"
+    }
+  },
+  "practical": {
+    "title": "Practical info",
+    "kind": {
+      "pharmacy": "Pharmacy",
+      "doctor": "Doctor",
+      "atm": "ATM",
+      "petrol_station": "Petrol station",
+      "airport": "Airport",
+      "port": "Port",
+      "other": "Other"
+    }
+  },
+  "manual": {
+    "title": "House manual",
+    "gateTitle": "Enter your guest code",
+    "gateBody": "Your booking confirmation or your host includes a short access code for the house manual.",
+    "codeLabel": "Guest code",
+    "unlock": "Unlock",
+    "wrongCode": "That code isn't right. Please check your booking confirmation or message your host.",
+    "softNotice": "This code is a simple shared password for all guests, not a personal login — it keeps this page out of search engines but isn't strong security. Please don't share it outside your group.",
+    "sections": {
+      "arrival": "Arrival",
+      "wifi": "WiFi",
+      "climate": "AC, heating & curtains",
+      "appliances": "Appliances",
+      "commonAreas": "Pool & common areas",
+      "rulesPractical": "House rules & checkout",
+      "emergency": "Emergency info"
+    },
+    "wifiNetwork": "Network name",
+    "wifiPassword": "Password",
+    "emergencyCall": "In a genuine emergency, call 112.",
+    "hostPhone": "Host / co-host contact",
+    "nearestHospital": "Nearest hospital / urgent care"
+  },
+  "admin": {
+    "loginTitle": "Admin sign in",
+    "email": "Email",
+    "password": "Password",
+    "loginError": "Couldn't sign in. Check your email and password.",
+    "notAdmin": "You're signed in, but this account isn't on the admin allowlist. Ask an existing admin to add you (see RULES.md).",
+    "dashboard": "Dashboard",
+    "manageRestaurants": "Restaurants",
+    "manageGroceries": "Groceries",
+    "manageActivities": "Activities",
+    "managePractical": "Practical info",
+    "manageManual": "House manual",
+    "images": "Images",
+    "uploadImage": "Upload image",
+    "dragToReorder": "Drag to reorder",
+    "published": "Published",
+    "unpublished": "Draft (hidden from guide)",
+    "guestCode": "Guest code",
+    "currentCode": "Current code",
+    "rotateCode": "Rotate guest code",
+    "rotateConfirm": "Generate a new guest code? Anyone with the old code will lose access immediately.",
+    "rotateWorking": "Rotating code…",
+    "rotateDone": "Guest code rotated.",
+    "newItem": "New item",
+    "editItem": "Edit item"
+  },
+  "privacy": {
+    "title": "Privacy policy"
+  },
+  "field": {
+    "name": "Name",
+    "description": "Description",
+    "cuisineTags": "Cuisine / tags",
+    "priceLevel": "Price level",
+    "priceLevel1": "€",
+    "priceLevel2": "€€",
+    "priceLevel3": "€€€",
+    "priceLevel4": "€€€€",
+    "distanceWalkMin": "Walking time (minutes)",
+    "distanceDriveMin": "Driving time (minutes)",
+    "openingHours": "Opening hours",
+    "openOnSunday": "Open on Sundays",
+    "mapUrl": "Map link",
+    "websiteUrl": "Website link",
+    "hostNote": "Host's personal note",
+    "type": "Type",
+    "note": "Note",
+    "categories": "Categories",
+    "seasonNote": "Season note",
+    "bookingUrl": "Booking link",
+    "hostTip": "Host's tip",
+    "kind": "Kind",
+    "distanceKm": "Distance (km)",
+    "driveMin": "Driving time (minutes)"
+  }
+}

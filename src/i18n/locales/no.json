@@ -1,0 +1,179 @@
+{
+  "app": {
+    "title": "Hoyo 17 Gjesteguide"
+  },
+  "nav": {
+    "guide": "Guide",
+    "restaurants": "Restauranter",
+    "groceries": "Butikker & apotek",
+    "activities": "Aktiviteter",
+    "practical": "Praktisk info",
+    "houseManual": "Husmanual",
+    "admin": "Admin",
+    "privacy": "Personvern"
+  },
+  "common": {
+    "loading": "Laster…",
+    "error": "Noe gikk galt. Prøv igjen.",
+    "empty": "Ingenting her ennå.",
+    "save": "Lagre",
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "edit": "Rediger",
+    "add": "Legg til",
+    "back": "Tilbake",
+    "map": "Kart",
+    "website": "Nettside",
+    "book": "Bestill",
+    "openOnSunday": "Åpent på søndager",
+    "closedOnSunday": "Stengt på søndager",
+    "walk": "{{min}} min å gå",
+    "drive": "{{min}} min å kjøre",
+    "hostNote": "Vertens tips",
+    "language": "Språk",
+    "copy": "Kopier",
+    "copied": "Kopiert",
+    "signOut": "Logg ut",
+    "signIn": "Logg inn",
+    "draft": "Utkast",
+    "missingTranslation": "Mangler {{lang}}-oversettelse",
+    "translationIncomplete": "Oversettelse mangler",
+    "confirmDelete": "Slette dette elementet? Dette kan ikke angres.",
+    "all": "Alle"
+  },
+  "guide": {
+    "disclaimer": "Anbefalingene er gitt i god tro av vertene og kan endre seg uten varsel. De er ingen garanti — vennligst sjekk åpningstider og bekreft bestillinger direkte før du drar."
+  },
+  "restaurants": {
+    "title": "Restauranter",
+    "priceLevel": "Prisnivå",
+    "cuisine": {
+      "spanish": "Spansk",
+      "seafood": "Sjømat",
+      "tapas": "Tapas",
+      "italian": "Italiensk",
+      "international": "Internasjonalt",
+      "steakhouse": "Steakhouse",
+      "beach_club_food": "Beach club",
+      "other": "Annet"
+    }
+  },
+  "groceries": {
+    "title": "Butikker & apotek",
+    "type": {
+      "supermarket": "Supermarked",
+      "small_shop": "Liten butikk",
+      "pharmacy": "Apotek",
+      "other": "Annet"
+    }
+  },
+  "activities": {
+    "title": "Aktiviteter",
+    "season": "Sesong",
+    "category": {
+      "golf": "Golf",
+      "tennis_padel": "Tennis & padel",
+      "beach_club": "Beach club",
+      "beach": "Strand",
+      "running": "Løping",
+      "family": "Familie",
+      "fitness": "Trening",
+      "other": "Annet"
+    },
+    "filters": {
+      "category": "Kategori",
+      "sunday": "Åpent på søndag",
+      "sortByDistance": "Sorter etter avstand"
+    }
+  },
+  "practical": {
+    "title": "Praktisk info",
+    "kind": {
+      "pharmacy": "Apotek",
+      "doctor": "Lege",
+      "atm": "Minibank",
+      "petrol_station": "Bensinstasjon",
+      "airport": "Flyplass",
+      "port": "Havn",
+      "other": "Annet"
+    }
+  },
+  "manual": {
+    "title": "Husmanual",
+    "gateTitle": "Skriv inn gjestekoden",
+    "gateBody": "Bookingbekreftelsen din eller verten din har en kort tilgangskode til husmanualen.",
+    "codeLabel": "Gjestekode",
+    "unlock": "Lås opp",
+    "wrongCode": "Koden stemmer ikke. Sjekk bookingbekreftelsen eller send en melding til verten.",
+    "softNotice": "Denne koden er et enkelt, delt passord for alle gjester, ikke en personlig innlogging — den holder siden borte fra søkemotorer, men er ikke sterk sikkerhet. Ikke del koden utenfor gruppen din.",
+    "sections": {
+      "arrival": "Ankomst",
+      "wifi": "WiFi",
+      "climate": "AC, varme & gardiner",
+      "appliances": "Hvitevarer",
+      "commonAreas": "Basseng & fellesarealer",
+      "rulesPractical": "Husregler & utsjekk",
+      "emergency": "Nødinformasjon"
+    },
+    "wifiNetwork": "Nettverksnavn",
+    "wifiPassword": "Passord",
+    "emergencyCall": "Ved en reell nødsituasjon, ring 112.",
+    "hostPhone": "Kontakt vert / medvert",
+    "nearestHospital": "Nærmeste sykehus / legevakt"
+  },
+  "admin": {
+    "loginTitle": "Admin-innlogging",
+    "email": "E-post",
+    "password": "Passord",
+    "loginError": "Kunne ikke logge inn. Sjekk e-post og passord.",
+    "notAdmin": "Du er logget inn, men denne kontoen står ikke på admin-listen. Be en eksisterende admin legge deg til (se RULES.md).",
+    "dashboard": "Oversikt",
+    "manageRestaurants": "Restauranter",
+    "manageGroceries": "Butikker",
+    "manageActivities": "Aktiviteter",
+    "managePractical": "Praktisk info",
+    "manageManual": "Husmanual",
+    "images": "Bilder",
+    "uploadImage": "Last opp bilde",
+    "dragToReorder": "Dra for å endre rekkefølge",
+    "published": "Publisert",
+    "unpublished": "Utkast (skjult fra guiden)",
+    "guestCode": "Gjestekode",
+    "currentCode": "Gjeldende kode",
+    "rotateCode": "Bytt gjestekode",
+    "rotateConfirm": "Generere en ny gjestekode? Alle med den gamle koden mister tilgang umiddelbart.",
+    "rotateWorking": "Bytter kode…",
+    "rotateDone": "Gjestekode byttet.",
+    "newItem": "Nytt element",
+    "editItem": "Rediger element"
+  },
+  "privacy": {
+    "title": "Personvernerklæring"
+  },
+  "field": {
+    "name": "Navn",
+    "description": "Beskrivelse",
+    "cuisineTags": "Kjøkken / stikkord",
+    "priceLevel": "Prisnivå",
+    "priceLevel1": "€",
+    "priceLevel2": "€€",
+    "priceLevel3": "€€€",
+    "priceLevel4": "€€€€",
+    "distanceWalkMin": "Gangtid (minutter)",
+    "distanceDriveMin": "Kjøretid (minutter)",
+    "openingHours": "Åpningstider",
+    "openOnSunday": "Åpent på søndager",
+    "mapUrl": "Kartlenke",
+    "websiteUrl": "Nettside",
+    "hostNote": "Vertens personlige notat",
+    "type": "Type",
+    "note": "Notat",
+    "categories": "Kategorier",
+    "seasonNote": "Sesongnotat",
+    "bookingUrl": "Bestillingslenke",
+    "hostTip": "Vertens tips",
+    "kind": "Type",
+    "distanceKm": "Avstand (km)",
+    "driveMin": "Kjøretid (minutter)"
+  }
+}
