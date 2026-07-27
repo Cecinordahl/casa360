@@ -153,6 +153,27 @@ below). Each document:
 | `order` | number | fixed by section key; not currently reorderable in the admin UI (the 7 sections aren't user-addable, so there's nothing to drag) |
 | `updatedAt` | timestamp | |
 
+## `houseShowcase/main` (single document)
+
+Public marketing content for prospective guests — a different audience from
+everything else in the app (which assumes you've already booked). Rendered
+on the public `/house` page and used as the hero background image on the
+guide's landing page. Publicly readable (it's a sales page), admin-only
+write, same pattern as restaurants/groceries/etc.
+
+| Field | Type | Notes |
+|---|---|---|
+| `story_en` / `story_no` | string | the "about the house" copy |
+| `airbnbUrl` | string \| null | link to the live Airbnb listing |
+| `contactUrl` | string \| null | link to Sotogrande Exclusive (local booking/key-handover contact) |
+| `contactPhone` / `contactEmail` | string \| null | shown as clickable `tel:`/`mailto:` links next to the contact button |
+| `images` | ImageItem[] | gallery; `images[0]` doubles as the hero background on the guide's landing page |
+| `updatedAt` | timestamp | |
+
+No `published` flag here (unlike the four public-guide collections) —
+there's only ever one doc and it's meant to always be visible once it has
+content.
+
 ## `appConfig/settings` (single document)
 
 Admin-only, never publicly readable — this is the one doc that must stay

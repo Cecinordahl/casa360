@@ -11,6 +11,7 @@ export function Layout() {
           {t("app.shortName")}
         </NavLink>
         <nav className="app-nav">
+          <NavLink to="/house">{t("nav.house")}</NavLink>
           <NavLink to="/restaurants">{t("nav.restaurants")}</NavLink>
           <NavLink to="/groceries">{t("nav.groceries")}</NavLink>
           <NavLink to="/activities">{t("nav.activities")}</NavLink>

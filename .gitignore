@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 .vercel
 .env*
+
+# Scratch space for raw source material (photos, docs) staged before being
+# uploaded through the admin panel — never meant to be committed.
+/source-material/

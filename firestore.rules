@@ -55,6 +55,14 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
+    // ---- House showcase (public "sell it" page for prospective guests) --
+    // Same public-read/admin-write shape as the collections above.
+
+    match /houseShowcase/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
     // ---- House manual gated content ------------------------------------
     // Section titles ("WiFi", "Arrival", ...) are static UI strings (see
     // src/i18n), not Firestore data — the fixed section keys don't need

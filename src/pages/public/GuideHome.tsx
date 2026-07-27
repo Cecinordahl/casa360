@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Disclaimer } from "../../components/Disclaimer";
 import { subscribePublished } from "../../firebase/crud";
-import type { Activity, Restaurant, Grocery } from "../../types/content";
+import { subscribeHouseShowcase } from "../../firebase/houseShowcase";
+import type { Activity, Restaurant, Grocery, HouseShowcase } from "../../types/content";
 
 const ICONS = {
   golf: (
@@ -59,22 +60,43 @@ export function GuideHome() {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [groceries, setGroceries] = useState<Grocery[]>([]);
   const [activities, setActivities] = useState<Activity[]>([]);
+  const [showcase, setShowcase] = useState<HouseShowcase | null>(null);
 
   useEffect(() => subscribePublished<Restaurant>("restaurants", setRestaurants), []);
   useEffect(() => subscribePublished<Grocery>("groceries", setGroceries), []);
   useEffect(() => subscribePublished<Activity>("activities", setActivities), []);
+  useEffect(() => subscribeHouseShowcase(setShowcase), []);
 
   const golfCount = activities.filter((a) => a.categories.includes("golf")).length;
+  const heroImage = showcase?.images?.length
+    ? [...showcase.images].sort((a, b) => a.order - b.order)[0]
+    : null;
 
   return (
     <div>
-      <section className="hero">
+      <section
+        className="hero"
+        style={
+          heroImage
+            ? {
+                backgroundImage: `linear-gradient(180deg, rgba(20,17,14,0.35) 0%, rgba(20,17,14,0.65) 100%), url(${heroImage.url})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }
+            : undefined
+        }
+      >
         <p className="hero-eyebrow">San Roque Club · Sotogrande</p>
         <h1 className="hero-title">{t("app.shortName")}</h1>
         <p className="hero-subtitle">{t("guide.heroSubtitle")}</p>
         <Link to="/manual" className="hero-cta" style={{ textDecoration: "none", display: "inline-block" }}>
           {t("guide.heroCta")}
         </Link>
+        <div>
+          <Link to="/house" className="feature-link" style={{ color: "inherit", borderColor: "currentColor", marginTop: "1.5rem", display: "inline-block" }}>
+            {t("guide.viewHouseLink")}
+          </Link>
+        </div>
       </section>
 
       <div className="stats-row">

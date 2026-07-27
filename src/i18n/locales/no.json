@@ -5,6 +5,7 @@
   },
   "nav": {
     "guide": "Guide",
+    "house": "Huset",
     "restaurants": "Restauranter",
     "groceries": "Butikker & apotek",
     "activities": "Aktiviteter",
@@ -46,6 +47,7 @@
     "disclaimer": "Anbefalingene er gitt i god tro av vertene og kan endre seg uten varsel. De er ingen garanti — vennligst sjekk åpningstider og bekreft bestillinger direkte før du drar.",
     "heroSubtitle": "Ditt hjem hjemmefra på Costa del Sol — golf, hav og sol, alt innen kort avstand.",
     "heroCta": "Se husmanualen",
+    "viewHouseLink": "Se hele eiendommen →",
     "golfCourses": "Golfbaner",
     "feature1Eyebrow": "Rett utenfor døren",
     "feature1Title": "Golf, strender og mer",
@@ -154,6 +156,13 @@
     "manageActivities": "Aktiviteter",
     "managePractical": "Praktisk info",
     "manageManual": "Husmanual",
+    "manageShowcase": "Husvisning",
+    "showcaseHint": "Offentlig markedsføringsside for potensielle gjester på /house. Annen målgruppe enn resten av guiden — dette er det som overbeviser noen om å booke, ikke det de trenger når de først bor der.",
+    "airbnbUrl": "Airbnb-lenke",
+    "contactUrl": "Kontaktlenke (f.eks. Sotogrande Exclusive)",
+    "contactPhone": "Telefon",
+    "contactEmail": "E-post",
+    "showcaseFirstImageHint": "Det første bildet (dra for å endre rekkefølge) brukes også som bakgrunnsbilde i heroen på guidens forside.",
     "images": "Bilder",
     "uploadImage": "Last opp bilde",
     "dragToReorder": "Dra for å endre rekkefølge",
@@ -170,6 +179,12 @@
   },
   "privacy": {
     "title": "Personvernerklæring"
+  },
+  "house": {
+    "ctaTitle": "Klar for å booke?",
+    "ctaBody": "Sjekk tilgjengelighet på Airbnb, eller ta direkte kontakt med Sotogrande Exclusive.",
+    "bookAirbnb": "Book på Airbnb",
+    "contactUs": "Kontakt Sotogrande Exclusive"
   },
   "field": {
     "name": "Navn",

@@ -12,6 +12,7 @@ export function AdminDashboard() {
         <li><Link to="/admin/activities">{t("admin.manageActivities")}</Link></li>
         <li><Link to="/admin/practical">{t("admin.managePractical")}</Link></li>
         <li><Link to="/admin/manual">{t("admin.manageManual")}</Link></li>
+        <li><Link to="/admin/showcase">{t("admin.manageShowcase")}</Link></li>
       </ul>
     </div>
   );

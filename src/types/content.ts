@@ -144,6 +144,18 @@ export interface AppConfig {
   updatedAt?: unknown;
 }
 
+// houseShowcase/main — public marketing content for prospective guests.
+export interface HouseShowcase {
+  story_en: string;
+  story_no: string;
+  airbnbUrl: string | null;
+  contactUrl: string | null;
+  contactPhone: string | null;
+  contactEmail: string | null;
+  images: ImageItem[];
+  updatedAt?: unknown;
+}
+
 export interface AdminAllowlistEntry {
   email: string;
   addedAt?: unknown;

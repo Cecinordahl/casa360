@@ -5,6 +5,7 @@
   },
   "nav": {
     "guide": "Guide",
+    "house": "The House",
     "restaurants": "Restaurants",
     "groceries": "Shops & pharmacy",
     "activities": "Things to do",
@@ -46,6 +47,7 @@
     "disclaimer": "Recommendations are provided in good faith by your hosts and may change without notice. They are not guarantees — please verify opening hours and confirm bookings directly before you go.",
     "heroSubtitle": "Your home away from home on the Costa del Sol — golf, sea and sun, all within easy reach.",
     "heroCta": "View house manual",
+    "viewHouseLink": "See the full property →",
     "golfCourses": "Golf courses",
     "feature1Eyebrow": "On your doorstep",
     "feature1Title": "Golf, beaches & more",
@@ -154,6 +156,13 @@
     "manageActivities": "Activities",
     "managePractical": "Practical info",
     "manageManual": "House manual",
+    "manageShowcase": "House showcase",
+    "showcaseHint": "Public marketing page for prospective guests at /house. Different audience from the rest of the guide — this is what convinces someone to book, not what they need once they're staying.",
+    "airbnbUrl": "Airbnb listing URL",
+    "contactUrl": "Contact link (e.g. Sotogrande Exclusive)",
+    "contactPhone": "Contact phone",
+    "contactEmail": "Contact email",
+    "showcaseFirstImageHint": "The first image (drag to reorder) is also used as the hero background on the guide's landing page.",
     "images": "Images",
     "uploadImage": "Upload image",
     "dragToReorder": "Drag to reorder",
@@ -170,6 +179,12 @@
   },
   "privacy": {
     "title": "Privacy policy"
+  },
+  "house": {
+    "ctaTitle": "Ready to book?",
+    "ctaBody": "Check availability on Airbnb, or get in touch with Sotogrande Exclusive directly.",
+    "bookAirbnb": "Book on Airbnb",
+    "contactUs": "Contact Sotogrande Exclusive"
   },
   "field": {
     "name": "Name",

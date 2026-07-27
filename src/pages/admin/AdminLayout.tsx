@@ -19,6 +19,7 @@ export function AdminLayout() {
           <NavLink to="/admin/activities">{t("admin.manageActivities")}</NavLink>
           <NavLink to="/admin/practical">{t("admin.managePractical")}</NavLink>
           <NavLink to="/admin/manual">{t("admin.manageManual")}</NavLink>
+          <NavLink to="/admin/showcase">{t("admin.manageShowcase")}</NavLink>
           <span className="admin-nav-spacer" />
           <span className="admin-user-email">{user?.email}</span>
           <button type="button" onClick={() => signOut()}>

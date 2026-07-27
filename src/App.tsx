@@ -4,6 +4,7 @@ import { GuestProvider } from "./context/GuestContext";
 import { Layout } from "./components/Layout";
 
 import { GuideHome } from "./pages/public/GuideHome";
+import { HousePage } from "./pages/public/HousePage";
 import { RestaurantsPage } from "./pages/public/RestaurantsPage";
 import { GroceriesPage } from "./pages/public/GroceriesPage";
 import { ActivitiesPage } from "./pages/public/ActivitiesPage";
@@ -22,6 +23,7 @@ import { GroceriesAdmin } from "./pages/admin/GroceriesAdmin";
 import { ActivitiesAdmin } from "./pages/admin/ActivitiesAdmin";
 import { PracticalAdmin } from "./pages/admin/PracticalAdmin";
 import { HouseManualAdmin } from "./pages/admin/HouseManualAdmin";
+import { HouseShowcaseAdmin } from "./pages/admin/HouseShowcaseAdmin";
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
           <Routes>
             <Route element={<Layout />}>
               <Route index element={<GuideHome />} />
+              <Route path="house" element={<HousePage />} />
               <Route path="restaurants" element={<RestaurantsPage />} />
               <Route path="groceries" element={<GroceriesPage />} />
               <Route path="activities" element={<ActivitiesPage />} />
@@ -51,6 +54,7 @@ function App() {
               <Route path="activities" element={<ActivitiesAdmin />} />
               <Route path="practical" element={<PracticalAdmin />} />
               <Route path="manual" element={<HouseManualAdmin />} />
+              <Route path="showcase" element={<HouseShowcaseAdmin />} />
             </Route>
           </Routes>
         </BrowserRouter>
