@@ -829,6 +829,16 @@ a.contact-card-title:hover {
   margin: 0 auto;
 }
 
+/* For the rare page (currently just admin login) that renders outside the
+   main Layout entirely — no header, no .app-main padding — so it needs its
+   own top/side breathing room instead of sitting flush against the screen
+   edges. */
+.standalone-page {
+  min-height: 100vh;
+  padding: 3rem 1.5rem;
+  background: var(--color-bg);
+}
+
 .back-to-guide-link {
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -926,6 +936,7 @@ a.contact-card-title:hover {
 }
 
 .admin-nav {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -949,6 +960,23 @@ a.contact-card-title:hover {
   color: #fff;
 }
 
+.admin-nav-title {
+  font-weight: 700;
+  color: #fff !important;
+}
+
+.admin-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.admin-mobile-menu-toggle {
+  color: #fbf7f0;
+}
+
 .admin-nav-spacer {
   flex: 1;
 }
@@ -956,6 +984,48 @@ a.contact-card-title:hover {
 .admin-user-email {
   color: rgba(246, 241, 232, 0.7);
   font-size: 0.85rem;
+}
+
+@media (max-width: 759px) {
+  .admin-mobile-menu-toggle {
+    display: flex;
+  }
+
+  .admin-nav-group {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--color-ink);
+    padding: 0.5rem 1.25rem 1.25rem;
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .admin-nav-group.open {
+    display: flex;
+  }
+
+  .admin-nav-group a {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(246, 241, 232, 0.15);
+  }
+
+  .admin-nav-spacer {
+    display: none;
+  }
+
+  .admin-user-email {
+    margin-top: 0.75rem;
+  }
+
+  .admin-nav-group button {
+    margin-top: 0.5rem;
+    align-self: flex-start;
+  }
 }
 
 .admin-main {

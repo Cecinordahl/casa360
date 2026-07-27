@@ -34,39 +34,41 @@ export function LoginPage() {
   }
 
   return (
-    <div className="page-narrow">
-      <Link to="/" className="back-to-guide-link">
-        ← {t("app.shortName")}
-      </Link>
-      <h1>{t("admin.loginTitle")}</h1>
-      <form onSubmit={handleSubmit} className="item-form">
-        <div className="form-row">
-          <label className="field-label">{t("admin.email")}</label>
-          <input
-            type="email"
-            required
-            autoComplete="username"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="form-row">
-          <label className="field-label">{t("admin.password")}</label>
-          <input
-            type="password"
-            required
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        {error && <p className="error-text">{t("admin.loginError")}</p>}
-        <div className="form-actions">
-          <button type="submit" disabled={submitting}>
-            {t("common.signIn")}
-          </button>
-        </div>
-      </form>
+    <div className="standalone-page">
+      <div className="page-narrow">
+        <Link to="/" className="back-to-guide-link">
+          ← {t("app.shortName")}
+        </Link>
+        <h1>{t("admin.loginTitle")}</h1>
+        <form onSubmit={handleSubmit} className="item-form">
+          <div className="form-row">
+            <label className="field-label">{t("admin.email")}</label>
+            <input
+              type="email"
+              required
+              autoComplete="username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-row">
+            <label className="field-label">{t("admin.password")}</label>
+            <input
+              type="password"
+              required
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          {error && <p className="error-text">{t("admin.loginError")}</p>}
+          <div className="form-actions">
+            <button type="submit" disabled={submitting}>
+              {t("common.signIn")}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
