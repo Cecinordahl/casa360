@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   DndContext,
@@ -116,8 +116,16 @@ export function ItemList({ collectionName, fields, titleKey }: Props) {
   const [items, setItems] = useState<(BaseItem & Record<string, unknown>)[]>([]);
   const [editingId, setEditingId] = useState<string | null | "new">(null);
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
+  const editorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => subscribeAll(collectionName, setItems), [collectionName]);
+
+  // The editor renders below the whole item list — with more than a
+  // handful of items, opening it (especially "+ New item") can land well
+  // below the fold and look like the click did nothing. Scroll it into view.
+  useEffect(() => {
+    if (editingId) editorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [editingId]);
 
   const editingItem = editingId && editingId !== "new" ? items.find((i) => i.id === editingId) ?? null : null;
 
@@ -172,7 +180,7 @@ export function ItemList({ collectionName, fields, titleKey }: Props) {
       </DndContext>
 
       {editingId && (
-        <div className="admin-editor">
+        <div className="admin-editor" ref={editorRef}>
           <h3>{editingId === "new" ? t("admin.newItem") : t("admin.editItem")}</h3>
           <ItemForm
             collectionName={collectionName}
