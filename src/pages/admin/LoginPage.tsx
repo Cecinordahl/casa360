@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { useAuth } from "../../context/AuthContext";
@@ -35,6 +35,9 @@ export function LoginPage() {
 
   return (
     <div className="page-narrow">
+      <Link to="/" className="back-to-guide-link">
+        ← {t("app.shortName")}
+      </Link>
       <h1>{t("admin.loginTitle")}</h1>
       <form onSubmit={handleSubmit} className="item-form">
         <div className="form-row">

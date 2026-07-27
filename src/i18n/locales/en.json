@@ -1,6 +1,7 @@
 {
   "app": {
-    "title": "Hoyo 17 Guest Guide"
+    "title": "Casa 360 Guest Guide",
+    "shortName": "Casa 360"
   },
   "nav": {
     "guide": "Guide",

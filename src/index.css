@@ -322,6 +322,18 @@ button:disabled {
   margin: 0 auto;
 }
 
+.back-to-guide-link {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.back-to-guide-link:hover {
+  text-decoration: underline;
+}
+
 .item-form {
   display: flex;
   flex-direction: column;
