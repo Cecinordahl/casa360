@@ -43,7 +43,27 @@
     "all": "All"
   },
   "guide": {
-    "disclaimer": "Recommendations are provided in good faith by your hosts and may change without notice. They are not guarantees — please verify opening hours and confirm bookings directly before you go."
+    "disclaimer": "Recommendations are provided in good faith by your hosts and may change without notice. They are not guarantees — please verify opening hours and confirm bookings directly before you go.",
+    "heroSubtitle": "Your home away from home on the Costa del Sol — golf, sea and sun, all within easy reach.",
+    "heroCta": "View house manual",
+    "golfCourses": "Golf courses",
+    "feature1Eyebrow": "On your doorstep",
+    "feature1Title": "Golf, beaches & more",
+    "feature1Body": "From championship golf courses to quiet coastal walks, we've gathered our favourite things to do nearby — with real distances and honest tips, not just links.",
+    "feature2Eyebrow": "Eat & drink",
+    "feature2Title": "Restaurants we actually recommend",
+    "feature2Body": "Tapas bars, beach clubs, and a few local favourites — each one picked because we've been there ourselves, not because it looked good online.",
+    "amenitiesTitle": "Everything you need to know",
+    "amenityWifi": "WiFi everywhere",
+    "amenityWifiBody": "Network details for the house and the social club are in the house manual.",
+    "amenityCheckin": "Simple self check-in",
+    "amenityCheckinBody": "Clear directions, gate codes, and key handover — all in one place.",
+    "amenityParking": "Parking included",
+    "amenityParkingBody": "Two private spaces right outside the front door.",
+    "amenityLanguage": "English & Norwegian",
+    "amenityLanguageBody": "Every page of this guide is available in both languages.",
+    "manualCtaBody": "WiFi passwords, appliance instructions, house rules, and emergency contacts — all behind your shared guest code.",
+    "manualCtaButton": "Enter guest code"
   },
   "restaurants": {
     "title": "Restaurants",

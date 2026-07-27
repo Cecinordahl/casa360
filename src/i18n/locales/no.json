@@ -43,7 +43,27 @@
     "all": "Alle"
   },
   "guide": {
-    "disclaimer": "Anbefalingene er gitt i god tro av vertene og kan endre seg uten varsel. De er ingen garanti — vennligst sjekk åpningstider og bekreft bestillinger direkte før du drar."
+    "disclaimer": "Anbefalingene er gitt i god tro av vertene og kan endre seg uten varsel. De er ingen garanti — vennligst sjekk åpningstider og bekreft bestillinger direkte før du drar.",
+    "heroSubtitle": "Ditt hjem hjemmefra på Costa del Sol — golf, hav og sol, alt innen kort avstand.",
+    "heroCta": "Se husmanualen",
+    "golfCourses": "Golfbaner",
+    "feature1Eyebrow": "Rett utenfor døren",
+    "feature1Title": "Golf, strender og mer",
+    "feature1Body": "Fra golfbaner i verdensklasse til rolige kystturer — vi har samlet våre favorittaktiviteter i nærheten, med ekte avstander og ærlige tips, ikke bare lenker.",
+    "feature2Eyebrow": "Spis & drikk",
+    "feature2Title": "Restauranter vi faktisk anbefaler",
+    "feature2Body": "Tapasbarer, strandklubber og noen lokale favoritter — hver eneste én er valgt fordi vi har vært der selv, ikke fordi den så bra ut på nett.",
+    "amenitiesTitle": "Alt du trenger å vite",
+    "amenityWifi": "WiFi overalt",
+    "amenityWifiBody": "Nettverksdetaljer for huset og sosialklubben finner du i husmanualen.",
+    "amenityCheckin": "Enkel selv-innsjekking",
+    "amenityCheckinBody": "Tydelige veibeskrivelser, portkoder og nøkkeloverlevering — samlet på ett sted.",
+    "amenityParking": "Parkering inkludert",
+    "amenityParkingBody": "To private plasser rett utenfor inngangsdøren.",
+    "amenityLanguage": "Norsk & engelsk",
+    "amenityLanguageBody": "Hver side i denne guiden er tilgjengelig på begge språk.",
+    "manualCtaBody": "WiFi-passord, bruksanvisninger, husregler og nødkontakter — alt bak din delte gjestekode.",
+    "manualCtaButton": "Skriv inn gjestekode"
   },
   "restaurants": {
     "title": "Restauranter",

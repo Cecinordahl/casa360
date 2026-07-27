@@ -8,7 +8,7 @@ export function Layout() {
     <div className="app-shell">
       <header className="app-header">
         <NavLink to="/" className="app-title">
-          {t("app.title")}
+          {t("app.shortName")}
         </NavLink>
         <nav className="app-nav">
           <NavLink to="/restaurants">{t("nav.restaurants")}</NavLink>
@@ -18,15 +18,20 @@ export function Layout() {
           <NavLink to="/manual">{t("nav.houseManual")}</NavLink>
         </nav>
         <LanguageToggle />
+        <NavLink to="/admin" className="admin-signin-btn-header">
+          {t("nav.admin")}
+        </NavLink>
       </header>
       <main className="app-main">
         <Outlet />
       </main>
       <footer className="app-footer">
-        <NavLink to="/privacy">{t("nav.privacy")}</NavLink>
-        <NavLink to="/admin" className="admin-signin-btn">
-          {t("nav.admin")}
-        </NavLink>
+        <span className="app-title" style={{ color: "inherit" }}>
+          {t("app.shortName")}
+        </span>
+        <div className="app-footer-links">
+          <NavLink to="/privacy">{t("nav.privacy")}</NavLink>
+        </div>
       </footer>
     </div>
   );
