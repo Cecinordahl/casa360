@@ -25,6 +25,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     return onAuthStateChanged(auth, async (nextUser) => {
+      // Reset to loading on every transition (not just the initial one) —
+      // otherwise, after the very first resolution has already set loading
+      // to false once, a later sign-in leaves `isAdmin` stale (false) for
+      // the async gap while the /admins check below is in flight, and
+      // ProtectedRoute briefly renders "not an admin" before it flips true.
+      setLoading(true);
       setUser(nextUser);
       if (!nextUser) {
         setIsAdmin(false);

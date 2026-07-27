@@ -5,6 +5,14 @@
 // only ever live in Vercel's server-side environment variables, never in
 // the Vite-bundled client env (see .env.example for the public/private
 // split).
+//
+// package.json deliberately pins firebase-admin to ^13.x, not 14.x: as of
+// 14.x, firebase-admin's ID-token verification pulls in jwks-rsa@4.x, which
+// depends on jose@6 (pure ESM). jwks-rsa's own code still does a plain
+// require("jose") internally, which crashes on Vercel's Node runtime with
+// ERR_REQUIRE_ESM the moment verifyIdToken() runs. 13.x uses jwks-rsa@3.x
+// (jose@4, which still ships CJS) and doesn't hit this. Don't bump past
+// 13.x until that's fixed upstream.
 import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";

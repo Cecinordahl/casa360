@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireAdminUid } from "./_lib/firebaseAdmin";
-import { cloudinaryEnv, signCloudinaryParams } from "./_lib/cloudinary";
+import { requireAdminUid } from "./_lib/firebaseAdmin.js";
+import { cloudinaryEnv, signCloudinaryParams } from "./_lib/cloudinary.js";
 
 /**
  * Unlike upload, delete is small (just a public_id string) so this function

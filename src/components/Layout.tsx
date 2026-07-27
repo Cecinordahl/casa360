@@ -24,7 +24,9 @@ export function Layout() {
       </main>
       <footer className="app-footer">
         <NavLink to="/privacy">{t("nav.privacy")}</NavLink>
-        <NavLink to="/admin">{t("nav.admin")}</NavLink>
+        <NavLink to="/admin" className="admin-signin-btn">
+          {t("nav.admin")}
+        </NavLink>
       </footer>
     </div>
   );
