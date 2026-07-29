@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import { subscribeHouseShowcase } from "../../firebase/houseShowcase";
 import { localized } from "../../utils/localized";
 import { ImageStrip } from "../../components/ImageStrip";
-import type { HouseShowcase, Locale } from "../../types/content";
+import { HOUSE_SHOWCASE_CATEGORIES } from "../../types/content";
+import type { HouseShowcase, ImageItem, Locale } from "../../types/content";
 
 export function HousePage() {
   const { t, i18n } = useTranslation();
@@ -15,6 +16,12 @@ export function HousePage() {
   if (!showcase) return <p>{t("common.loading")}</p>;
 
   const [cover, ...rest] = [...showcase.images].sort((a, b) => a.order - b.order);
+
+  const highlights = rest.filter((img) => !img.category || !HOUSE_SHOWCASE_CATEGORIES.includes(img.category));
+  const grouped: { category: string; images: ImageItem[] }[] = HOUSE_SHOWCASE_CATEGORIES.map((category) => ({
+    category,
+    images: rest.filter((img) => img.category === category),
+  })).filter((g) => g.images.length > 0);
 
   return (
     <div>
@@ -36,11 +43,19 @@ export function HousePage() {
         {localized(showcase, "story", lang)}
       </p>
 
-      {rest.length > 0 && (
+      {highlights.length > 0 && (
         <div style={{ marginBottom: "2rem" }}>
-          <ImageStrip images={rest} />
+          <h2>{t("house.highlights")}</h2>
+          <ImageStrip images={highlights} />
         </div>
       )}
+
+      {grouped.map((g) => (
+        <div key={g.category} style={{ marginBottom: "2rem" }}>
+          <h2>{t(`house.category.${g.category}`)}</h2>
+          <ImageStrip images={g.images} />
+        </div>
+      ))}
 
       <section className="cta-band">
         <h2>{t("house.ctaTitle")}</h2>

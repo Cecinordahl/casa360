@@ -63,7 +63,7 @@ then calls Cloudinary's destroy API itself.
 |---|---|---|
 | `name` | string | not translated |
 | `description_en` / `description_no` | string | |
-| `cuisineTags` | string[] | fixed vocabulary (e.g. `spanish`, `seafood`, `tapas`, `italian`, `international`); labels are translated in the UI via i18n, not per-item |
+| `cuisineTags` | string[] | fixed vocabulary: `spanish`, `seafood`, `tapas`, `italian`, `french`, `asian`, `indian`, `international`, `steakhouse`, `beach_club_food`, `other` — this is what the public guide's cuisine filter facets on; labels are translated in the UI via i18n, not per-item |
 | `priceLevel` | number (1–4) | rendered as €–€€€€ |
 | `distanceWalkMin` | number \| null | minutes on foot from the house |
 | `distanceDriveMin` | number \| null | minutes by car |
@@ -107,6 +107,7 @@ everything else guests might want to do.
 | `openOnSunday` | boolean | |
 | `bookingUrl` / `websiteUrl` | string \| null | |
 | `hostTip_en` / `hostTip_no` | string \| null | |
+| `priceFrom` | number \| null | EUR, "starting from" (green fees etc. vary by season). Null means no fixed price to register (a public beach, a walking trail) — the public guide's price sort pushes null-price items to the bottom rather than treating them as free |
 | `images` | ImageItem[] | |
 | `order`, `published`, `createdAt`, `updatedAt` | | |
 
@@ -167,7 +168,7 @@ write, same pattern as restaurants/groceries/etc.
 | `airbnbUrl` | string \| null | link to the live Airbnb listing |
 | `contactUrl` | string \| null | link to Sotogrande Exclusive (local booking/key-handover contact) |
 | `contactPhone` / `contactEmail` | string \| null | shown as clickable `tel:`/`mailto:` links next to the contact button |
-| `images` | ImageItem[] | gallery; `images[0]` doubles as the hero background on the guide's landing page |
+| `images` | ImageItem[] | gallery; `images[0]` doubles as the hero background on the guide's landing page. Each image may carry an optional `category` string (see `HOUSE_SHOWCASE_CATEGORIES` in `src/types/content.ts`) — the `/house` page groups the gallery into labeled sections by this field, in a fixed display order; images with no category render first, ungrouped, as "Highlights" |
 | `updatedAt` | timestamp | |
 
 No `published` flag here (unlike the four public-guide collections) —

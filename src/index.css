@@ -698,33 +698,60 @@ a.contact-card-title:hover {
 
 .filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
-  margin: 1rem 0 1.5rem;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1rem 0 1.75rem;
 }
 
-.filter-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
+.filter-group-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-muted);
+  margin-bottom: 0.6rem;
 }
 
-.filter-toggle {
+.filter-chip-row {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  min-height: 44px;
-  font-size: 0.85rem;
 }
 
-.filter-toggle input {
-  width: auto;
-  min-height: auto;
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 40px;
+  padding: 0 1.1em;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink-soft);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  border-color: var(--color-ink);
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.filter-chip.active,
+.filter-chip.active:hover {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-bg);
+}
+
+.results-count {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin: -0.5rem 0 1.25rem;
 }
 
 /* ---- Image strip / gallery ---- */

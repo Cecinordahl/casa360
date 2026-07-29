@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { subscribePublished } from "../../firebase/crud";
 import { localized } from "../../utils/localized";
+import { distanceSortKey } from "../../utils/distance";
 import type { Activity, ActivityCategory, Locale } from "../../types/content";
 import { ImageStrip } from "../../components/ImageStrip";
 import { Disclaimer } from "../../components/Disclaimer";
@@ -17,50 +18,94 @@ const CATEGORIES: ActivityCategory[] = [
   "other",
 ];
 
+type SortMode = "distance" | "price";
+
+function priceSortKey(a: Activity): number {
+  return a.priceFrom ?? Infinity;
+}
+
 export function ActivitiesPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as Locale;
   const [items, setItems] = useState<Activity[]>([]);
   const [category, setCategory] = useState<ActivityCategory | "all">("all");
-  const [sortByDistance, setSortByDistance] = useState(false);
+  const [sortMode, setSortMode] = useState<SortMode>("distance");
 
   useEffect(() => subscribePublished<Activity>("activities", setItems), []);
 
+  const filtered = useMemo(
+    () => items.filter((a) => category === "all" || a.categories.includes(category)),
+    [items, category],
+  );
+
+  const anyPriceInFiltered = filtered.some((a) => a.priceFrom != null);
+
+  // If the category filter changes to a set of activities where none have
+  // a price on file, the Price chip disappears (below) — fall back to
+  // distance so sortMode never points at a hidden control.
+  useEffect(() => {
+    if (sortMode === "price" && !anyPriceInFiltered) setSortMode("distance");
+  }, [sortMode, anyPriceInFiltered]);
+
   const visible = useMemo(() => {
-    let list = items.filter((a) => category === "all" || a.categories.includes(category));
-    if (sortByDistance) {
-      list = [...list].sort(
-        (a, b) => (a.distanceDriveMin ?? Infinity) - (b.distanceDriveMin ?? Infinity),
-      );
-    }
-    return list;
-  }, [items, category, sortByDistance]);
+    const key = sortMode === "price" ? priceSortKey : distanceSortKey;
+    return [...filtered].sort((a, b) => key(a) - key(b));
+  }, [filtered, sortMode]);
+
+  const somePricesMissing = sortMode === "price" && filtered.some((a) => a.priceFrom == null);
 
   return (
     <div>
       <h1>{t("activities.title")}</h1>
 
       <div className="filters">
-        <label className="filter-field">
-          {t("activities.filters.category")}
-          <select value={category} onChange={(e) => setCategory(e.target.value as ActivityCategory | "all")}>
-            <option value="all">{t("common.all")}</option>
+        <div>
+          <div className="filter-group-label">{t("activities.filters.category")}</div>
+          <div className="filter-chip-row">
+            <button
+              type="button"
+              className={category === "all" ? "filter-chip active" : "filter-chip"}
+              onClick={() => setCategory("all")}
+            >
+              {t("common.all")}
+            </button>
             {CATEGORIES.map((c) => (
-              <option key={c} value={c}>
+              <button
+                key={c}
+                type="button"
+                className={category === c ? "filter-chip active" : "filter-chip"}
+                onClick={() => setCategory(c)}
+              >
                 {t(`activities.category.${c}`)}
-              </option>
+              </button>
             ))}
-          </select>
-        </label>
-        <label className="filter-toggle">
-          <input
-            type="checkbox"
-            checked={sortByDistance}
-            onChange={(e) => setSortByDistance(e.target.checked)}
-          />
-          {t("activities.filters.sortByDistance")}
-        </label>
+          </div>
+        </div>
+        <div>
+          <div className="filter-group-label">{t("activities.filters.sortBy")}</div>
+          <div className="filter-chip-row">
+            <button
+              type="button"
+              className={sortMode === "distance" ? "filter-chip active" : "filter-chip"}
+              onClick={() => setSortMode("distance")}
+            >
+              {t("activities.filters.sortByDistance")}
+            </button>
+            {anyPriceInFiltered && (
+              <button
+                type="button"
+                className={sortMode === "price" ? "filter-chip active" : "filter-chip"}
+                onClick={() => setSortMode("price")}
+              >
+                {t("activities.filters.sortByPrice")}
+              </button>
+            )}
+          </div>
+          {somePricesMissing && <p className="hint">{t("activities.filters.priceIncompleteNote")}</p>}
+        </div>
       </div>
+
+      <p className="results-count">{t("activities.resultCount", { count: visible.length })}</p>
 
       {visible.length === 0 && <p>{t("common.empty")}</p>}
 
@@ -77,6 +122,9 @@ export function ActivitiesPage() {
               {a.distanceWalkMin != null && a.distanceDriveMin != null && " · "}
               {a.distanceDriveMin != null && t("common.drive", { min: a.distanceDriveMin })}
             </p>
+            {a.priceFrom != null && (
+              <p className="card-meta">{t("activities.priceFromLabel", { price: a.priceFrom })}</p>
+            )}
             {a.openingHours && <p className="card-meta">{a.openingHours}</p>}
             {localized(a, "seasonNote", lang) && (
               <p className="card-meta">

@@ -6,6 +6,10 @@ export interface ImageItem {
   order: number;
   alt_en?: string;
   alt_no?: string;
+  // Only meaningful on houseShowcase.images — groups the gallery into
+  // labeled sections (see HOUSE_SHOWCASE_CATEGORIES). Unset on every other
+  // collection's images, which just render as one flat strip.
+  category?: string;
 }
 
 export interface BaseItem {
@@ -22,6 +26,9 @@ export type CuisineTag =
   | "seafood"
   | "tapas"
   | "italian"
+  | "french"
+  | "asian"
+  | "indian"
   | "international"
   | "steakhouse"
   | "beach_club_food"
@@ -82,6 +89,11 @@ export interface Activity extends BaseItem {
   websiteUrl: string | null;
   hostTip_en: string | null;
   hostTip_no: string | null;
+  // EUR, "starting from" price (green fees etc. vary by season/tee time).
+  // Left null for things with no fixed price (a public beach, a walking
+  // trail) — the price sort pushes those to the bottom rather than
+  // pretending they cost 0.
+  priceFrom: number | null;
 }
 
 export type PracticalInfoKind =
@@ -155,6 +167,19 @@ export interface HouseShowcase {
   images: ImageItem[];
   updatedAt?: unknown;
 }
+
+// Display order + i18n label (house.category.*) for houseShowcase.images
+// categories. Images with no category (or one not listed here) fall back
+// to a generic "Highlights" bucket rendered first.
+export const HOUSE_SHOWCASE_CATEGORIES: string[] = [
+  "commonfirstfloor",
+  "masterbedroom",
+  "guest-rooms",
+  "outdoor",
+  "rooftop",
+  "common-area-neighborhood",
+  "floor-plan",
+];
 
 export interface AdminAllowlistEntry {
   email: string;

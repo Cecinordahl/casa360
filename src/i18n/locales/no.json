@@ -77,11 +77,22 @@
       "seafood": "Sjømat",
       "tapas": "Tapas",
       "italian": "Italiensk",
+      "french": "Fransk",
+      "asian": "Asiatisk",
+      "indian": "Indisk",
       "international": "Internasjonalt",
       "steakhouse": "Steakhouse",
       "beach_club_food": "Beach club",
       "other": "Annet"
-    }
+    },
+    "filters": {
+      "cuisine": "Kjøkken",
+      "sortBy": "Sorter etter",
+      "sortByDistance": "Avstand",
+      "sortByPrice": "Pris"
+    },
+    "resultCount_one": "Viser {{count}} restaurant",
+    "resultCount_other": "Viser {{count}} restauranter"
   },
   "groceries": {
     "title": "Butikker & apotek",
@@ -90,7 +101,9 @@
       "small_shop": "Liten butikk",
       "pharmacy": "Apotek",
       "other": "Annet"
-    }
+    },
+    "resultCount_one": "Viser {{count}} butikk",
+    "resultCount_other": "Viser {{count}} butikker"
   },
   "activities": {
     "title": "Aktiviteter",
@@ -108,8 +121,14 @@
     "filters": {
       "category": "Kategori",
       "sunday": "Åpent på søndag",
-      "sortByDistance": "Sorter etter avstand"
-    }
+      "sortBy": "Sorter etter",
+      "sortByDistance": "Avstand",
+      "sortByPrice": "Pris",
+      "priceIncompleteNote": "Noen aktiviteter har ikke registrert pris — de vises nederst i listen."
+    },
+    "priceFromLabel": "Fra {{price}} €",
+    "resultCount_one": "Viser {{count}} aktivitet",
+    "resultCount_other": "Viser {{count}} aktiviteter"
   },
   "practical": {
     "title": "Praktisk info",
@@ -187,7 +206,17 @@
     "ctaBody": "Sjekk tilgjengelighet på Airbnb, eller ta direkte kontakt med Sotogrande Exclusive.",
     "bookAirbnb": "Book på Airbnb",
     "contactUs": "Kontakt Sotogrande Exclusive",
-    "contactLabel": "Sotogrande Exclusive"
+    "contactLabel": "Sotogrande Exclusive",
+    "highlights": "Høydepunkter",
+    "category": {
+      "commonfirstfloor": "Stue, spisestue og kjøkken",
+      "masterbedroom": "Hovedsoverom",
+      "guest-rooms": "Gjesterom",
+      "outdoor": "Uteområde og hage",
+      "rooftop": "Takterrasse",
+      "common-area-neighborhood": "Fellesområder",
+      "floor-plan": "Plantegning"
+    }
   },
   "field": {
     "name": "Navn",
@@ -211,6 +240,7 @@
     "seasonNote": "Sesongnotat",
     "bookingUrl": "Bestillingslenke",
     "hostTip": "Vertens tips",
+    "priceFrom": "Pris fra (EUR) — la stå tom hvis det ikke er en fast pris",
     "kind": "Type",
     "distanceKm": "Avstand (km)",
     "driveMin": "Kjøretid (minutter)"

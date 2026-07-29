@@ -18,6 +18,9 @@ export const CUISINE_OPTIONS: SelectOption[] = [
   "seafood",
   "tapas",
   "italian",
+  "french",
+  "asian",
+  "indian",
   "international",
   "steakhouse",
   "beach_club_food",
@@ -94,6 +97,7 @@ export const activityFields: FieldConfig[] = [
   { key: "bookingUrl", type: "url", labelKey: "field.bookingUrl" },
   { key: "websiteUrl", type: "url", labelKey: "field.websiteUrl" },
   { key: "hostTip", type: "bilingualText", labelKey: "field.hostTip", multiline: true },
+  { key: "priceFrom", type: "number", labelKey: "field.priceFrom" },
 ];
 
 export const practicalFields: FieldConfig[] = [

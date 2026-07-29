@@ -77,11 +77,22 @@
       "seafood": "Seafood",
       "tapas": "Tapas",
       "italian": "Italian",
+      "french": "French",
+      "asian": "Asian",
+      "indian": "Indian",
       "international": "International",
       "steakhouse": "Steakhouse",
       "beach_club_food": "Beach club",
       "other": "Other"
-    }
+    },
+    "filters": {
+      "cuisine": "Cuisine",
+      "sortBy": "Sort by",
+      "sortByDistance": "Distance",
+      "sortByPrice": "Price"
+    },
+    "resultCount_one": "Showing {{count}} restaurant",
+    "resultCount_other": "Showing {{count}} restaurants"
   },
   "groceries": {
     "title": "Shops & pharmacy",
@@ -90,7 +101,9 @@
       "small_shop": "Small shop",
       "pharmacy": "Pharmacy",
       "other": "Other"
-    }
+    },
+    "resultCount_one": "Showing {{count}} shop",
+    "resultCount_other": "Showing {{count}} shops"
   },
   "activities": {
     "title": "Things to do",
@@ -108,8 +121,14 @@
     "filters": {
       "category": "Category",
       "sunday": "Open on Sunday",
-      "sortByDistance": "Sort by distance"
-    }
+      "sortBy": "Sort by",
+      "sortByDistance": "Distance",
+      "sortByPrice": "Price",
+      "priceIncompleteNote": "Some activities don't have a price on file — they're shown at the bottom of the list."
+    },
+    "resultCount_one": "Showing {{count}} activity",
+    "resultCount_other": "Showing {{count}} activities",
+    "priceFromLabel": "From €{{price}}"
   },
   "practical": {
     "title": "Practical info",
@@ -187,7 +206,17 @@
     "ctaBody": "Check availability on Airbnb, or get in touch with Sotogrande Exclusive directly.",
     "bookAirbnb": "Book on Airbnb",
     "contactUs": "Contact Sotogrande Exclusive",
-    "contactLabel": "Sotogrande Exclusive"
+    "contactLabel": "Sotogrande Exclusive",
+    "highlights": "Highlights",
+    "category": {
+      "commonfirstfloor": "Living, Dining & Kitchen",
+      "masterbedroom": "Master Bedroom",
+      "guest-rooms": "Guest Bedrooms",
+      "outdoor": "Outdoor & Garden",
+      "rooftop": "Rooftop Terrace",
+      "common-area-neighborhood": "Community & Amenities",
+      "floor-plan": "Floor Plan"
+    }
   },
   "field": {
     "name": "Name",
@@ -211,6 +240,7 @@
     "seasonNote": "Season note",
     "bookingUrl": "Booking link",
     "hostTip": "Host's tip",
+    "priceFrom": "Price from (EUR) — leave blank if there's no fixed price",
     "kind": "Kind",
     "distanceKm": "Distance (km)",
     "driveMin": "Driving time (minutes)"
