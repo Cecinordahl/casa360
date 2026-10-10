@@ -115,6 +115,12 @@ export function ActivitiesPage() {
           <p>
             <strong>{t("activities.golfTip.warningLabel")}:</strong> {t("activities.golfTip.warning")}
           </p>
+          <p>{t("activities.golfTip.autumnOffer")}</p>
+          <div className="card-links">
+            <a href="https://www.golfamore.com/" target="_blank" rel="noreferrer">
+              {t("activities.golfTip.link")}
+            </a>
+          </div>
         </div>
       )}
 
