@@ -6,6 +6,7 @@ import { distanceSortKey } from "../../utils/distance";
 import type { Activity, ActivityCategory, Locale } from "../../types/content";
 import { ImageStrip } from "../../components/ImageStrip";
 import { Disclaimer } from "../../components/Disclaimer";
+import { FormattedText } from "../../components/FormattedText";
 
 const CATEGORIES: ActivityCategory[] = [
   "golf",
@@ -131,7 +132,7 @@ export function ActivitiesPage() {
                 {t("activities.season")}: {localized(a, "seasonNote", lang)}
               </p>
             )}
-            <p>{localized(a, "description", lang)}</p>
+            <FormattedText text={localized(a, "description", lang)} />
             {localized(a, "hostTip", lang) && (
               <p className="host-note">
                 <strong>{t("common.hostNote")}:</strong> {localized(a, "hostTip", lang)}
