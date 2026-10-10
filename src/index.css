@@ -462,6 +462,13 @@ button:disabled {
   color: rgba(251, 247, 240, 0.9);
 }
 
+.feature-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
 .feature-visual svg {
   width: 3rem;
   height: 3rem;

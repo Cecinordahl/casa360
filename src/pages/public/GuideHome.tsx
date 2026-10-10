@@ -5,22 +5,10 @@ import { Disclaimer } from "../../components/Disclaimer";
 import { subscribePublished } from "../../firebase/crud";
 import { subscribeHouseShowcase } from "../../firebase/houseShowcase";
 import type { Activity, Restaurant, Grocery, HouseShowcase } from "../../types/content";
+import golfPhoto from "../../assets/guide-golf.webp";
+import restaurantsPhoto from "../../assets/guide-restaurants.jpg";
 
 const ICONS = {
-  golf: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M6 21h8M9 21V10.5M9 3v6.5M9 3l7 3-7 3" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  ),
-  beach: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path
-        d="M3 21c3-2 15-2 18 0M12 3c3 3 5 7 5 11M12 3C9 6 7 10 7 14M4.5 12.5l15-4.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  ),
   wifi: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <path
@@ -119,7 +107,9 @@ export function GuideHome() {
       </div>
 
       <div className="feature-row">
-        <div className="feature-visual tone-a">{ICONS.golf}</div>
+        <div className="feature-visual tone-a">
+          <img src={golfPhoto} alt={t("guide.feature1Title")} />
+        </div>
         <div className="feature-text">
           <span className="feature-eyebrow">{t("guide.feature1Eyebrow")}</span>
           <h2>{t("guide.feature1Title")}</h2>
@@ -131,7 +121,9 @@ export function GuideHome() {
       </div>
 
       <div className="feature-row reverse">
-        <div className="feature-visual tone-b">{ICONS.beach}</div>
+        <div className="feature-visual tone-b">
+          <img src={restaurantsPhoto} alt={t("guide.feature2Title")} />
+        </div>
         <div className="feature-text">
           <span className="feature-eyebrow">{t("guide.feature2Eyebrow")}</span>
           <h2>{t("guide.feature2Title")}</h2>
