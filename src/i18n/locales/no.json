@@ -127,6 +127,13 @@
       "priceIncompleteNote": "Noen aktiviteter har ikke registrert pris — de vises nederst i listen."
     },
     "priceFromLabel": "Fra {{price}} €",
+    "golfTip": {
+      "title": "Gulltips",
+      "body": "Kjøp et Golfamore-kort (59 € per person) før dere spiller. Det gir halv greenfee én gang i året på hver partnerbane, blant annet San Roque New Course.",
+      "example": "Eksempel: med en greenfee på 72 € på San Roque New Course sparer du 36 €. Spill én bane til med Golfamore til lignende pris, så har du spart ca. 72 €, mer enn kortet kostet. Greenfee varierer med sesongen, så sjekk gjeldende priser.",
+      "warningLabel": "Merk",
+      "warning": "Halv pris gjelder bare greenfee. Buggy kommer i tillegg til full pris, så kortet lønner seg best når du går banen."
+    },
     "resultCount_one": "Viser {{count}} aktivitet",
     "resultCount_other": "Viser {{count}} aktiviteter"
   },

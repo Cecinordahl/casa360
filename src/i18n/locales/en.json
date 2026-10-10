@@ -126,6 +126,13 @@
       "sortByPrice": "Price",
       "priceIncompleteNote": "Some activities don't have a price on file — they're shown at the bottom of the list."
     },
+    "golfTip": {
+      "title": "Hot tip",
+      "body": "Buy a Golfamore card (€59 per person) before you play. It gives you half the green fee once a year at each partner course, including San Roque New Course.",
+      "example": "Example: with a €72 green fee at San Roque New Course you save €36. Play one more Golfamore course at a similar price and you've saved about €72, more than the card cost. Green fees vary by season, so check current prices.",
+      "warningLabel": "Note",
+      "warning": "The half price covers the green fee only. A buggy is charged at full price on top, so the card is best value when you walk the course."
+    },
     "resultCount_one": "Showing {{count}} activity",
     "resultCount_other": "Showing {{count}} activities",
     "priceFromLabel": "From €{{price}}"

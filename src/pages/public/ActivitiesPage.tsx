@@ -106,6 +106,18 @@ export function ActivitiesPage() {
         </div>
       </div>
 
+      {category === "golf" && (
+        <div className="host-note golf-tip">
+          <p>
+            <strong>{t("activities.golfTip.title")}:</strong> {t("activities.golfTip.body")}
+          </p>
+          <p>{t("activities.golfTip.example")}</p>
+          <p>
+            <strong>{t("activities.golfTip.warningLabel")}:</strong> {t("activities.golfTip.warning")}
+          </p>
+        </div>
+      )}
+
       <p className="results-count">{t("activities.resultCount", { count: visible.length })}</p>
 
       {visible.length === 0 && <p>{t("common.empty")}</p>}
