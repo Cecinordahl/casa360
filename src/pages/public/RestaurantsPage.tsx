@@ -5,7 +5,7 @@ import { localized } from "../../utils/localized";
 import { distanceSortKey } from "../../utils/distance";
 import type { CuisineTag, Locale, Restaurant } from "../../types/content";
 import { ImageStrip } from "../../components/ImageStrip";
-import { Disclaimer } from "../../components/Disclaimer";
+import { PageHeader } from "../../components/PageHeader";
 
 const CUISINES: CuisineTag[] = [
   "spanish",
@@ -61,7 +61,7 @@ export function RestaurantsPage() {
 
   return (
     <div>
-      <h1>{t("restaurants.title")}</h1>
+      <PageHeader tracker={t("tracker.restaurants")} title={t("restaurants.title")} />
 
       <div className="filters">
         <div>
@@ -111,39 +111,39 @@ export function RestaurantsPage() {
 
       {sorted.length === 0 && <p>{t("common.empty")}</p>}
 
-      <ul className="card-list">
+      <ul className="listing-grid">
         {sorted.map((r) => (
-          <li className="card" key={r.id}>
-            <ImageStrip images={r.images} />
-            <h2>{r.name}</h2>
-            <p className="card-meta">
-              {"€".repeat(r.priceLevel)}
-              {r.cuisineTags.length > 0 && " · " + r.cuisineTags.map((c) => t(`restaurants.cuisine.${c}`)).join(", ")}
-            </p>
-            <p className="card-meta">
-              {r.distanceWalkMin != null && t("common.walk", { min: r.distanceWalkMin })}
-              {r.distanceWalkMin != null && r.distanceDriveMin != null && " · "}
-              {r.distanceDriveMin != null && t("common.drive", { min: r.distanceDriveMin })}
-            </p>
-            <p className="card-meta">{r.openingHours}</p>
-            <p className="card-meta">
-              {r.openOnSunday ? t("common.openOnSunday") : t("common.closedOnSunday")}
-            </p>
-            <p>{localized(r, "description", lang)}</p>
-            {localized(r, "hostNote", lang) && (
-              <p className="host-note">
-                <strong>{t("common.hostNote")}:</strong> {localized(r, "hostNote", lang)}
+          <li className="listing-card" key={r.id}>
+            <ImageStrip images={r.images} cover />
+            <div className="listing-body">
+              <p className="micro-label">
+                {"€".repeat(r.priceLevel)}
+                {r.cuisineTags.length > 0 && " · " + r.cuisineTags.map((c) => t(`restaurants.cuisine.${c}`)).join(", ")}
               </p>
-            )}
-            <div className="card-links">
-              {r.mapUrl && <a href={r.mapUrl} target="_blank" rel="noreferrer">{t("common.map")}</a>}
-              {r.websiteUrl && <a href={r.websiteUrl} target="_blank" rel="noreferrer">{t("common.website")}</a>}
+              <h2>{r.name}</h2>
+              <p className="card-meta">
+                {r.distanceWalkMin != null && t("common.walk", { min: r.distanceWalkMin })}
+                {r.distanceWalkMin != null && r.distanceDriveMin != null && " · "}
+                {r.distanceDriveMin != null && t("common.drive", { min: r.distanceDriveMin })}
+              </p>
+              <p className="card-meta">{r.openingHours}</p>
+              <p className="card-meta">
+                {r.openOnSunday ? t("common.openOnSunday") : t("common.closedOnSunday")}
+              </p>
+              <p>{localized(r, "description", lang)}</p>
+              {localized(r, "hostNote", lang) && (
+                <p className="host-note">
+                  <strong>{t("common.hostNote")}:</strong> {localized(r, "hostNote", lang)}
+                </p>
+              )}
+              <div className="card-links">
+                {r.mapUrl && <a href={r.mapUrl} target="_blank" rel="noreferrer">{t("common.map")}</a>}
+                {r.websiteUrl && <a href={r.websiteUrl} target="_blank" rel="noreferrer">{t("common.website")}</a>}
+              </div>
             </div>
           </li>
         ))}
       </ul>
-
-      <Disclaimer />
     </div>
   );
 }

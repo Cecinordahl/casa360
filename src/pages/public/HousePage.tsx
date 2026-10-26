@@ -5,6 +5,7 @@ import { localized } from "../../utils/localized";
 import { ImageStrip } from "../../components/ImageStrip";
 import { HOUSE_SHOWCASE_CATEGORIES } from "../../types/content";
 import type { HouseShowcase, ImageItem, Locale } from "../../types/content";
+import { PageHeader } from "../../components/PageHeader";
 
 export function HousePage() {
   const { t, i18n } = useTranslation();
@@ -25,36 +26,23 @@ export function HousePage() {
 
   return (
     <div>
-      {cover && (
-        <div
-          className="hero"
-          style={{
-            backgroundImage: `linear-gradient(180deg, rgba(20,17,14,0.15) 0%, rgba(20,17,14,0.55) 100%), url(${cover.url})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <p className="hero-eyebrow">San Roque Club · Sotogrande</p>
-          <h1 className="hero-title">{t("app.shortName")}</h1>
-        </div>
-      )}
+      <PageHeader tracker={t("tracker.villa")} title={t("nav.house")}>
+        <p className="page-intro">{t("footer.tagline")}</p>
+      </PageHeader>
 
-      <p style={{ whiteSpace: "pre-line", maxWidth: "65ch", margin: "0 auto 2rem" }}>
-        {localized(showcase, "story", lang)}
-      </p>
+      {cover && <img src={cover.url} alt={cover.alt_en ?? ""} className="villa-cover" />}
 
-      {highlights.length > 0 && (
-        <div style={{ marginBottom: "2rem" }}>
-          <h2>{t("house.highlights")}</h2>
-          <ImageStrip images={highlights} />
-        </div>
-      )}
+      <p className="villa-story">{localized(showcase, "story", lang)}</p>
 
-      {grouped.map((g) => (
-        <div key={g.category} style={{ marginBottom: "2rem" }}>
-          <h2>{t(`house.category.${g.category}`)}</h2>
-          <ImageStrip images={g.images} />
-        </div>
+      {[
+        ...(highlights.length > 0 ? [{ title: t("house.highlights"), images: highlights }] : []),
+        ...grouped.map((g) => ({ title: t(`house.category.${g.category}`), images: g.images })),
+      ].map((section, i) => (
+        <section key={section.title} className="villa-section">
+          <p className="micro-label">{String(i + 1).padStart(2, "0")}</p>
+          <h2>{section.title}</h2>
+          <ImageStrip images={section.images} />
+        </section>
       ))}
 
       <section className="cta-band">
@@ -62,7 +50,7 @@ export function HousePage() {
         <p>{t("house.ctaBody")}</p>
         <div className="cta-actions">
           {showcase.airbnbUrl && (
-            <a href={showcase.airbnbUrl} target="_blank" rel="noreferrer" className="hero-cta" style={{ textDecoration: "none" }}>
+            <a href={showcase.airbnbUrl} target="_blank" rel="noreferrer" className="btn-light">
               {t("house.bookAirbnb")}
             </a>
           )}

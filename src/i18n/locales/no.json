@@ -1,11 +1,11 @@
 {
   "app": {
-    "title": "Casa 360 Gjesteguide",
-    "shortName": "Casa 360"
+    "title": "Casa Hoyo 8 Gjesteguide",
+    "shortName": "Casa Hoyo 8"
   },
   "nav": {
     "guide": "Guide",
-    "house": "Huset",
+    "house": "Villaen",
     "restaurants": "Restauranter",
     "groceries": "Butikker & apotek",
     "activities": "Aktiviteter",
@@ -47,7 +47,7 @@
   },
   "guide": {
     "disclaimer": "Anbefalingene er gitt i god tro av vertene og kan endre seg uten varsel. De er ingen garanti — vennligst sjekk åpningstider og bekreft bestillinger direkte før du drar.",
-    "heroSubtitle": "Ditt hjem hjemmefra på Costa del Sol — golf, hav og sol, alt innen kort avstand.",
+    "heroSubtitle": "Ditt private tilfluktssted på Costa del Sol — golf, hav og sol innen kort avstand.",
     "heroCta": "Se husmanualen",
     "viewHouseLink": "Se hele eiendommen →",
     "golfCourses": "Golfbaner",
@@ -67,7 +67,24 @@
     "amenityLanguage": "Norsk & engelsk",
     "amenityLanguageBody": "Hver side i denne guiden er tilgjengelig på begge språk.",
     "manualCtaBody": "WiFi-passord, bruksanvisninger, husregler og nødkontakter — alt bak din delte gjestekode.",
-    "manualCtaButton": "Skriv inn gjestekode"
+    "manualCtaButton": "Skriv inn gjestekode",
+    "heroEyebrow": "Hull 8 · San Roque Old Course · Sotogrande",
+    "heroTitle": "Utsikt over fairway. Ro ved kysten.",
+    "heroLink": "Utforsk villaen",
+    "guidebookEyebrow": "Guideboken",
+    "guidebookTitle": "Håndplukket av vertene",
+    "card1Label": "Rett utenfor døren",
+    "card2Label": "Gastronomi",
+    "card3Label": "Boligen",
+    "card3Title": "Villaen",
+    "card3Body": "Se rommene og uteområdene, og opplev utsikten over hull 8 selv.",
+    "essentialsEyebrow": "Det viktigste",
+    "essential1": "Fiber-WiFi",
+    "essential2": "Selvinnsjekking",
+    "essential3": "Privat parkering",
+    "essential4": "Guide på norsk og engelsk",
+    "manualOpen": "Åpne husmanualen",
+    "manualUnlocked": "Du er logget inn i husmanualen på denne enheten."
   },
   "restaurants": {
     "title": "Restauranter",
@@ -253,5 +270,24 @@
     "kind": "Type",
     "distanceKm": "Avstand (km)",
     "driveMin": "Kjøretid (minutter)"
+  },
+  "menu": {
+    "villa": "Villaen",
+    "eat": "Mat & drikke",
+    "golf": "Golf & fritid",
+    "practical": "Praktisk",
+    "manual": "Husmanual"
+  },
+  "tracker": {
+    "villa": "Bolig / Villaen",
+    "restaurants": "Katalog / Gastronomi",
+    "activities": "Katalog / Golf & fritid",
+    "practical": "Katalog / Praktisk",
+    "groceries": "Katalog / Dagligvarer",
+    "manual": "Gjester / Husmanual",
+    "privacy": "Juridisk / Personvern"
+  },
+  "footer": {
+    "tagline": "Første rad mot hull 8 · San Roque Old Course · Sotogrande"
   }
 }

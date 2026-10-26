@@ -5,7 +5,7 @@ import { localized } from "../../utils/localized";
 import { distanceSortKey } from "../../utils/distance";
 import type { Activity, ActivityCategory, Locale } from "../../types/content";
 import { ImageStrip } from "../../components/ImageStrip";
-import { Disclaimer } from "../../components/Disclaimer";
+import { PageHeader } from "../../components/PageHeader";
 import { FormattedText } from "../../components/FormattedText";
 
 const CATEGORIES: ActivityCategory[] = [
@@ -57,7 +57,7 @@ export function ActivitiesPage() {
 
   return (
     <div>
-      <h1>{t("activities.title")}</h1>
+      <PageHeader tracker={t("tracker.activities")} title={t("activities.title")} />
 
       <div className="filters">
         <div>
@@ -128,43 +128,43 @@ export function ActivitiesPage() {
 
       {visible.length === 0 && <p>{t("common.empty")}</p>}
 
-      <ul className="card-list">
+      <ul className="listing-grid">
         {visible.map((a) => (
-          <li className="card" key={a.id}>
-            <ImageStrip images={a.images} />
-            <h2>{a.name}</h2>
-            <p className="card-meta">
-              {a.categories.map((c) => t(`activities.category.${c}`)).join(", ")}
-            </p>
-            <p className="card-meta">
-              {a.distanceWalkMin != null && t("common.walk", { min: a.distanceWalkMin })}
-              {a.distanceWalkMin != null && a.distanceDriveMin != null && " · "}
-              {a.distanceDriveMin != null && t("common.drive", { min: a.distanceDriveMin })}
-            </p>
-            {a.priceFrom != null && (
-              <p className="card-meta">{t("activities.priceFromLabel", { price: a.priceFrom })}</p>
-            )}
-            {a.openingHours && <p className="card-meta">{a.openingHours}</p>}
-            {localized(a, "seasonNote", lang) && (
+          <li className="listing-card" key={a.id}>
+            <ImageStrip images={a.images} cover />
+            <div className="listing-body">
+              <p className="micro-label">
+                {a.categories.map((c) => t(`activities.category.${c}`)).join(", ")}
+              </p>
+              <h2>{a.name}</h2>
               <p className="card-meta">
-                {t("activities.season")}: {localized(a, "seasonNote", lang)}
+                {a.distanceWalkMin != null && t("common.walk", { min: a.distanceWalkMin })}
+                {a.distanceWalkMin != null && a.distanceDriveMin != null && " · "}
+                {a.distanceDriveMin != null && t("common.drive", { min: a.distanceDriveMin })}
               </p>
-            )}
-            <FormattedText text={localized(a, "description", lang)} />
-            {localized(a, "hostTip", lang) && (
-              <p className="host-note">
-                <strong>{t("common.hostNote")}:</strong> {localized(a, "hostTip", lang)}
-              </p>
-            )}
-            <div className="card-links">
-              {a.bookingUrl && <a href={a.bookingUrl} target="_blank" rel="noreferrer">{t("common.book")}</a>}
-              {a.websiteUrl && <a href={a.websiteUrl} target="_blank" rel="noreferrer">{t("common.website")}</a>}
+              {a.priceFrom != null && (
+                <p className="card-meta">{t("activities.priceFromLabel", { price: a.priceFrom })}</p>
+              )}
+              {a.openingHours && <p className="card-meta">{a.openingHours}</p>}
+              {localized(a, "seasonNote", lang) && (
+                <p className="card-meta">
+                  {t("activities.season")}: {localized(a, "seasonNote", lang)}
+                </p>
+              )}
+              <FormattedText text={localized(a, "description", lang)} />
+              {localized(a, "hostTip", lang) && (
+                <p className="host-note">
+                  <strong>{t("common.hostNote")}:</strong> {localized(a, "hostTip", lang)}
+                </p>
+              )}
+              <div className="card-links">
+                {a.bookingUrl && <a href={a.bookingUrl} target="_blank" rel="noreferrer">{t("common.book")}</a>}
+                {a.websiteUrl && <a href={a.websiteUrl} target="_blank" rel="noreferrer">{t("common.website")}</a>}
+              </div>
             </div>
           </li>
         ))}
       </ul>
-
-      <Disclaimer />
     </div>
   );
 }

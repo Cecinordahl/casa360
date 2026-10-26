@@ -11,7 +11,12 @@ export function LanguageToggle() {
 
   return (
     <div className="lang-toggle" role="group" aria-label={t("common.language")}>
-      {LANGS.map(({ code, label }) => (
+      {LANGS.map(({ code, label }, i) => [
+        i > 0 && (
+          <span key={`sep-${code}`} className="lang-sep" aria-hidden="true">
+            |
+          </span>
+        ),
         <button
           key={code}
           type="button"
@@ -20,8 +25,8 @@ export function LanguageToggle() {
           aria-pressed={i18n.language === code}
         >
           {label}
-        </button>
-      ))}
+        </button>,
+      ])}
     </div>
   );
 }

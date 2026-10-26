@@ -1,4 +1,4 @@
-# Casa 360 Guest Guide
+# Casa Hoyo 8 Guest Guide
 
 A bilingual (English / Norwegian) guest guide for a holiday home at Hoyo 17,
 San Roque Club, Sotogrande. Three surfaces, one Vite + React + TypeScript app:

@@ -1,11 +1,11 @@
 {
   "app": {
-    "title": "Casa 360 Guest Guide",
-    "shortName": "Casa 360"
+    "title": "Casa Hoyo 8 Guest Guide",
+    "shortName": "Casa Hoyo 8"
   },
   "nav": {
     "guide": "Guide",
-    "house": "The House",
+    "house": "The Villa",
     "restaurants": "Restaurants",
     "groceries": "Shops & pharmacy",
     "activities": "Things to do",
@@ -47,7 +47,7 @@
   },
   "guide": {
     "disclaimer": "Recommendations are provided in good faith by your hosts and may change without notice. They are not guarantees — please verify opening hours and confirm bookings directly before you go.",
-    "heroSubtitle": "Your home away from home on the Costa del Sol — golf, sea and sun, all within easy reach.",
+    "heroSubtitle": "Your private retreat on the Costa del Sol — golf, sea and sun within easy reach.",
     "heroCta": "View house manual",
     "viewHouseLink": "See the full property →",
     "golfCourses": "Golf courses",
@@ -67,7 +67,24 @@
     "amenityLanguage": "English & Norwegian",
     "amenityLanguageBody": "Every page of this guide is available in both languages.",
     "manualCtaBody": "WiFi passwords, appliance instructions, house rules, and emergency contacts — all behind your shared guest code.",
-    "manualCtaButton": "Enter guest code"
+    "manualCtaButton": "Enter guest code",
+    "heroEyebrow": "Hole 8 · San Roque Old Course · Sotogrande",
+    "heroTitle": "Fairway Views. Coastal Calm.",
+    "heroLink": "Explore the villa",
+    "guidebookEyebrow": "The Guidebook",
+    "guidebookTitle": "Curated by your hosts",
+    "card1Label": "On your doorstep",
+    "card2Label": "Gastronomy",
+    "card3Label": "The Residence",
+    "card3Title": "The villa",
+    "card3Body": "Tour the rooms and outdoor spaces, and see the views over hole 8 for yourself.",
+    "essentialsEyebrow": "Resident Essentials",
+    "essential1": "Fiber Wi-Fi",
+    "essential2": "Self Check-In",
+    "essential3": "Private Parking",
+    "essential4": "EN & NO Guide",
+    "manualOpen": "Open the house manual",
+    "manualUnlocked": "You're signed in to the house manual on this device."
   },
   "restaurants": {
     "title": "Restaurants",
@@ -253,5 +270,24 @@
     "kind": "Kind",
     "distanceKm": "Distance (km)",
     "driveMin": "Driving time (minutes)"
+  },
+  "menu": {
+    "villa": "The Villa",
+    "eat": "Eat & Drink",
+    "golf": "Golf & Leisure",
+    "practical": "Practical",
+    "manual": "House Manual"
+  },
+  "tracker": {
+    "villa": "Residence / The Villa",
+    "restaurants": "Directory / Gastronomy",
+    "activities": "Directory / Golf & Leisure",
+    "practical": "Directory / Practical",
+    "groceries": "Directory / Provisions",
+    "manual": "Residents / House Manual",
+    "privacy": "Legal / Privacy"
+  },
+  "footer": {
+    "tagline": "Frontline on Hole 8 · San Roque Old Course · Sotogrande"
   }
 }

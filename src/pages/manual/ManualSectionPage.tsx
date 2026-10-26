@@ -6,6 +6,7 @@ import { useGuest } from "../../context/GuestContext";
 import { localized } from "../../utils/localized";
 import type { HouseManualSectionBody, HouseManualSectionKey, Locale } from "../../types/content";
 import { ImageStrip } from "../../components/ImageStrip";
+import { PageHeader } from "../../components/PageHeader";
 
 function CopyField({ label, value }: { label: string; value: string }) {
   const { t } = useTranslation();
@@ -44,9 +45,9 @@ export function ManualSectionPage() {
 
   return (
     <div>
-      <h1>{t(`manual.sections.${key}`)}</h1>
+      <PageHeader tracker={t("tracker.manual")} title={t(`manual.sections.${key}`)} />
       <ImageStrip images={body.images} />
-      <p style={{ whiteSpace: "pre-line" }}>{localized(body, "body", lang)}</p>
+      <p className="manual-body">{localized(body, "body", lang)}</p>
 
       {key === "wifi" && body.wifiSsid && (
         <>

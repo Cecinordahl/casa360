@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { PageHeader } from "../../components/PageHeader";
 
 const CONTENT = {
   en: {
@@ -60,14 +61,15 @@ const CONTENT = {
 };
 
 export function PrivacyPage() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = i18n.language.startsWith("no") ? "no" : "en";
   const content = CONTENT[lang];
 
   return (
     <div className="page-narrow">
-      <h1>{content.heading}</h1>
-      <p className="hint">{content.updated}</p>
+      <PageHeader tracker={t("tracker.privacy")} title={content.heading}>
+        <p className="page-intro">{content.updated}</p>
+      </PageHeader>
       <p>{content.intro}</p>
       {content.sections.map((s) => (
         <section key={s.title}>
