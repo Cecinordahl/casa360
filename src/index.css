@@ -898,8 +898,74 @@ button:disabled {
   cursor: zoom-in;
 }
 
-.cover-frame:hover {
-  background: var(--color-sand);
+.cover-open {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.cover-open:hover {
+  background: transparent;
+}
+
+/* Left/right thirds of a cover photo page through it in place. The whole
+   strip is the click target; only the small square marker is drawn. */
+.cover-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  width: 30%;
+  min-height: 0;
+  padding: 0 0.75rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cover-nav:hover {
+  background: transparent;
+}
+
+.cover-prev {
+  left: 0;
+  justify-content: flex-start;
+}
+
+.cover-next {
+  right: 0;
+  justify-content: flex-end;
+}
+
+.cover-nav span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(28, 53, 45, 0.88);
+  color: var(--color-on-ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.cover-frame:hover .cover-nav span,
+.cover-nav:focus-visible span {
+  opacity: 1;
+}
+
+/* Touch screens have no hover, so keep the markers faintly visible. */
+@media (hover: none) {
+  .cover-nav span {
+    opacity: 0.75;
+  }
 }
 
 .cover-frame img {
