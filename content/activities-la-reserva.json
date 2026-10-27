@@ -1,0 +1,20 @@
+{
+  "collection": "activities",
+  "items": [
+    {
+      "update": true,
+      "name": "La Reserva Club Sotogrande",
+      "categories": ["golf"],
+      "description_en": "Modern championship course (par 72) designed by Cabell B. Robinson and opened in 2003, in the hills above Sotogrande. Visitors are welcome, but only with a tee time booked in advance.",
+      "description_no": "Moderne mesterskapsbane (par 72) tegnet av Cabell B. Robinson og åpnet i 2003, i åsene over Sotogrande. Besøkende er velkomne, men bare med starttid bestilt på forhånd.",
+      "distanceDriveMin": 12,
+      "priceFrom": 270,
+      "seasonNote_en": "The green fee is about €270–400 per player and changes with the season and the time of day. Examples for 18 holes: €274 in January, €320 in March, €386 in May, €300 in July and €294 in November. The GPS buggy is €30 per player on top.",
+      "seasonNote_no": "Greenfee er ca. 270–400 € per spiller og varierer med sesong og tid på dagen. Eksempler for 18 hull: 274 € i januar, 320 € i mars, 386 € i mai, 300 € i juli og 294 € i november. GPS-buggy koster 30 € per spiller i tillegg.",
+      "hostTip_en": "When you book online you can add rental clubs (Ping, €60) and a picnic with a baguette, crisps, fruit, chocolate and soft drinks (€23 per player).",
+      "hostTip_no": "Når du bestiller på nett kan du legge til leiekøller (Ping, 60 €) og en piknik med baguette, chips, frukt, sjokolade og brus (23 € per spiller).",
+      "websiteUrl": "https://www.lareservaclubsotogrande.com/",
+      "location": { "lat": 36.2946978, "lng": -5.3235631 }
+    }
+  ]
+}

@@ -165,6 +165,21 @@ item's edit form (appears once the item has been saved once); drag
 thumbnails to reorder them. Remember: uploading photos needs `vercel dev`
 locally, or the deployed site (next step) — not plain `npm run dev`.
 
+**Adding items from a file instead** (handy for many at once, or when
+Claude prepares them): put them in a JSON file like
+`content/activities-la-reserva.json`, then
+
+```bash
+npm run content -- list activities                    # see what's there
+npm run content -- import content/<file>.json         # dry run
+npm run content -- import content/<file>.json --commit
+```
+
+New items land as drafts; tick "Published" in admin once they look right.
+An existing name is skipped unless the item has `"update": true`. Text
+only — add photos in admin. Activities only for now; other collections
+need a schema in `scripts/import-content.ts`.
+
 ## 9. Build
 
 ```bash
