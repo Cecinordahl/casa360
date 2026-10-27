@@ -144,7 +144,11 @@
       "priceIncompleteNote": "Noen aktiviteter har ikke registrert pris — de vises nederst i listen.",
       "view": "Visning",
       "view_list": "Liste",
-      "view_map": "Kart"
+      "view_map": "Kart",
+      "categoriesButton": "Kategorier",
+      "categoriesButtonCount": "Kategorier ({{count}})",
+      "clear": "Nullstill",
+      "done": "Ferdig"
     },
     "priceFromLabel": "Fra {{price}} €",
     "golfTip": {
