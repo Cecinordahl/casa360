@@ -9,6 +9,7 @@ import { RestaurantsPage } from "./pages/public/RestaurantsPage";
 import { GroceriesPage } from "./pages/public/GroceriesPage";
 import { ActivitiesPage } from "./pages/public/ActivitiesPage";
 import { PracticalPage } from "./pages/public/PracticalPage";
+import { GettingHerePage } from "./pages/public/GettingHerePage";
 import { PrivacyPage } from "./pages/public/PrivacyPage";
 
 import { ManualLayout } from "./pages/manual/ManualLayout";
@@ -38,6 +39,7 @@ function App() {
               <Route path="groceries" element={<GroceriesPage />} />
               <Route path="activities" element={<ActivitiesPage />} />
               <Route path="practical" element={<PracticalPage />} />
+              <Route path="getting-here" element={<GettingHerePage />} />
               <Route path="privacy" element={<PrivacyPage />} />
 
               <Route path="manual" element={<ManualLayout />}>

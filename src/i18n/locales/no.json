@@ -141,7 +141,10 @@
       "sortBy": "Sorter etter",
       "sortByDistance": "Avstand",
       "sortByPrice": "Pris",
-      "priceIncompleteNote": "Noen aktiviteter har ikke registrert pris — de vises nederst i listen."
+      "priceIncompleteNote": "Noen aktiviteter har ikke registrert pris — de vises nederst i listen.",
+      "view": "Visning",
+      "view_list": "Liste",
+      "view_map": "Kart"
     },
     "priceFromLabel": "Fra {{price}} €",
     "golfTip": {
@@ -154,7 +157,13 @@
       "link": "Golfamores nettside"
     },
     "resultCount_one": "Viser {{count}} aktivitet",
-    "resultCount_other": "Viser {{count}} aktiviteter"
+    "resultCount_other": "Viser {{count}} aktiviteter",
+    "map": {
+      "showDetails": "Vis detaljer",
+      "directions": "Veibeskrivelse",
+      "missingPins_one": "{{count}} aktivitet har ikke posisjon ennå, så den vises ikke på kartet.",
+      "missingPins_other": "{{count}} aktiviteter har ikke posisjon ennå, så de vises ikke på kartet."
+    }
   },
   "practical": {
     "title": "Praktisk info",
@@ -222,7 +231,11 @@
     "rotateWorking": "Bytter kode…",
     "rotateDone": "Gjestekode byttet.",
     "newItem": "Nytt element",
-    "editItem": "Rediger element"
+    "editItem": "Rediger element",
+    "coordinatesHelp": "Lim inn en Google Maps-lenke til stedet, eller koordinater som «36.2900, -5.3000». Tips: høyreklikk på stedet i Google Maps og klikk på tallene for å kopiere dem. Korte maps.app.goo.gl-lenker fungerer ikke — åpne dem først og kopier hele lenken fra adressefeltet.",
+    "coordinatesFound": "Nål satt ved {{coords}}.",
+    "coordinatesCheck": "Sjekk i Google Maps",
+    "coordinatesInvalid": "Fant ingen koordinater der. Lim inn hele Google Maps-lenken eller et «breddegrad, lengdegrad»-par."
   },
   "privacy": {
     "title": "Personvernerklæring"
@@ -269,7 +282,8 @@
     "priceFrom": "Pris fra (EUR) — la stå tom hvis det ikke er en fast pris",
     "kind": "Type",
     "distanceKm": "Avstand (km)",
-    "driveMin": "Kjøretid (minutter)"
+    "driveMin": "Kjøretid (minutter)",
+    "location": "Posisjon på kart"
   },
   "menu": {
     "villa": "Villaen",
@@ -285,9 +299,63 @@
     "practical": "Katalog / Praktisk",
     "groceries": "Katalog / Dagligvarer",
     "manual": "Gjester / Husmanual",
-    "privacy": "Juridisk / Personvern"
+    "privacy": "Juridisk / Personvern",
+    "gettingHere": "Katalog / Hvordan komme hit"
   },
   "footer": {
     "tagline": "Første rad mot hull 8 · San Roque Old Course · Sotogrande"
+  },
+  "gettingHere": {
+    "title": "Hvordan komme hit",
+    "intro": "Casa Hoyo 8 ligger omtrent 110 km vest for Málaga lufthavn (AGP), like før Sotogrande. Slik kommer dere fra flyplassen til villaen, fra enklest til billigst.",
+    "pricesNote": "Prisene er sjekket i oktober 2026. De endrer seg, så sjekk gjerne før dere reiser.",
+    "car": {
+      "title": "Leiebil",
+      "lead": "Det enkleste alternativet. Hent bilen på Málaga lufthavn, så kan dere kjøre rett til villaen.",
+      "tollTitle": "Bomvei (AP-7) eller gratis vei (A-7)?",
+      "colRoute": "Rute",
+      "colToll": "Bompenger, bil, én vei",
+      "colTime": "Kjøretid",
+      "ap7": "AP-7 bomvei (Autopista del Sol)",
+      "ap7Toll": "12,00 € okt–mai · 19,55 € jun–sep",
+      "ap7Time": "Ca. 1 t 10 min",
+      "a7": "A-7 kystveien",
+      "a7Toll": "Gratis",
+      "a7Time": "Ca. 1 t 30 min, mer i trafikk gjennom Marbella",
+      "mix": "En mellomting: kjør gratis A-7 til Estepona, og ta AP-7 bare på siste strekning, Estepona–Guadiaro (2,45 € okt–mai, 4,05 € jun–sep). Hele bomstrekningen er Málaga–Estepona 9,55 € / 15,50 € pluss Estepona–Guadiaro 2,45 € / 4,05 €.",
+      "tips": [
+        "Betal i bomstasjonene med kort eller kontanter.",
+        "Velg «full-til-full» drivstoffavtale, så betaler dere bare for drivstoffet dere bruker.",
+        "De fleste utleiefirmaer reserverer et depositum på kredittkortet, så sjekk kredittgrensen før dere reiser."
+      ]
+    },
+    "bus": {
+      "title": "Buss (Avanza)",
+      "lead": "Avanza har direktebusser fra Málaga lufthavn til Estepona busstasjon flere ganger om dagen. Turen tar ca. 1 t 10 min.",
+      "colService": "Type",
+      "colTicket": "Billett",
+      "colTotal": "Totalt ved kjøp på nett",
+      "normal": "Normal",
+      "multimedia": "Multimedia",
+      "fees": "Kjøp på nett legger til 2,50 € i nettgebyr og 1,75 € i reiseforsikring per person.",
+      "lastLeg": "Bussen stopper i Estepona, ikke ved villaen. Fra Estepona busstasjon tar en taxi ca. 25–30 minutter.",
+      "link": "Avanzas nettside"
+    },
+    "taxi": {
+      "title": "Taxi eller privat transport",
+      "lead": "Fra dør til dør uten planlegging. Lønner seg når 3–4 personer deler.",
+      "tips": [
+        "Taxi: det er en taxiholdeplass utenfor ankomsthallen. Taksameterprisen er rundt 140–170 €, høyere om natten, i helger og på helligdager.",
+        "Privat transport: bestilles på forhånd til fast pris, fra ca. 120 € for opptil 4 personer. Sjåføren møter dere i ankomsthallen."
+      ]
+    },
+    "apps": {
+      "title": "Uber, Bolt og Cabify",
+      "lead": "Alle tre fungerer på Málaga lufthavn. Sammenlign appene, for prisene endrer seg med etterspørselen.",
+      "tips": [
+        "Det er få app-sjåfører rundt San Roque og Sotogrande, så for turer fra villaen bør dere bestille på forhånd eller ringe en lokal taxi.",
+        "Ikke stol på en app for en tidlig morgentur til flyplassen. Bestill taxi eller transport dagen før."
+      ]
+    }
   }
 }

@@ -141,7 +141,10 @@
       "sortBy": "Sort by",
       "sortByDistance": "Distance",
       "sortByPrice": "Price",
-      "priceIncompleteNote": "Some activities don't have a price on file — they're shown at the bottom of the list."
+      "priceIncompleteNote": "Some activities don't have a price on file — they're shown at the bottom of the list.",
+      "view": "View",
+      "view_list": "List",
+      "view_map": "Map"
     },
     "golfTip": {
       "title": "Hot tip",
@@ -154,7 +157,13 @@
     },
     "resultCount_one": "Showing {{count}} activity",
     "resultCount_other": "Showing {{count}} activities",
-    "priceFromLabel": "From €{{price}}"
+    "priceFromLabel": "From €{{price}}",
+    "map": {
+      "showDetails": "Show details",
+      "directions": "Directions",
+      "missingPins_one": "{{count}} activity has no location yet, so it isn't on the map.",
+      "missingPins_other": "{{count}} activities have no location yet, so they aren't on the map."
+    }
   },
   "practical": {
     "title": "Practical info",
@@ -222,7 +231,11 @@
     "rotateWorking": "Rotating code…",
     "rotateDone": "Guest code rotated.",
     "newItem": "New item",
-    "editItem": "Edit item"
+    "editItem": "Edit item",
+    "coordinatesHelp": "Paste a Google Maps link to the place, or coordinates like \"36.2900, -5.3000\". Tip: right-click the spot in Google Maps and click the numbers to copy them. Short maps.app.goo.gl links don't work — open them first and copy the full address bar link.",
+    "coordinatesFound": "Pin set at {{coords}}.",
+    "coordinatesCheck": "Check on Google Maps",
+    "coordinatesInvalid": "Couldn't find coordinates in that. Paste the full Google Maps link or a \"lat, lng\" pair."
   },
   "privacy": {
     "title": "Privacy policy"
@@ -269,7 +282,8 @@
     "priceFrom": "Price from (EUR) — leave blank if there's no fixed price",
     "kind": "Kind",
     "distanceKm": "Distance (km)",
-    "driveMin": "Driving time (minutes)"
+    "driveMin": "Driving time (minutes)",
+    "location": "Location on map"
   },
   "menu": {
     "villa": "The Villa",
@@ -285,9 +299,63 @@
     "practical": "Directory / Practical",
     "groceries": "Directory / Provisions",
     "manual": "Residents / House Manual",
-    "privacy": "Legal / Privacy"
+    "privacy": "Legal / Privacy",
+    "gettingHere": "Directory / Getting here"
   },
   "footer": {
     "tagline": "Frontline on Hole 8 · San Roque Old Course · Sotogrande"
+  },
+  "gettingHere": {
+    "title": "Getting here",
+    "intro": "Casa Hoyo 8 is about 110 km west of Málaga Airport (AGP), just before Sotogrande. Here's how to get from the airport to the villa, from easiest to cheapest.",
+    "pricesNote": "Prices checked in October 2026. They change, so please confirm before you travel.",
+    "car": {
+      "title": "Rental car",
+      "lead": "The easiest option. Pick the car up at Málaga Airport and you can drive straight to the villa.",
+      "tollTitle": "Toll road (AP-7) or free road (A-7)?",
+      "colRoute": "Route",
+      "colToll": "Toll, car, one way",
+      "colTime": "Driving time",
+      "ap7": "AP-7 toll road (Autopista del Sol)",
+      "ap7Toll": "€12.00 Oct–May · €19.55 Jun–Sep",
+      "ap7Time": "About 1 h 10 min",
+      "a7": "A-7 coast road",
+      "a7Toll": "Free",
+      "a7Time": "About 1 h 30 min, more in traffic through Marbella",
+      "mix": "A middle option: take the free A-7 to Estepona, then the AP-7 only for the last stretch, Estepona–Guadiaro (€2.45 Oct–May, €4.05 Jun–Sep). The full toll splits into Málaga–Estepona €9.55 / €15.50 plus Estepona–Guadiaro €2.45 / €4.05.",
+      "tips": [
+        "Pay at the toll booths with a card or cash.",
+        "Choose a full-to-full fuel policy, so you only pay for the fuel you use.",
+        "Most rental companies put a deposit on a credit card, so check the limit before you go."
+      ]
+    },
+    "bus": {
+      "title": "Bus (Avanza)",
+      "lead": "Avanza runs direct buses from Málaga Airport to Estepona bus station several times a day. The ride takes about 1 h 10 min.",
+      "colService": "Service",
+      "colTicket": "Ticket",
+      "colTotal": "Total booked online",
+      "normal": "Normal",
+      "multimedia": "Multimedia",
+      "fees": "Booking online adds a €2.50 web fee and €1.75 travel insurance per person.",
+      "lastLeg": "The bus stops in Estepona, not at the villa. From Estepona bus station a taxi takes about 25–30 minutes.",
+      "link": "Avanza website"
+    },
+    "taxi": {
+      "title": "Taxi or private transfer",
+      "lead": "Door to door with no planning. Good value when 3–4 people share it.",
+      "tips": [
+        "Taxi: there's a rank outside arrivals. The metered fare is roughly €140–170, higher at night, at weekends and on public holidays.",
+        "Private transfer: booked in advance at a fixed price, from about €120 for up to 4 people. The driver meets you in arrivals."
+      ]
+    },
+    "apps": {
+      "title": "Uber, Bolt & Cabify",
+      "lead": "All three work at Málaga Airport. Compare the apps, because prices change with demand.",
+      "tips": [
+        "There are few app drivers around San Roque and Sotogrande, so for trips from the villa, book ahead or call a local taxi.",
+        "Don't rely on an app for an early-morning ride to the airport. Book a taxi or transfer the day before."
+      ]
+    }
   }
 }

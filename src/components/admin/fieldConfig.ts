@@ -11,7 +11,8 @@ export type FieldConfig =
   | { key: string; type: "boolean"; labelKey: string }
   | { key: string; type: "url"; labelKey: string }
   | { key: string; type: "select"; labelKey: string; options: SelectOption[] }
-  | { key: string; type: "multiselect"; labelKey: string; options: SelectOption[] };
+  | { key: string; type: "multiselect"; labelKey: string; options: SelectOption[] }
+  | { key: string; type: "coordinates"; labelKey: string };
 
 export const CUISINE_OPTIONS: SelectOption[] = [
   "spanish",
@@ -98,6 +99,7 @@ export const activityFields: FieldConfig[] = [
   { key: "websiteUrl", type: "url", labelKey: "field.websiteUrl" },
   { key: "hostTip", type: "bilingualText", labelKey: "field.hostTip", multiline: true },
   { key: "priceFrom", type: "number", labelKey: "field.priceFrom" },
+  { key: "location", type: "coordinates", labelKey: "field.location" },
 ];
 
 export const practicalFields: FieldConfig[] = [

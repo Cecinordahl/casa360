@@ -1,12 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { subscribePublished } from "../../firebase/crud";
 import { localized } from "../../utils/localized";
 import { distanceSortKey } from "../../utils/distance";
-import type { Activity, ActivityCategory, Locale } from "../../types/content";
+import type { Activity, ActivityCategory, GeoPoint, Locale } from "../../types/content";
 import { ImageStrip } from "../../components/ImageStrip";
 import { PageHeader } from "../../components/PageHeader";
 import { FormattedText } from "../../components/FormattedText";
+
+// Leaflet is the bulk of this page's weight, so it only downloads once a
+// guest actually opens the map.
+const ActivityMap = lazy(() => import("../../components/ActivityMap"));
 
 const CATEGORIES: ActivityCategory[] = [
   "golf",
@@ -20,6 +24,7 @@ const CATEGORIES: ActivityCategory[] = [
 ];
 
 type SortMode = "distance" | "price";
+type ViewMode = "list" | "map";
 
 function priceSortKey(a: Activity): number {
   return a.priceFrom ?? Infinity;
@@ -29,15 +34,22 @@ export function ActivitiesPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language as Locale;
   const [items, setItems] = useState<Activity[]>([]);
-  const [category, setCategory] = useState<ActivityCategory | "all">("all");
+  // Empty means "All" — no category narrowing.
+  const [selected, setSelected] = useState<ActivityCategory[]>([]);
   const [sortMode, setSortMode] = useState<SortMode>("distance");
+  const [view, setView] = useState<ViewMode>("list");
+  const [focusId, setFocusId] = useState<string | null>(null);
 
   useEffect(() => subscribePublished<Activity>("activities", setItems), []);
 
   const filtered = useMemo(
-    () => items.filter((a) => category === "all" || a.categories.includes(category)),
-    [items, category],
+    () => items.filter((a) => selected.length === 0 || a.categories.some((c) => selected.includes(c))),
+    [items, selected],
   );
+
+  function toggleCategory(c: ActivityCategory) {
+    setSelected((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]));
+  }
 
   const anyPriceInFiltered = filtered.some((a) => a.priceFrom != null);
 
@@ -55,6 +67,24 @@ export function ActivitiesPage() {
 
   const somePricesMissing = sortMode === "price" && filtered.some((a) => a.priceFrom == null);
 
+  const pinned = useMemo(
+    () => visible.filter((a): a is Activity & { location: GeoPoint } => a.location != null),
+    [visible],
+  );
+
+  // "Show details" in a map popup switches to the list, then scrolls to
+  // that card once it has rendered.
+  useEffect(() => {
+    if (view !== "list" || !focusId) return;
+    document.getElementById(`activity-${focusId}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setFocusId(null);
+  }, [view, focusId]);
+
+  function showDetails(id: string) {
+    setFocusId(id);
+    setView("list");
+  }
+
   return (
     <div>
       <PageHeader tracker={t("tracker.activities")} title={t("activities.title")} />
@@ -65,8 +95,9 @@ export function ActivitiesPage() {
           <div className="filter-chip-row">
             <button
               type="button"
-              className={category === "all" ? "filter-chip active" : "filter-chip"}
-              onClick={() => setCategory("all")}
+              className={selected.length === 0 ? "filter-chip active" : "filter-chip"}
+              aria-pressed={selected.length === 0}
+              onClick={() => setSelected([])}
             >
               {t("common.all")}
             </button>
@@ -74,8 +105,9 @@ export function ActivitiesPage() {
               <button
                 key={c}
                 type="button"
-                className={category === c ? "filter-chip active" : "filter-chip"}
-                onClick={() => setCategory(c)}
+                className={selected.includes(c) ? "filter-chip active" : "filter-chip"}
+                aria-pressed={selected.includes(c)}
+                onClick={() => toggleCategory(c)}
               >
                 {t(`activities.category.${c}`)}
               </button>
@@ -83,30 +115,48 @@ export function ActivitiesPage() {
           </div>
         </div>
         <div>
-          <div className="filter-group-label">{t("activities.filters.sortBy")}</div>
+          <div className="filter-group-label">{t("activities.filters.view")}</div>
           <div className="filter-chip-row">
-            <button
-              type="button"
-              className={sortMode === "distance" ? "filter-chip active" : "filter-chip"}
-              onClick={() => setSortMode("distance")}
-            >
-              {t("activities.filters.sortByDistance")}
-            </button>
-            {anyPriceInFiltered && (
+            {(["list", "map"] as const).map((v) => (
+              <button
+                key={v}
+                type="button"
+                className={view === v ? "filter-chip active" : "filter-chip"}
+                aria-pressed={view === v}
+                onClick={() => setView(v)}
+              >
+                {t(`activities.filters.view_${v}`)}
+              </button>
+            ))}
+          </div>
+        </div>
+        {view === "list" && (
+          <div>
+            <div className="filter-group-label">{t("activities.filters.sortBy")}</div>
+            <div className="filter-chip-row">
               <button
                 type="button"
-                className={sortMode === "price" ? "filter-chip active" : "filter-chip"}
-                onClick={() => setSortMode("price")}
+                className={sortMode === "distance" ? "filter-chip active" : "filter-chip"}
+                onClick={() => setSortMode("distance")}
               >
-                {t("activities.filters.sortByPrice")}
+                {t("activities.filters.sortByDistance")}
               </button>
-            )}
+              {anyPriceInFiltered && (
+                <button
+                  type="button"
+                  className={sortMode === "price" ? "filter-chip active" : "filter-chip"}
+                  onClick={() => setSortMode("price")}
+                >
+                  {t("activities.filters.sortByPrice")}
+                </button>
+              )}
+            </div>
+            {somePricesMissing && <p className="hint">{t("activities.filters.priceIncompleteNote")}</p>}
           </div>
-          {somePricesMissing && <p className="hint">{t("activities.filters.priceIncompleteNote")}</p>}
-        </div>
+        )}
       </div>
 
-      {category === "golf" && (
+      {selected.includes("golf") && (
         <div className="host-note golf-tip">
           <p>
             <strong>{t("activities.golfTip.title")}:</strong> {t("activities.golfTip.body")}
@@ -128,43 +178,56 @@ export function ActivitiesPage() {
 
       {visible.length === 0 && <p>{t("common.empty")}</p>}
 
-      <ul className="listing-grid">
-        {visible.map((a) => (
-          <li className="listing-card" key={a.id}>
-            <ImageStrip images={a.images} cover />
-            <div className="listing-body">
-              <p className="micro-label">
-                {a.categories.map((c) => t(`activities.category.${c}`)).join(", ")}
-              </p>
-              <h2>{a.name}</h2>
-              <p className="card-meta">
-                {a.distanceWalkMin != null && t("common.walk", { min: a.distanceWalkMin })}
-                {a.distanceWalkMin != null && a.distanceDriveMin != null && " · "}
-                {a.distanceDriveMin != null && t("common.drive", { min: a.distanceDriveMin })}
-              </p>
-              {a.priceFrom != null && (
-                <p className="card-meta">{t("activities.priceFromLabel", { price: a.priceFrom })}</p>
-              )}
-              {a.openingHours && <p className="card-meta">{a.openingHours}</p>}
-              {localized(a, "seasonNote", lang) && (
+      {view === "map" && (
+        <>
+          <Suspense fallback={<div className="activity-map">{t("common.loading")}</div>}>
+            <ActivityMap activities={pinned} onShowDetails={showDetails} />
+          </Suspense>
+          {pinned.length < visible.length && (
+            <p className="hint">{t("activities.map.missingPins", { count: visible.length - pinned.length })}</p>
+          )}
+        </>
+      )}
+
+      {view === "list" && (
+        <ul className="listing-grid">
+          {visible.map((a) => (
+            <li className="listing-card" key={a.id} id={`activity-${a.id}`}>
+              <ImageStrip images={a.images} cover />
+              <div className="listing-body">
+                <p className="micro-label">
+                  {a.categories.map((c) => t(`activities.category.${c}`)).join(", ")}
+                </p>
+                <h2>{a.name}</h2>
                 <p className="card-meta">
-                  {t("activities.season")}: {localized(a, "seasonNote", lang)}
+                  {a.distanceWalkMin != null && t("common.walk", { min: a.distanceWalkMin })}
+                  {a.distanceWalkMin != null && a.distanceDriveMin != null && " · "}
+                  {a.distanceDriveMin != null && t("common.drive", { min: a.distanceDriveMin })}
                 </p>
-              )}
-              <FormattedText text={localized(a, "description", lang)} />
-              {localized(a, "hostTip", lang) && (
-                <p className="host-note">
-                  <strong>{t("common.hostNote")}:</strong> {localized(a, "hostTip", lang)}
-                </p>
-              )}
-              <div className="card-links">
-                {a.bookingUrl && <a href={a.bookingUrl} target="_blank" rel="noreferrer">{t("common.book")}</a>}
-                {a.websiteUrl && <a href={a.websiteUrl} target="_blank" rel="noreferrer">{t("common.website")}</a>}
+                {a.priceFrom != null && (
+                  <p className="card-meta">{t("activities.priceFromLabel", { price: a.priceFrom })}</p>
+                )}
+                {a.openingHours && <p className="card-meta">{a.openingHours}</p>}
+                {localized(a, "seasonNote", lang) && (
+                  <p className="card-meta">
+                    {t("activities.season")}: {localized(a, "seasonNote", lang)}
+                  </p>
+                )}
+                <FormattedText text={localized(a, "description", lang)} />
+                {localized(a, "hostTip", lang) && (
+                  <p className="host-note">
+                    <strong>{t("common.hostNote")}:</strong> {localized(a, "hostTip", lang)}
+                  </p>
+                )}
+                <div className="card-links">
+                  {a.bookingUrl && <a href={a.bookingUrl} target="_blank" rel="noreferrer">{t("common.book")}</a>}
+                  {a.websiteUrl && <a href={a.websiteUrl} target="_blank" rel="noreferrer">{t("common.website")}</a>}
+                </div>
               </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

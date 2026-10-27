@@ -15,9 +15,9 @@ export function Navbar() {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  // Shops & pharmacy lives as a tab inside Practical, so keep the Practical
-  // link highlighted on either page.
-  const inPractical = location.pathname === "/practical" || location.pathname === "/groceries";
+  // Shops & pharmacy and Getting here live as tabs inside Practical, so keep
+  // the Practical link highlighted on any of them.
+  const inPractical = ["/practical", "/groceries", "/getting-here"].includes(location.pathname);
 
   return (
     <header className="app-header">

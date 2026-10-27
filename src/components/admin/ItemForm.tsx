@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { FieldConfig } from "./fieldConfig";
 import { ImageManager } from "./ImageManager";
-import type { ImageItem } from "../../types/content";
+import { CoordinatesInput } from "./CoordinatesInput";
+import type { GeoPoint, ImageItem } from "../../types/content";
 
 interface Props {
   collectionName: string;
@@ -20,6 +21,7 @@ function emptyValueFor(field: FieldConfig): unknown {
     case "multiselect":
       return [];
     case "number":
+    case "coordinates":
       return null;
     default:
       return "";
@@ -191,6 +193,17 @@ export function ItemForm({ collectionName, fields, initial, itemId, onSave, onCa
                 ))}
               </div>
             </div>
+          );
+        }
+
+        if (field.type === "coordinates") {
+          return (
+            <CoordinatesInput
+              key={field.key}
+              label={t(field.labelKey)}
+              value={(values[field.key] as GeoPoint | null | undefined) ?? null}
+              onChange={(next) => setField(field.key, next)}
+            />
           );
         }
 

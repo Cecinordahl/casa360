@@ -94,6 +94,14 @@ export interface Activity extends BaseItem {
   // trail) — the price sort pushes those to the bottom rather than
   // pretending they cost 0.
   priceFrom: number | null;
+  // Pin for the map view. Optional because activities saved before the
+  // map existed don't have one — those just don't appear on the map.
+  location?: GeoPoint | null;
+}
+
+export interface GeoPoint {
+  lat: number;
+  lng: number;
 }
 
 export type PracticalInfoKind =

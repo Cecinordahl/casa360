@@ -88,6 +88,13 @@ link goes stale and a guest relies on it.
   to avoid Firebase Storage's mandatory paid plan (see `SCHEMA.md`). Check
   Cloudinary's own data processing terms and choose a data-center region
   there too if that option is available on your plan.
+- **OpenStreetMap map tiles**: the map view on the activities page loads
+  its map images from `tile.openstreetmap.org`, so a guest's browser sends
+  its IP address (and the page as referrer) to the OpenStreetMap
+  Foundation's servers — but only once the guest taps "Map"; Leaflet isn't
+  even downloaded before then. No cookies, no account. This is mentioned on
+  the privacy page. If you ever expect heavy traffic, OSM's tile usage
+  policy asks you to switch to a commercial tile provider instead.
 - **The Firebase service account key** (`FIREBASE_PRIVATE_KEY` and friends,
   used by `api/*.ts`) grants full administrative access to your Firebase
   project — broader than any single admin account. It's not personal data

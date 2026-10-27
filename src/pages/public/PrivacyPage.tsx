@@ -4,7 +4,7 @@ import { PageHeader } from "../../components/PageHeader";
 const CONTENT = {
   en: {
     heading: "Privacy policy",
-    updated: "Last updated: 2026-07-26",
+    updated: "Last updated: 2026-10-27",
     intro:
       "This site is a guest guide for a single holiday home. It is run by an individual host, not a company, and this page explains what personal data it processes under the EU General Data Protection Regulation (GDPR).",
     sections: [
@@ -18,7 +18,7 @@ const CONTENT = {
       },
       {
         title: "Cookies & analytics",
-        body: "This site does not use cookies, analytics, or any tracking by default. Your language preference is stored in your browser's local storage (not a cookie, not sent to any server) purely so the site remembers whether you prefer English or Norwegian.",
+        body: "This site does not use cookies, analytics, or any tracking by default. Your language preference is stored in your browser's local storage (not a cookie, not sent to any server) purely so the site remembers whether you prefer English or Norwegian. Map view: if you open the map on the Golf & Leisure page, the map images are loaded from OpenStreetMap's servers (tile.openstreetmap.org), which means your browser shares your IP address with the OpenStreetMap Foundation to fetch them. Nothing is loaded from OpenStreetMap unless you open the map.",
       },
       {
         title: "Retention",
@@ -32,7 +32,7 @@ const CONTENT = {
   },
   no: {
     heading: "Personvernerklæring",
-    updated: "Sist oppdatert: 26.07.2026",
+    updated: "Sist oppdatert: 27.10.2026",
     intro:
       "Denne siden er en gjesteguide for ett enkelt feriehus. Den drives av en privatperson, ikke et selskap, og denne siden forklarer hvilke personopplysninger den behandler i henhold til EUs personvernforordning (GDPR).",
     sections: [
@@ -46,7 +46,7 @@ const CONTENT = {
       },
       {
         title: "Cookies og analyse",
-        body: "Denne siden bruker ikke cookies, analyseverktøy eller sporing som standard. Språkvalget ditt lagres i nettleserens lokale lagring (ikke en cookie, sendes ikke til noen server) utelukkende for at siden skal huske om du foretrekker engelsk eller norsk.",
+        body: "Denne siden bruker ikke cookies, analyseverktøy eller sporing som standard. Språkvalget ditt lagres i nettleserens lokale lagring (ikke en cookie, sendes ikke til noen server) utelukkende for at siden skal huske om du foretrekker engelsk eller norsk. Kartvisning: hvis du åpner kartet på siden Golf og fritid, lastes kartbildene fra OpenStreetMaps servere (tile.openstreetmap.org), noe som betyr at nettleseren din deler IP-adressen din med OpenStreetMap Foundation for å hente dem. Ingenting lastes fra OpenStreetMap med mindre du åpner kartet.",
       },
       {
         title: "Lagringstid",
