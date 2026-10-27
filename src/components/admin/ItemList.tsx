@@ -58,11 +58,13 @@ const DELETE_ICON = (
 function SortableRow({
   item,
   fields,
+  lastEdited,
   onEdit,
   onDelete,
 }: {
   item: BaseItem & Record<string, unknown>;
   fields: FieldConfig[];
+  lastEdited: boolean;
   onEdit: () => void;
   onDelete: () => void;
 }) {
@@ -76,7 +78,12 @@ function SortableRow({
   const missing = hasMissingTranslation(item, fields);
 
   return (
-    <li className="admin-row" ref={setNodeRef} style={style}>
+    <li
+      id={`admin-row-${item.id}`}
+      className={lastEdited ? "admin-row last-edited" : "admin-row"}
+      ref={setNodeRef}
+      style={style}
+    >
       <span className="drag-handle" {...attributes} {...listeners} aria-label={t("admin.dragToReorder")}>
         ⠿
       </span>
@@ -115,6 +122,22 @@ export function ItemList({ collectionName, fields, titleKey }: Props) {
   const { t } = useTranslation();
   const [items, setItems] = useState<(BaseItem & Record<string, unknown>)[]>([]);
   const [editingId, setEditingId] = useState<string | null | "new">(null);
+  // Bumped every time an editor is opened. ItemForm copies `initial` into
+  // its own state once, on mount, so without a fresh key switching from
+  // item A straight to item B kept A's values on screen and the next save
+  // wrote them over B. Not keyed on editingId itself: that changes from
+  // "new" to the real id right after the first save, and remounting there
+  // would reset the form mid-edit.
+  const [editorSession, setEditorSession] = useState(0);
+  // The row the host last saved. It stays highlighted so that when working
+  // down the list item by item it's obvious where they left off.
+  const [lastEditedId, setLastEditedId] = useState<string | null>(null);
+  // Row to scroll back to once the editor has closed. Separate from
+  // lastEditedId because Cancel scrolls back without marking anything.
+  const [returnToId, setReturnToId] = useState<string | null>(null);
+  // handleSave's create branch learns the new id after the form's submit
+  // handler already captured `editingId`, so the id travels via a ref.
+  const savedRef = useRef<{ id: string; created: boolean } | null>(null);
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
   const editorRef = useRef<HTMLDivElement>(null);
 
@@ -127,15 +150,46 @@ export function ItemList({ collectionName, fields, titleKey }: Props) {
     if (editingId) editorRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [editingId]);
 
+  useEffect(() => {
+    if (!returnToId) return;
+    document.getElementById(`admin-row-${returnToId}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setReturnToId(null);
+  }, [returnToId]);
+
+  function openEditor(id: string | "new") {
+    setEditingId(id);
+    setEditorSession((n) => n + 1);
+  }
+
   const editingItem = editingId && editingId !== "new" ? items.find((i) => i.id === editingId) ?? null : null;
 
   async function handleSave(data: Record<string, unknown>) {
     if (editingId === "new") {
       const id = await createItem(collectionName, data);
+      savedRef.current = { id, created: true };
       setEditingId(id);
     } else if (editingId) {
       await updateItem(collectionName, editingId, data);
+      savedRef.current = { id: editingId, created: false };
     }
+  }
+
+  /** Runs after the Save button (not after image uploads, which also save).
+   * A brand-new item stays open, because photos can only be added once it
+   * exists; otherwise the editor closes and the list scrolls back to the row. */
+  function handleSubmitted() {
+    const saved = savedRef.current;
+    savedRef.current = null;
+    if (!saved) return;
+    setLastEditedId(saved.id);
+    if (saved.created) return;
+    setEditingId(null);
+    setReturnToId(saved.id);
+  }
+
+  function handleCancel() {
+    if (editingId && editingId !== "new") setReturnToId(editingId);
+    setEditingId(null);
   }
 
   async function handleDelete(id: string) {
@@ -158,7 +212,7 @@ export function ItemList({ collectionName, fields, titleKey }: Props) {
     <section className="admin-section">
       <div className="admin-section-header">
         <h2>{t(titleKey)}</h2>
-        <button type="button" onClick={() => setEditingId("new")}>
+        <button type="button" onClick={() => openEditor("new")}>
           + {t("admin.newItem")}
         </button>
       </div>
@@ -171,7 +225,8 @@ export function ItemList({ collectionName, fields, titleKey }: Props) {
                 key={item.id}
                 item={item}
                 fields={fields}
-                onEdit={() => setEditingId(item.id)}
+                lastEdited={item.id === lastEditedId}
+                onEdit={() => openEditor(item.id)}
                 onDelete={() => handleDelete(item.id)}
               />
             ))}
@@ -183,12 +238,14 @@ export function ItemList({ collectionName, fields, titleKey }: Props) {
         <div className="admin-editor" ref={editorRef}>
           <h3>{editingId === "new" ? t("admin.newItem") : t("admin.editItem")}</h3>
           <ItemForm
+            key={editorSession}
             collectionName={collectionName}
             fields={fields}
             initial={editingItem}
             itemId={editingId === "new" ? null : editingId}
             onSave={handleSave}
-            onCancel={() => setEditingId(null)}
+            onSubmitted={handleSubmitted}
+            onCancel={handleCancel}
           />
         </div>
       )}

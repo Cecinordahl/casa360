@@ -11,6 +11,7 @@ interface Props {
   initial: Record<string, unknown> | null; // null => creating a new item
   itemId: string | null; // set once the item has been created, enables image upload
   onSave: (data: Record<string, unknown>) => Promise<void>;
+  onSubmitted: () => void; // after a Save-button save, not an image autosave
   onCancel: () => void;
 }
 
@@ -28,7 +29,7 @@ function emptyValueFor(field: FieldConfig): unknown {
   }
 }
 
-export function ItemForm({ collectionName, fields, initial, itemId, onSave, onCancel }: Props) {
+export function ItemForm({ collectionName, fields, initial, itemId, onSave, onSubmitted, onCancel }: Props) {
   const { t } = useTranslation();
   const [values, setValues] = useState<Record<string, unknown>>(() => {
     const base: Record<string, unknown> = { published: initial?.published ?? true };
@@ -59,6 +60,7 @@ export function ItemForm({ collectionName, fields, initial, itemId, onSave, onCa
     } finally {
       setSaving(false);
     }
+    onSubmitted();
   }
 
   async function handleImagesChange(next: ImageItem[]) {

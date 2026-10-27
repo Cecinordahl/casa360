@@ -1505,6 +1505,28 @@ a.contact-card-title:hover {
   background: var(--color-bg);
 }
 
+/* The row saved last: stays marked so the host can see where they left off,
+   with a short flash when it first gets the mark. */
+.admin-row.last-edited {
+  border-color: var(--color-ink);
+  border-left-width: 4px;
+  background: var(--color-sand);
+  animation: admin-row-flash 1.2s ease-out;
+}
+
+@keyframes admin-row-flash {
+  from {
+    background: var(--color-ink-soft);
+    color: var(--color-on-ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-row.last-edited {
+    animation: none;
+  }
+}
+
 .drag-handle {
   cursor: grab;
   color: var(--color-muted);
