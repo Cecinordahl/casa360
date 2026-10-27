@@ -1774,6 +1774,11 @@ a.contact-card-title:hover {
   filter: grayscale(0.55) sepia(0.12);
 }
 
+/* In map view the golf tip sits under the map rather than above it. */
+.activity-map ~ .golf-tip {
+  margin-top: 1.5rem;
+}
+
 .map-pin span {
   display: block;
   width: 18px;

@@ -85,6 +85,26 @@ export function ActivitiesPage() {
     setView("list");
   }
 
+  // Above the list, but below the map: in map view it would otherwise push
+  // the map itself off-screen.
+  const golfTip = selected.includes("golf") && (
+    <div className="host-note golf-tip">
+      <p>
+        <strong>{t("activities.golfTip.title")}:</strong> {t("activities.golfTip.body")}
+      </p>
+      <p>{t("activities.golfTip.example")}</p>
+      <p>
+        <strong>{t("activities.golfTip.warningLabel")}:</strong> {t("activities.golfTip.warning")}
+      </p>
+      <p>{t("activities.golfTip.autumnOffer")}</p>
+      <div className="card-links">
+        <a href="https://www.golfamore.com/" target="_blank" rel="noreferrer">
+          {t("activities.golfTip.link")}
+        </a>
+      </div>
+    </div>
+  );
+
   return (
     <div>
       <PageHeader tracker={t("tracker.activities")} title={t("activities.title")} />
@@ -156,23 +176,7 @@ export function ActivitiesPage() {
         )}
       </div>
 
-      {selected.includes("golf") && (
-        <div className="host-note golf-tip">
-          <p>
-            <strong>{t("activities.golfTip.title")}:</strong> {t("activities.golfTip.body")}
-          </p>
-          <p>{t("activities.golfTip.example")}</p>
-          <p>
-            <strong>{t("activities.golfTip.warningLabel")}:</strong> {t("activities.golfTip.warning")}
-          </p>
-          <p>{t("activities.golfTip.autumnOffer")}</p>
-          <div className="card-links">
-            <a href="https://www.golfamore.com/" target="_blank" rel="noreferrer">
-              {t("activities.golfTip.link")}
-            </a>
-          </div>
-        </div>
-      )}
+      {view === "list" && golfTip}
 
       <p className="results-count">{t("activities.resultCount", { count: visible.length })}</p>
 
@@ -186,6 +190,7 @@ export function ActivitiesPage() {
           {pinned.length < visible.length && (
             <p className="hint">{t("activities.map.missingPins", { count: visible.length - pinned.length })}</p>
           )}
+          {golfTip}
         </>
       )}
 
