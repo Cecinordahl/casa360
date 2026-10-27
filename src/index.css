@@ -1078,6 +1078,17 @@ button:disabled {
   white-space: pre-line;
 }
 
+/* Newspaper-style two columns once there's room for them */
+@media (min-width: 900px) {
+  .villa-story {
+    max-width: none;
+    font-size: 1.3rem;
+    column-count: 2;
+    column-gap: 3.5rem;
+    column-rule: 1px solid var(--color-border);
+  }
+}
+
 .villa-section {
   margin-bottom: 3.5rem;
   padding-top: 1.75rem;
