@@ -1,0 +1,5 @@
+# The house manual is gated behind a guest code and admin is staff-only;
+# neither belongs in search results. Pages there also send noindex.
+User-agent: *
+Disallow: /manual
+Disallow: /admin

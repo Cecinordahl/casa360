@@ -244,7 +244,7 @@
   },
   "house": {
     "ctaTitle": "Klar for å booke?",
-    "ctaBody": "Sjekk tilgjengelighet på Airbnb, eller ta direkte kontakt med Sotogrande Exclusive.",
+    "ctaBody": "Sjekk tilgjengelighet på Airbnb, eller book direkte hos Sotogrande Exclusive. Det er som regel billigere å booke direkte, siden du slipper plattformgebyrene.",
     "bookAirbnb": "Book på Airbnb",
     "contactUs": "Kontakt Sotogrande Exclusive",
     "contactLabel": "Sotogrande Exclusive",
@@ -305,7 +305,7 @@
     "gettingHere": "Katalog / Hvordan komme hit"
   },
   "footer": {
-    "tagline": "Første rad mot hull 8 · San Roque Old Course · Sotogrande"
+    "tagline": "Utsikt over fairwayen. Ro ved kysten."
   },
   "gettingHere": {
     "title": "Hvordan komme hit",
@@ -358,6 +358,40 @@
         "Det er få app-sjåfører rundt San Roque og Sotogrande, så for turer fra villaen bør dere bestille på forhånd eller ringe en lokal taxi.",
         "Ikke stol på en app for en tidlig morgentur til flyplassen. Bestill taxi eller transport dagen før."
       ]
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Casa Hoyo 8 · Rekkehus på første rad mot golfbanen i Sotogrande",
+      "description": "Moderne rekkehus med 3 soverom på første rad mot hull 8 på San Roque Clubs Old Course i Sotogrande, Costa del Sol. Plass til 6, med felles basseng, treningsrom og golf rett utenfor døren."
+    },
+    "house": {
+      "title": "Villaen · Casa Hoyo 8, San Roque Club, Sotogrande",
+      "description": "Lyst rekkehus med 3 soverom på San Roque Clubs Old Course i Sotogrande. Privat hage mot fairwayen, takterrasse, felles basseng og treningsrom. Plass til 6."
+    },
+    "activities": {
+      "title": "Golf og fritid nær Sotogrande · Casa Hoyo 8",
+      "description": "Golfbaner, strandklubber, tennis, padel og dagsturer nær San Roque Club og Sotogrande, med kjøretider, priser og kart."
+    },
+    "restaurants": {
+      "title": "Restauranter nær Sotogrande · Casa Hoyo 8",
+      "description": "Våre favorittrestauranter og tapasbarer nær San Roque Club og Sotogrande, testet og anbefalt av vertene."
+    },
+    "groceries": {
+      "title": "Butikker og apotek nær Sotogrande · Casa Hoyo 8",
+      "description": "Supermarkeder, butikker og apotek nær San Roque Club og Sotogrande, med avstander og åpningstider."
+    },
+    "practical": {
+      "title": "Praktisk info · Casa Hoyo 8, Sotogrande",
+      "description": "Apotek, bank, flyplass og marina nær Casa Hoyo 8 i San Roque Club, Sotogrande."
+    },
+    "gettingHere": {
+      "title": "Fra Málaga lufthavn til Sotogrande · Casa Hoyo 8",
+      "description": "Slik kommer du fra Málaga lufthavn til San Roque Club og Sotogrande med leiebil (bompenger AP-7 vs A-7), buss, taxi, privat transport eller Uber, Bolt og Cabify."
+    },
+    "privacy": {
+      "title": "Personvern · Casa Hoyo 8",
+      "description": "Hvordan gjesteguiden for Casa Hoyo 8 behandler personopplysninger."
     }
   }
 }

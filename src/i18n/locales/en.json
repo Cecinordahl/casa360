@@ -244,7 +244,7 @@
   },
   "house": {
     "ctaTitle": "Ready to book?",
-    "ctaBody": "Check availability on Airbnb, or get in touch with Sotogrande Exclusive directly.",
+    "ctaBody": "Check availability on Airbnb, or book directly with Sotogrande Exclusive. Booking directly is usually cheaper, as there are no platform fees.",
     "bookAirbnb": "Book on Airbnb",
     "contactUs": "Contact Sotogrande Exclusive",
     "contactLabel": "Sotogrande Exclusive",
@@ -305,7 +305,7 @@
     "gettingHere": "Directory / Getting here"
   },
   "footer": {
-    "tagline": "Frontline on Hole 8 · San Roque Old Course · Sotogrande"
+    "tagline": "Fairway Views. Coastal Calm."
   },
   "gettingHere": {
     "title": "Getting here",
@@ -358,6 +358,40 @@
         "There are few app drivers around San Roque and Sotogrande, so for trips from the villa, book ahead or call a local taxi.",
         "Don't rely on an app for an early-morning ride to the airport. Book a taxi or transfer the day before."
       ]
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "Casa Hoyo 8 · Frontline golf townhouse in Sotogrande",
+      "description": "A modern 3-bedroom townhouse frontline on the 8th hole of San Roque Club's Old Course in Sotogrande, Costa del Sol. Sleeps 6, with a shared pool, gym and golf on the doorstep."
+    },
+    "house": {
+      "title": "The Villa · Casa Hoyo 8, San Roque Club, Sotogrande",
+      "description": "Light-filled 3-bedroom golf townhouse on San Roque Club's Old Course, Sotogrande. Private garden onto the fairway, rooftop terrace, shared pool and gym. Sleeps 6."
+    },
+    "activities": {
+      "title": "Golf & Leisure near Sotogrande · Casa Hoyo 8",
+      "description": "Golf courses, beach clubs, tennis, padel and day trips near San Roque Club and Sotogrande, with drive times, prices and a map."
+    },
+    "restaurants": {
+      "title": "Restaurants near Sotogrande · Casa Hoyo 8",
+      "description": "Our favourite restaurants and tapas bars near San Roque Club and Sotogrande, tried and recommended by the hosts."
+    },
+    "groceries": {
+      "title": "Shops & Pharmacy near Sotogrande · Casa Hoyo 8",
+      "description": "Supermarkets, shops and pharmacies near San Roque Club and Sotogrande, with distances and opening hours."
+    },
+    "practical": {
+      "title": "Practical Info · Casa Hoyo 8, Sotogrande",
+      "description": "Pharmacy, bank, airport and marina near Casa Hoyo 8 in San Roque Club, Sotogrande."
+    },
+    "gettingHere": {
+      "title": "Getting to Sotogrande from Málaga Airport · Casa Hoyo 8",
+      "description": "How to get from Málaga Airport to San Roque Club and Sotogrande by rental car (AP-7 vs A-7 tolls), bus, taxi, transfer or Uber, Bolt and Cabify."
+    },
+    "privacy": {
+      "title": "Privacy Policy · Casa Hoyo 8",
+      "description": "How the Casa Hoyo 8 guest guide handles personal data."
     }
   }
 }

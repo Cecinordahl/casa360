@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { GuestProvider } from "./context/GuestContext";
 import { Layout } from "./components/Layout";
+import { PageMeta } from "./components/PageMeta";
 
 import { GuideHome } from "./pages/public/GuideHome";
 import { HousePage } from "./pages/public/HousePage";
@@ -31,6 +32,7 @@ function App() {
     <AuthProvider>
       <GuestProvider>
         <BrowserRouter>
+          <PageMeta />
           <Routes>
             <Route element={<Layout />}>
               <Route index element={<GuideHome />} />
