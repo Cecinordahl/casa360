@@ -144,7 +144,11 @@
       "priceIncompleteNote": "Some activities don't have a price on file — they're shown at the bottom of the list.",
       "view": "View",
       "view_list": "List",
-      "view_map": "Map"
+      "view_map": "Map",
+      "categoriesButton": "Categories",
+      "categoriesButtonCount": "Categories ({{count}})",
+      "clear": "Clear",
+      "done": "Done"
     },
     "golfTip": {
       "title": "Hot tip",

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { subscribePublished } from "../../firebase/crud";
 import { localized } from "../../utils/localized";
@@ -39,6 +39,8 @@ export function ActivitiesPage() {
   const [sortMode, setSortMode] = useState<SortMode>("distance");
   const [view, setView] = useState<ViewMode>("list");
   const [focusId, setFocusId] = useState<string | null>(null);
+  const [categoryMenuOpen, setCategoryMenuOpen] = useState(false);
+  const categoryMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => subscribePublished<Activity>("activities", setItems), []);
 
@@ -50,6 +52,23 @@ export function ActivitiesPage() {
   function toggleCategory(c: ActivityCategory) {
     setSelected((cur) => (cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c]));
   }
+
+  // Close the category menu on a tap outside it or on Escape.
+  useEffect(() => {
+    if (!categoryMenuOpen) return;
+    function onPointerDown(e: PointerEvent) {
+      if (!categoryMenuRef.current?.contains(e.target as Node)) setCategoryMenuOpen(false);
+    }
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setCategoryMenuOpen(false);
+    }
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [categoryMenuOpen]);
 
   const anyPriceInFiltered = filtered.some((a) => a.priceFrom != null);
 
@@ -112,26 +131,47 @@ export function ActivitiesPage() {
       <div className="filters">
         <div>
           <div className="filter-group-label">{t("activities.filters.category")}</div>
-          <div className="filter-chip-row">
+          <div className="filter-dropdown" ref={categoryMenuRef}>
             <button
               type="button"
-              className={selected.length === 0 ? "filter-chip active" : "filter-chip"}
-              aria-pressed={selected.length === 0}
-              onClick={() => setSelected([])}
+              className={selected.length > 0 ? "filter-chip active" : "filter-chip"}
+              aria-haspopup="true"
+              aria-expanded={categoryMenuOpen}
+              onClick={() => setCategoryMenuOpen((o) => !o)}
             >
-              {t("common.all")}
+              {selected.length === 0
+                ? t("activities.filters.categoriesButton")
+                : t("activities.filters.categoriesButtonCount", { count: selected.length })}
+              <span className="filter-dropdown-caret" aria-hidden="true">
+                {categoryMenuOpen ? "▴" : "▾"}
+              </span>
             </button>
-            {CATEGORIES.map((c) => (
-              <button
-                key={c}
-                type="button"
-                className={selected.includes(c) ? "filter-chip active" : "filter-chip"}
-                aria-pressed={selected.includes(c)}
-                onClick={() => toggleCategory(c)}
-              >
-                {t(`activities.category.${c}`)}
-              </button>
-            ))}
+            {categoryMenuOpen && (
+              <div className="filter-dropdown-panel">
+                <ul className="filter-dropdown-list">
+                  {CATEGORIES.map((c) => (
+                    <li key={c}>
+                      <label className="filter-dropdown-option">
+                        <input
+                          type="checkbox"
+                          checked={selected.includes(c)}
+                          onChange={() => toggleCategory(c)}
+                        />
+                        {t(`activities.category.${c}`)}
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+                <div className="filter-dropdown-actions">
+                  <button type="button" className="filter-dropdown-clear" onClick={() => setSelected([])} disabled={selected.length === 0}>
+                    {t("activities.filters.clear")}
+                  </button>
+                  <button type="button" className="filter-chip active" onClick={() => setCategoryMenuOpen(false)}>
+                    {t("activities.filters.done")}
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <div>
