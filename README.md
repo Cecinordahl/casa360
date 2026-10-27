@@ -177,8 +177,8 @@ npm run content -- import content/<file>.json --commit
 
 New items land as drafts; tick "Published" in admin once they look right.
 An existing name is skipped unless the item has `"update": true`. Text
-only — add photos in admin. Activities only for now; other collections
-need a schema in `scripts/import-content.ts`.
+only — add photos in admin. Works for `activities`, `restaurants`,
+`groceries` and `practicalInfo`.
 
 ## 9. Build
 

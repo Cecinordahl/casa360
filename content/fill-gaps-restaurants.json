@@ -1,0 +1,64 @@
+{
+  "collection": "restaurants",
+  "items": [
+    {
+      "update": true,
+      "name": "Ristorante Bucintoro",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Ristorante+Bucintoro%2C+San+Roque%2C+C%C3%A1diz"
+    },
+    {
+      "update": true,
+      "name": "San Roque Club restaurant",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=San+Roque+Club%2C+San+Roque%2C+C%C3%A1diz",
+      "distanceWalkMin": 2
+    },
+    {
+      "update": true,
+      "name": "Imood Hotel restaurant",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Inmood+San+Roque+hotel"
+    },
+    {
+      "update": true,
+      "name": "Puratapa",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Puratapa%2C+Torreguadiaro%2C+Sotogrande"
+    },
+    {
+      "update": true,
+      "name": "Asador Cancha 2",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Asador+Cancha+2%2C+San+Enrique+de+Guadiaro",
+      "distanceDriveMin": 13,
+      "websiteUrl": "https://asadorcancha2.com/"
+    },
+    {
+      "update": true,
+      "name": "Gaucho Sotogrande",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=El+Gaucho%2C+Sotogrande"
+    },
+    {
+      "update": true,
+      "name": "La Finca Thai Fusion",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=La+Finca+Thai+Fusion%2C+Sotogrande"
+    },
+    {
+      "update": true,
+      "name": "Brosko – Sushi Bar & Grill",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Brosko+Sushi+Bar+%26+Grill%2C+Pueblo+Nuevo+de+Guadiaro",
+      "distanceDriveMin": 8
+    },
+    {
+      "update": true,
+      "name": "Venta García (Casares)",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Venta+Garc%C3%ADa%2C+Carretera+de+Casares%2C+Casares"
+    },
+    {
+      "update": true,
+      "name": "Bar de Tapas Don Benito",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Bar+Don+Benito%2C+Plaza+de+Armas%2C+San+Roque"
+    },
+    {
+      "update": true,
+      "name": "Alcaidesa Rooftop Tapas & fine dining",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Hotel+Alcaidesa%2C+La+Alcaidesa"
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "collection": "activities",
+  "items": [
+    {
+      "update": true,
+      "name": "Real Club de Sotogrande",
+      "location": {
+        "lat": 36.28009,
+        "lng": -5.29189
+      },
+      "distanceDriveMin": 13
+    },
+    {
+      "update": true,
+      "name": "Real Club Valderrama",
+      "location": {
+        "lat": 36.2855,
+        "lng": -5.32522
+      },
+      "distanceDriveMin": 11,
+      "websiteUrl": "https://www.valderrama.com/"
+    },
+    {
+      "update": true,
+      "name": "La Cañada Golf Club",
+      "location": {
+        "lat": 36.29479,
+        "lng": -5.30936
+      },
+      "distanceDriveMin": 8
+    },
+    {
+      "update": true,
+      "name": "Almenara Golf Sotogrande",
+      "location": {
+        "lat": 36.27522,
+        "lng": -5.35211
+      },
+      "distanceDriveMin": 14,
+      "websiteUrl": "https://altogolfclub.com/"
+    },
+    {
+      "update": true,
+      "name": "Fairplay Golf & Spa Resort",
+      "location": {
+        "lat": 36.33598,
+        "lng": -5.82231
+      },
+      "priceFrom": 66
+    },
+    {
+      "update": true,
+      "name": "Sherry Golf Jerez",
+      "location": {
+        "lat": 36.65863,
+        "lng": -6.1557
+      },
+      "websiteUrl": "https://www.sherrygolf.com/",
+      "priceFrom": 122
+    },
+    {
+      "update": true,
+      "name": "Alcaidesa Beach Club (DBlanco)",
+      "location": {
+        "lat": 36.23373,
+        "lng": -5.31498
+      }
+    },
+    {
+      "update": true,
+      "name": "Gigi's Beach",
+      "location": {
+        "lat": 36.28815,
+        "lng": -5.27324
+      }
+    },
+    {
+      "update": true,
+      "name": "Bunker Beach Club (Contacto)",
+      "location": {
+        "lat": 36.27236,
+        "lng": -5.28446
+      }
+    },
+    {
+      "update": true,
+      "name": "Trocadero Sotogrande",
+      "location": {
+        "lat": 36.27457,
+        "lng": -5.28347
+      }
+    },
+    {
+      "update": true,
+      "name": "Chambao Sotogrande",
+      "location": {
+        "lat": 36.29527,
+        "lng": -5.27122
+      },
+      "websiteUrl": "https://chambaosotogrande.com/"
+    },
+    {
+      "update": true,
+      "name": "Pinar del Rey",
+      "location": {
+        "lat": 36.24167,
+        "lng": -5.40408
+      }
+    },
+    {
+      "update": true,
+      "name": "Casares (day trip)",
+      "location": {
+        "lat": 36.44335,
+        "lng": -5.27289
+      }
+    },
+    {
+      "update": true,
+      "name": "Puerto de la Duquesa",
+      "location": {
+        "lat": 36.35545,
+        "lng": -5.2293
+      }
+    },
+    {
+      "update": true,
+      "name": "Estepona (day trip)",
+      "location": {
+        "lat": 36.42681,
+        "lng": -5.14685
+      }
+    },
+    {
+      "update": true,
+      "name": "Tarifa (surfing)",
+      "location": {
+        "lat": 36.01291,
+        "lng": -5.60502
+      }
+    },
+    {
+      "update": true,
+      "name": "Cádiz (day trip)",
+      "location": {
+        "lat": 36.52974,
+        "lng": -6.2929
+      }
+    },
+    {
+      "update": true,
+      "name": "R2 Pádel FitClub",
+      "location": {
+        "lat": 36.17922,
+        "lng": -5.37433
+      }
+    }
+  ]
+}

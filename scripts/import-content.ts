@@ -19,26 +19,45 @@
 import { readFileSync } from "node:fs";
 import { cert, initializeApp } from "firebase-admin/app";
 import { FieldValue, getFirestore } from "firebase-admin/firestore";
-import type { Activity } from "../src/types/content.ts";
+import type { Activity, Grocery, PracticalInfoItem, Restaurant } from "../src/types/content.ts";
 
-const ACTIVITY_CATEGORIES = new Set([
-  "golf",
-  "tennis_padel",
-  "beach_club",
-  "beach",
-  "running",
-  "family",
-  "fitness",
-  "other",
-]);
+// Fixed vocabularies, mirroring the unions in src/types/content.ts.
+const ENUMS: Record<string, string[]> = {
+  activityCategory: ["golf", "tennis_padel", "beach_club", "beach", "running", "family", "fitness", "other"],
+  cuisineTag: [
+    "spanish",
+    "seafood",
+    "tapas",
+    "italian",
+    "french",
+    "asian",
+    "indian",
+    "international",
+    "steakhouse",
+    "beach_club_food",
+    "other",
+  ],
+  groceryType: ["supermarket", "small_shop", "pharmacy", "other"],
+  practicalKind: ["pharmacy", "doctor", "atm", "petrol_station", "airport", "port", "other"],
+};
 
-type FieldKind = "string" | "string?" | "number?" | "boolean" | "categories" | "location?";
+// "list:<enum>" is a non-empty list from that vocabulary, "one:<enum>" a
+// single value from it.
+type FieldKind =
+  | "string"
+  | "string?"
+  | "number?"
+  | "boolean"
+  | "location?"
+  | "priceLevel"
+  | `list:${string}`
+  | `one:${string}`;
 
 // Every field an activity document may carry, minus the ones this script
 // manages itself (images, order, published, timestamps).
 const ACTIVITY_FIELDS: Record<string, FieldKind> = {
   name: "string",
-  categories: "categories",
+  categories: "list:activityCategory",
   description_en: "string",
   description_no: "string",
   distanceWalkMin: "number?",
@@ -70,13 +89,91 @@ const ACTIVITY_DEFAULTS: Partial<Activity> = {
   location: null,
 };
 
+const RESTAURANT_FIELDS: Record<string, FieldKind> = {
+  name: "string",
+  description_en: "string",
+  description_no: "string",
+  cuisineTags: "list:cuisineTag",
+  priceLevel: "priceLevel",
+  distanceWalkMin: "number?",
+  distanceDriveMin: "number?",
+  openingHours: "string",
+  openOnSunday: "boolean",
+  mapUrl: "string?",
+  websiteUrl: "string?",
+  hostNote_en: "string?",
+  hostNote_no: "string?",
+};
+
+const RESTAURANT_DEFAULTS: Partial<Restaurant> = {
+  distanceWalkMin: null,
+  distanceDriveMin: null,
+  openOnSunday: true,
+  mapUrl: null,
+  websiteUrl: null,
+  hostNote_en: null,
+  hostNote_no: null,
+};
+
+const GROCERY_FIELDS: Record<string, FieldKind> = {
+  name: "string",
+  type: "one:groceryType",
+  distanceWalkMin: "number?",
+  distanceDriveMin: "number?",
+  openingHours: "string",
+  openOnSunday: "boolean",
+  mapUrl: "string?",
+  note_en: "string?",
+  note_no: "string?",
+};
+
+const GROCERY_DEFAULTS: Partial<Grocery> = {
+  distanceWalkMin: null,
+  distanceDriveMin: null,
+  openOnSunday: false,
+  mapUrl: null,
+  note_en: null,
+  note_no: null,
+};
+
+const PRACTICAL_FIELDS: Record<string, FieldKind> = {
+  kind: "one:practicalKind",
+  name: "string",
+  distanceKm: "number?",
+  driveMin: "number?",
+  note_en: "string?",
+  note_no: "string?",
+  mapUrl: "string?",
+};
+
+const PRACTICAL_DEFAULTS: Partial<PracticalInfoItem> = {
+  distanceKm: null,
+  driveMin: null,
+  note_en: null,
+  note_no: null,
+  mapUrl: null,
+};
+
 const SCHEMAS: Record<string, { fields: Record<string, FieldKind>; defaults: Record<string, unknown> }> = {
   activities: { fields: ACTIVITY_FIELDS, defaults: ACTIVITY_DEFAULTS },
+  restaurants: { fields: RESTAURANT_FIELDS, defaults: RESTAURANT_DEFAULTS },
+  groceries: { fields: GROCERY_FIELDS, defaults: GROCERY_DEFAULTS },
+  practicalInfo: { fields: PRACTICAL_FIELDS, defaults: PRACTICAL_DEFAULTS },
 };
 
 function checkField(kind: FieldKind, value: unknown): string | null {
   const optional = kind.endsWith("?");
   if (optional && value === null) return null;
+  if (kind.startsWith("list:")) {
+    const allowed = ENUMS[kind.slice(5)];
+    return Array.isArray(value) && value.length > 0 && value.every((v) => allowed.includes(v))
+      ? null
+      : `must be a non-empty list from: ${allowed.join(", ")}`;
+  }
+  if (kind.startsWith("one:")) {
+    const allowed = ENUMS[kind.slice(4)];
+    return allowed.includes(value as string) ? null : `must be one of: ${allowed.join(", ")}`;
+  }
   switch (kind.replace("?", "")) {
     case "string":
       return typeof value === "string" ? null : "must be text";
@@ -84,10 +181,8 @@ function checkField(kind: FieldKind, value: unknown): string | null {
       return typeof value === "number" && Number.isFinite(value) ? null : "must be a number";
     case "boolean":
       return typeof value === "boolean" ? null : "must be true or false";
-    case "categories":
-      return Array.isArray(value) && value.length > 0 && value.every((c) => ACTIVITY_CATEGORIES.has(c))
-        ? null
-        : `must be a non-empty list from: ${[...ACTIVITY_CATEGORIES].join(", ")}`;
+    case "priceLevel":
+      return [1, 2, 3, 4].includes(value as number) ? null : "must be 1, 2, 3 or 4";
     case "location": {
       const p = value as { lat?: unknown; lng?: unknown } | null;
       const ok =
@@ -172,6 +267,7 @@ async function importFile(path: string, commit: boolean) {
   let nextOrder = Math.max(-1, ...existing.docs.map((d) => Number(d.get("order")) || 0)) + 1;
 
   let failed = false;
+  let creates = 0;
   const plan: (() => Promise<unknown>)[] = [];
 
   for (const raw of file.items as Record<string, unknown>[]) {
@@ -207,6 +303,7 @@ async function importFile(path: string, commit: boolean) {
     }
 
     const order = nextOrder++;
+    creates++;
     console.log(`+ create ${label} as a draft`);
     plan.push(() =>
       col.add({
@@ -231,7 +328,8 @@ async function importFile(path: string, commit: boolean) {
     return;
   }
   for (const step of plan) await step();
-  console.log(`\nDone: ${plan.length} change(s) written. New items are drafts — publish them in admin.`);
+  const draftNote = creates > 0 ? ` ${creates} new item(s) are drafts — publish them in admin.` : "";
+  console.log(`\nDone: ${plan.length} change(s) written.${draftNote}`);
 }
 
 const [command, target, ...flags] = process.argv.slice(2);

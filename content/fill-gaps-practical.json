@@ -1,0 +1,29 @@
+{
+  "collection": "practicalInfo",
+  "items": [
+    {
+      "update": true,
+      "name": "Pharmacy, Pueblo Nuevo",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Farmacia+Pueblo+Nuevo+de+Guadiaro",
+      "distanceKm": 6.9
+    },
+    {
+      "update": true,
+      "name": "Bank, Pueblo Nuevo",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Banco%2C+Pueblo+Nuevo+de+Guadiaro",
+      "distanceKm": 6.7
+    },
+    {
+      "update": true,
+      "name": "Málaga Airport (AGP)",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Aeropuerto+de+M%C3%A1laga-Costa+del+Sol"
+    },
+    {
+      "update": true,
+      "name": "Puerto de Sotogrande",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Puerto+Sotogrande",
+      "distanceKm": 11.4,
+      "driveMin": 14
+    }
+  ]
+}

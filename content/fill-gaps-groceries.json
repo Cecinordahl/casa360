@@ -1,0 +1,31 @@
+{
+  "collection": "groceries",
+  "items": [
+    {
+      "update": true,
+      "name": "Pueblo Nuevo (shops, pharmacy, bank)",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Pueblo+Nuevo+de+Guadiaro"
+    },
+    {
+      "update": true,
+      "name": "El Corte Inglés Sotogrande (supermarket centre)",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Supermercado+El+Corte+Ingl%C3%A9s%2C+Sotogrande"
+    },
+    {
+      "update": true,
+      "name": "Mercadona",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Mercadona%2C+Pueblo+Nuevo+de+Guadiaro"
+    },
+    {
+      "update": true,
+      "name": "Carrefour (Los Barrios)",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Carrefour%2C+Los+Barrios"
+    },
+    {
+      "update": true,
+      "name": "Sotogrande Marina market & shops",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Puerto+Sotogrande",
+      "distanceDriveMin": 14
+    }
+  ]
+}
