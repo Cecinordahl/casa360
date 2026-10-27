@@ -1109,6 +1109,43 @@ button:disabled {
   color: var(--color-on-ink);
 }
 
+/* Pill-shaped segmented toggle (e.g. List | Map): one rounded outline with
+   the active option filled inside it. */
+.filter-segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 999px;
+}
+
+.filter-segmented .filter-chip {
+  min-height: 36px;
+  padding: 0 1.4em;
+  border: none;
+  border-radius: 999px;
+}
+
+.filter-segmented .filter-chip:hover {
+  background: var(--color-surface-alt);
+}
+
+.filter-segmented .filter-chip.active,
+.filter-segmented .filter-chip.active:hover {
+  background: var(--color-ink);
+  color: var(--color-on-ink);
+}
+
+.filter-pill .filter-chip,
+.filter-chip.filter-pill {
+  border-radius: 999px;
+  border: 1.5px solid var(--color-ink);
+}
+
+.filter-pill .filter-dropdown-panel {
+  border-radius: 16px;
+}
+
 .filter-dropdown {
   position: relative;
   display: inline-block;
