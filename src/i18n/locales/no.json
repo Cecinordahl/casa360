@@ -235,7 +235,9 @@
     "coordinatesHelp": "Lim inn en Google Maps-lenke til stedet, eller koordinater som «36.2900, -5.3000». Tips: høyreklikk på stedet i Google Maps og klikk på tallene for å kopiere dem. Korte maps.app.goo.gl-lenker fungerer ikke — åpne dem først og kopier hele lenken fra adressefeltet.",
     "coordinatesFound": "Nål satt ved {{coords}}.",
     "coordinatesCheck": "Sjekk i Google Maps",
-    "coordinatesInvalid": "Fant ingen koordinater der. Lim inn hele Google Maps-lenken eller et «breddegrad, lengdegrad»-par."
+    "coordinatesInvalid": "Fant ingen koordinater der. Lim inn hele Google Maps-lenken eller et «breddegrad, lengdegrad»-par.",
+    "uploadFailed": "Opplastingen feilet, så bildet ble ikke lagt til. Prøv igjen.",
+    "uploadUnavailable": "Bildeopplasting fungerer ikke på den lokale utviklingsserveren (npm run dev). Bruk den publiserte siden eller vercel dev."
   },
   "privacy": {
     "title": "Personvernerklæring"

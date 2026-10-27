@@ -235,7 +235,9 @@
     "coordinatesHelp": "Paste a Google Maps link to the place, or coordinates like \"36.2900, -5.3000\". Tip: right-click the spot in Google Maps and click the numbers to copy them. Short maps.app.goo.gl links don't work — open them first and copy the full address bar link.",
     "coordinatesFound": "Pin set at {{coords}}.",
     "coordinatesCheck": "Check on Google Maps",
-    "coordinatesInvalid": "Couldn't find coordinates in that. Paste the full Google Maps link or a \"lat, lng\" pair."
+    "coordinatesInvalid": "Couldn't find coordinates in that. Paste the full Google Maps link or a \"lat, lng\" pair.",
+    "uploadFailed": "Upload failed, so the photo wasn't added. Please try again.",
+    "uploadUnavailable": "Photo upload doesn't work on the local dev server (npm run dev). Use the live site or vercel dev."
   },
   "privacy": {
     "title": "Privacy policy"

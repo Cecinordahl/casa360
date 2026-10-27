@@ -41,6 +41,13 @@ async function authHeader(): Promise<string> {
   return `Bearer ${await user.getIdToken()}`;
 }
 
+/** The upload-signing function isn't running (local `npm run dev`). */
+export class UploadUnavailableError extends Error {
+  constructor() {
+    super("Upload signing endpoint not available");
+  }
+}
+
 /**
  * Uploads directly from the browser to Cloudinary (not through our Vercel
  * function — that only ever hands out a short-lived signature, see
@@ -61,6 +68,8 @@ export async function uploadImage(
     headers: { "Content-Type": "application/json", Authorization: await authHeader() },
     body: JSON.stringify({ folder: `${collection}/${docId}` }),
   });
+  // Plain `npm run dev` doesn't serve api/, so the request 404s.
+  if (signRes.status === 404) throw new UploadUnavailableError();
   if (!signRes.ok) throw new Error("Could not get an upload signature");
   const { cloudName, apiKey, timestamp, signature, folder } = await signRes.json();
 

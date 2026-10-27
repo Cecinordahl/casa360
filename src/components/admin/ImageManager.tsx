@@ -16,7 +16,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import type { ImageItem } from "../../types/content";
-import { deleteImage, uploadImage } from "../../utils/image";
+import { deleteImage, uploadImage, UploadUnavailableError } from "../../utils/image";
 
 interface Props {
   collectionName: string;
@@ -60,21 +60,32 @@ function SortableThumb({
 export function ImageManager({ collectionName, docId, images, onChange }: Props) {
   const { t } = useTranslation();
   const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }));
 
   async function handleFiles(files: FileList | null) {
     if (!files || files.length === 0) return;
     setUploading(true);
+    setUploadError(null);
+    let nextOrder = images.length;
+    const uploaded: ImageItem[] = [];
     try {
-      let nextOrder = images.length;
-      const uploaded: ImageItem[] = [];
       for (const file of Array.from(files)) {
         uploaded.push(await uploadImage(collectionName, docId, file, nextOrder));
         nextOrder += 1;
       }
-      onChange([...images, ...uploaded]);
+    } catch (err) {
+      // Used to fail silently, so a host could pick photos, see nothing
+      // happen, and assume they'd been added.
+      console.error(err);
+      setUploadError(
+        err instanceof UploadUnavailableError ? t("admin.uploadUnavailable") : t("admin.uploadFailed"),
+      );
     } finally {
+      // Keep whatever made it to Cloudinary before a failure, rather than
+      // leaving those files uploaded but unlinked.
+      if (uploaded.length > 0) onChange([...images, ...uploaded]);
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
     }
@@ -123,6 +134,7 @@ export function ImageManager({ collectionName, docId, images, onChange }: Props)
         disabled={uploading}
       />
       {uploading && <span>{t("common.loading")}</span>}
+      {uploadError && <p className="error-text">{uploadError}</p>}
     </div>
   );
 }
