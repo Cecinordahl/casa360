@@ -131,7 +131,7 @@ export function ActivitiesPage() {
       <div className="filters">
         <div>
           <div className="filter-group-label">{t("activities.filters.category")}</div>
-          <div className="filter-dropdown" ref={categoryMenuRef}>
+          <div className="filter-dropdown filter-pill" ref={categoryMenuRef}>
             <button
               type="button"
               className={selected.length > 0 ? "filter-chip active" : "filter-chip"}
@@ -166,7 +166,7 @@ export function ActivitiesPage() {
                   <button type="button" className="filter-dropdown-clear" onClick={() => setSelected([])} disabled={selected.length === 0}>
                     {t("activities.filters.clear")}
                   </button>
-                  <button type="button" className="filter-chip active" onClick={() => setCategoryMenuOpen(false)}>
+                  <button type="button" className="filter-chip filter-pill active" onClick={() => setCategoryMenuOpen(false)}>
                     {t("activities.filters.done")}
                   </button>
                 </div>
@@ -176,7 +176,7 @@ export function ActivitiesPage() {
         </div>
         <div>
           <div className="filter-group-label">{t("activities.filters.view")}</div>
-          <div className="filter-chip-row">
+          <div className="filter-segmented" role="group">
             {(["list", "map"] as const).map((v) => (
               <button
                 key={v}
@@ -193,7 +193,7 @@ export function ActivitiesPage() {
         {view === "list" && (
           <div>
             <div className="filter-group-label">{t("activities.filters.sortBy")}</div>
-            <div className="filter-chip-row">
+            <div className="filter-segmented" role="group">
               <button
                 type="button"
                 className={sortMode === "distance" ? "filter-chip active" : "filter-chip"}
