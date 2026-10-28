@@ -30,6 +30,19 @@ export function Navbar() {
     };
   }, [menuOpen]);
 
+  // Tapping a link for the page you're already on doesn't change the route,
+  // so the effect above never fires. Close the menu here instead and bring
+  // the page back to the top, so the tap still visibly "goes" somewhere.
+  function handleLinkClick(e: React.MouseEvent) {
+    const link = (e.target as HTMLElement).closest("a");
+    if (!link) return;
+    setMenuOpen(false);
+    if (link.pathname === location.pathname) {
+      // Wait a frame so the menu's scroll lock has been released.
+      requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
+  }
+
   // Shops & pharmacy and Getting here live as tabs inside Practical, so keep
   // the Practical link highlighted on any of them.
   const inPractical = ["/practical", "/groceries", "/getting-here"].includes(location.pathname);
@@ -37,7 +50,7 @@ export function Navbar() {
   return (
     <>
       <header className="app-header">
-        <NavLink to="/" className="brand" aria-label={t("app.shortName")}>
+        <NavLink to="/" className="brand" aria-label={t("app.shortName")} onClick={handleLinkClick}>
           <Monogram className="brand-mark" />
           <span className="brand-name">
             <span>Casa</span>
@@ -55,7 +68,7 @@ export function Navbar() {
           {menuOpen ? "✕" : "☰"}
         </button>
 
-        <div className={menuOpen ? "app-nav-group open" : "app-nav-group"}>
+        <div className={menuOpen ? "app-nav-group open" : "app-nav-group"} onClick={handleLinkClick}>
           <nav className="app-nav">
             <NavLink to="/house">{t("menu.villa")}</NavLink>
             <NavLink to="/restaurants">{t("menu.eat")}</NavLink>
