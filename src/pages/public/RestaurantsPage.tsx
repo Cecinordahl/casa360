@@ -6,6 +6,7 @@ import { distanceSortKey } from "../../utils/distance";
 import type { CuisineTag, Locale, Restaurant } from "../../types/content";
 import { ImageStrip } from "../../components/ImageStrip";
 import { PageHeader } from "../../components/PageHeader";
+import { MultiSelectFilter } from "../../components/MultiSelectFilter";
 
 const CUISINES: CuisineTag[] = [
   "spanish",
@@ -37,12 +38,6 @@ export function RestaurantsPage() {
     [items],
   );
 
-  function toggleCuisine(c: CuisineTag) {
-    setCuisines((current) =>
-      current.includes(c) ? current.filter((x) => x !== c) : [...current, c],
-    );
-  }
-
   // Multiple cuisines selected = "match any of these" (tapas OR spanish),
   // not "must have all of them" — that's what people mean by "show me
   // tapas and spanish places".
@@ -66,32 +61,22 @@ export function RestaurantsPage() {
       <div className="filters">
         <div>
           <div className="filter-group-label">{t("restaurants.filters.cuisine")}</div>
-          <div className="filter-chip-row">
-            <button
-              type="button"
-              className={cuisines.length === 0 ? "filter-chip active" : "filter-chip"}
-              onClick={() => setCuisines([])}
-            >
-              {t("common.all")}
-            </button>
-            {cuisinesInUse.map((c) => (
-              <button
-                key={c}
-                type="button"
-                className={cuisines.includes(c) ? "filter-chip active" : "filter-chip"}
-                onClick={() => toggleCuisine(c)}
-              >
-                {t(`restaurants.cuisine.${c}`)}
-              </button>
-            ))}
-          </div>
+          <MultiSelectFilter
+            label={t("restaurants.filters.cuisinesButton")}
+            countLabel={(count) => t("restaurants.filters.cuisinesButtonCount", { count })}
+            options={cuisinesInUse}
+            optionLabel={(c) => t(`restaurants.cuisine.${c}`)}
+            selected={cuisines}
+            onChange={setCuisines}
+          />
         </div>
         <div>
           <div className="filter-group-label">{t("restaurants.filters.sortBy")}</div>
-          <div className="filter-chip-row">
+          <div className="filter-segmented" role="group">
             <button
               type="button"
               className={sortMode === "distance" ? "filter-chip active" : "filter-chip"}
+              aria-pressed={sortMode === "distance"}
               onClick={() => setSortMode("distance")}
             >
               {t("restaurants.filters.sortByDistance")}
@@ -99,6 +84,7 @@ export function RestaurantsPage() {
             <button
               type="button"
               className={sortMode === "price" ? "filter-chip active" : "filter-chip"}
+              aria-pressed={sortMode === "price"}
               onClick={() => setSortMode("price")}
             >
               {t("restaurants.filters.sortByPrice")}

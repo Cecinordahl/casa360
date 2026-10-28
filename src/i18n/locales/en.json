@@ -43,7 +43,9 @@
     "missingTranslation": "Missing {{lang}} translation",
     "translationIncomplete": "Translation incomplete",
     "confirmDelete": "Delete this item? This cannot be undone.",
-    "all": "All"
+    "all": "All",
+    "filterClear": "Clear",
+    "filterDone": "Done"
   },
   "guide": {
     "disclaimer": "Recommendations are provided in good faith by your hosts and may change without notice. They are not guarantees — please verify opening hours and confirm bookings directly before you go.",
@@ -106,7 +108,9 @@
       "cuisine": "Cuisine",
       "sortBy": "Sort by",
       "sortByDistance": "Distance",
-      "sortByPrice": "Price"
+      "sortByPrice": "Price",
+      "cuisinesButton": "Cuisines",
+      "cuisinesButtonCount": "Cuisines ({{count}})"
     },
     "resultCount_one": "Showing {{count}} restaurant",
     "resultCount_other": "Showing {{count}} restaurants"
@@ -146,9 +150,7 @@
       "view_list": "List",
       "view_map": "Map",
       "categoriesButton": "Categories",
-      "categoriesButtonCount": "Categories ({{count}})",
-      "clear": "Clear",
-      "done": "Done"
+      "categoriesButtonCount": "Categories ({{count}})"
     },
     "golfTip": {
       "title": "Hot tip",
