@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { subscribeHouseShowcase } from "../../firebase/houseShowcase";
 import { localized } from "../../utils/localized";
 import { ImageStrip } from "../../components/ImageStrip";
-import { HOUSE_SHOWCASE_CATEGORIES } from "../../types/content";
+import { HOUSE_SHOWCASE_CATEGORIES, isHighlightImage } from "../../types/content";
 import type { HouseShowcase, ImageItem, Locale } from "../../types/content";
 import { PageHeader } from "../../components/PageHeader";
 
@@ -18,7 +18,7 @@ export function HousePage() {
 
   const [cover, ...rest] = [...showcase.images].sort((a, b) => a.order - b.order);
 
-  const highlights = rest.filter((img) => !img.category || !HOUSE_SHOWCASE_CATEGORIES.includes(img.category));
+  const highlights = rest.filter(isHighlightImage);
   const grouped: { category: string; images: ImageItem[] }[] = HOUSE_SHOWCASE_CATEGORIES.map((category) => ({
     category,
     images: rest.filter((img) => img.category === category),
