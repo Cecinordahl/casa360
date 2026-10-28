@@ -372,10 +372,25 @@ button:disabled {
     padding: 0.5rem var(--gutter) 1.75rem;
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 18px 40px -12px rgba(28, 53, 45, 0.28);
   }
 
   .app-header .app-nav-group.open {
     display: flex;
+    animation: menu-slide-in 0.22s ease-out;
+  }
+
+  /* Dims and softly blurs the page under the open menu so the two never
+     read as one surface. Sits just below the sticky header (z-index 20),
+     so the header bar and the menu stay crisp. Tapping it closes the menu. */
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 19;
+    background: rgba(28, 53, 45, 0.45);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    animation: menu-fade-in 0.22s ease-out;
   }
 
   .app-header .app-nav {
@@ -396,6 +411,26 @@ button:disabled {
   .app-header .header-actions {
     justify-content: space-between;
     margin-top: 1.25rem;
+  }
+}
+
+@keyframes menu-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes menu-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-header .app-nav-group.open,
+  .menu-backdrop {
+    animation: none;
   }
 }
 
