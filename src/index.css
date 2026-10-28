@@ -670,6 +670,34 @@ button:disabled {
   color: rgba(244, 240, 234, 0.9);
 }
 
+/* Desktop: centre the hero text in the frame and give it more presence. */
+@media (min-width: 960px) {
+  .hero {
+    align-items: center;
+    padding: 6rem 0;
+  }
+
+  .hero-inner {
+    text-align: center;
+  }
+
+  .hero-title {
+    margin-bottom: 1.75rem;
+    font-size: 6rem;
+    text-shadow: 0 2px 24px rgba(30, 24, 18, 0.35);
+  }
+
+  .hero-subtitle {
+    margin: 0 auto 2.75rem;
+    font-size: 1.35rem;
+    text-shadow: 0 1px 12px rgba(30, 24, 18, 0.4);
+  }
+
+  .hero .text-link {
+    font-size: 12px;
+  }
+}
+
 /* ---- Home: sections ---- */
 
 .home-section {
