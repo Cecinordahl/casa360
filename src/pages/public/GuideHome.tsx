@@ -66,7 +66,6 @@ export function GuideHome() {
         style={heroImage ? ({ "--hero-image": `url(${heroImage.url})` } as CSSProperties) : undefined}
       >
         <div className="hero-inner">
-          <p className="micro-label hero-eyebrow">{t("guide.heroEyebrow")}</p>
           <h1 className="hero-title">
             {/* One sentence per line: "Fairway Views." / "Coastal Calm." */}
             {t("guide.heroTitle")
