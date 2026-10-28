@@ -23,9 +23,9 @@
 
   --hero-overlay: linear-gradient(
     180deg,
-    rgba(30, 24, 18, 0.35) 0%,
-    rgba(30, 24, 18, 0.22) 35%,
-    rgba(30, 24, 18, 0.78) 100%
+    rgba(30, 24, 18, 0.22) 0%,
+    rgba(30, 24, 18, 0.1) 35%,
+    rgba(30, 24, 18, 0.62) 100%
   );
   --page-width: 1200px;
   --gutter: 1.5rem;
@@ -613,7 +613,7 @@ button:disabled {
   background-image: var(--hero-image, none);
   background-size: cover;
   background-position: center;
-  filter: saturate(0.6) sepia(0.3) contrast(1.1);
+  filter: saturate(0.75) sepia(0.35) contrast(1.05) brightness(1.08);
   transform: scale(1.02);
 }
 
@@ -626,7 +626,7 @@ button:disabled {
   z-index: -1;
   background:
     var(--hero-overlay),
-    linear-gradient(rgba(70, 55, 40, 0.35), rgba(70, 55, 40, 0.35));
+    linear-gradient(rgba(110, 75, 40, 0.2), rgba(110, 75, 40, 0.2));
   pointer-events: none;
 }
 
