@@ -30,7 +30,8 @@ export function GroceriesPage() {
         <div className="filter-chip-row">
           <button
             type="button"
-            className={sundayOnly ? "filter-chip active" : "filter-chip"}
+            className={sundayOnly ? "filter-chip filter-pill active" : "filter-chip filter-pill"}
+            aria-pressed={sundayOnly}
             onClick={() => setSundayOnly((v) => !v)}
           >
             {t("common.openOnSunday")}

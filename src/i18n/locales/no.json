@@ -43,7 +43,9 @@
     "missingTranslation": "Mangler {{lang}}-oversettelse",
     "translationIncomplete": "Oversettelse mangler",
     "confirmDelete": "Slette dette elementet? Dette kan ikke angres.",
-    "all": "Alle"
+    "all": "Alle",
+    "filterClear": "Nullstill",
+    "filterDone": "Ferdig"
   },
   "guide": {
     "disclaimer": "Anbefalingene er gitt i god tro av vertene og kan endre seg uten varsel. De er ingen garanti — vennligst sjekk åpningstider og bekreft bestillinger direkte før du drar.",
@@ -106,7 +108,9 @@
       "cuisine": "Kjøkken",
       "sortBy": "Sorter etter",
       "sortByDistance": "Avstand",
-      "sortByPrice": "Pris"
+      "sortByPrice": "Pris",
+      "cuisinesButton": "Kjøkken",
+      "cuisinesButtonCount": "Kjøkken ({{count}})"
     },
     "resultCount_one": "Viser {{count}} restaurant",
     "resultCount_other": "Viser {{count}} restauranter"
@@ -146,9 +150,7 @@
       "view_list": "Liste",
       "view_map": "Kart",
       "categoriesButton": "Kategorier",
-      "categoriesButtonCount": "Kategorier ({{count}})",
-      "clear": "Nullstill",
-      "done": "Ferdig"
+      "categoriesButtonCount": "Kategorier ({{count}})"
     },
     "priceFromLabel": "Fra {{price}} €",
     "golfTip": {
