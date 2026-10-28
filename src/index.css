@@ -674,7 +674,8 @@ button:disabled {
 @media (min-width: 960px) {
   .hero {
     align-items: center;
-    padding: 6rem 0;
+    /* Uneven padding nudges the centred text about a line below the middle. */
+    padding: 9rem 0 3rem;
   }
 
   .hero-inner {
