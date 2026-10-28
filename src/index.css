@@ -595,10 +595,39 @@ button:disabled {
   min-height: 88vh;
   min-height: 88svh;
   padding: 6rem 0 4.5rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background-color: var(--color-ink);
+  color: var(--color-on-ink);
+}
+
+/* The photo on its own layer, so the filter mutes the bright blues and
+   greens and warms them up without touching the text. Scaled slightly so
+   the filter's soft edges never show at the borders. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--hero-image, none);
   background-size: cover;
   background-position: center;
-  color: var(--color-on-ink);
+  filter: saturate(0.6) sepia(0.3) contrast(1.1);
+  transform: scale(1.02);
+}
+
+/* Warm brown/olive tint over the photo, under the existing dark gradient
+   that keeps the headline legible at the bottom. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    var(--hero-overlay),
+    linear-gradient(rgba(70, 55, 40, 0.35), rgba(70, 55, 40, 0.35));
+  pointer-events: none;
 }
 
 .hero-inner {
