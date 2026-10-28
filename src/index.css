@@ -637,11 +637,6 @@ button:disabled {
   padding: 0 var(--gutter);
 }
 
-.hero-eyebrow {
-  color: rgba(244, 240, 234, 0.85);
-  margin-bottom: 1.5rem;
-}
-
 .hero-title {
   margin: 0 0 1.5rem;
   font-size: 3.75rem;
