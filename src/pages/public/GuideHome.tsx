@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { subscribeHouseShowcase } from "../../firebase/houseShowcase";
@@ -58,7 +58,9 @@ export function GuideHome() {
     <div>
       <section
         className="hero"
-        style={heroImage ? { backgroundImage: `var(--hero-overlay), url(${heroImage.url})` } : undefined}
+        // The photo is painted by .hero::before so it can be filtered without
+        // touching the text; pass it in as a custom property.
+        style={heroImage ? ({ "--hero-image": `url(${heroImage.url})` } as CSSProperties) : undefined}
       >
         <div className="hero-inner">
           <p className="micro-label hero-eyebrow">{t("guide.heroEyebrow")}</p>
