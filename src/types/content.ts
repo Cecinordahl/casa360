@@ -189,6 +189,11 @@ export const HOUSE_SHOWCASE_CATEGORIES: string[] = [
   "floor-plan",
 ];
 
+/** True for showcase images that land in the "Highlights" bucket. */
+export function isHighlightImage(img: ImageItem): boolean {
+  return !img.category || !HOUSE_SHOWCASE_CATEGORIES.includes(img.category);
+}
+
 export interface AdminAllowlistEntry {
   email: string;
   addedAt?: unknown;

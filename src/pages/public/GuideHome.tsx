@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { subscribeHouseShowcase } from "../../firebase/houseShowcase";
 import { useGuest } from "../../context/GuestContext";
 import { PasscodeBox } from "../../components/PasscodeBox";
-import type { HouseShowcase } from "../../types/content";
+import { isHighlightImage, type HouseShowcase } from "../../types/content";
 import golfPhoto from "../../assets/guide-golf.webp";
 import restaurantsPhoto from "../../assets/guide-restaurants.jpg";
 
@@ -19,9 +19,12 @@ export function GuideHome() {
   const showcaseImages = showcase?.images?.length
     ? [...showcase.images].sort((a, b) => a.order - b.order)
     : [];
-  const heroImage = showcaseImages[0] ?? null;
+  // The hero shows the first photo of the villa page's Highlights section
+  // (the golf-course view), falling back to the villa cover photo.
+  const [cover, ...rest] = showcaseImages;
+  const heroImage = rest.find(isHighlightImage) ?? cover ?? null;
   // Prefer a different photo for the Residence card than the hero, if there is one.
-  const villaImage = showcaseImages[1] ?? heroImage;
+  const villaImage = heroImage === cover ? (rest[0] ?? cover) : cover;
 
   const guidebook = [
     {
