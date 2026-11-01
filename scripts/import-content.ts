@@ -13,7 +13,8 @@
 //     reaches guests until a host ticks "Published" in admin
 //   - an item whose name already exists is skipped unless the file says
 //     "update": true, which then patches only the fields given ("renameTo"
-//     changes the name, since "name" is what finds the item)
+//     changes the name, since "name" is what finds the item, and
+//     "published": true/false publishes or unpublishes it)
 //
 // Text only: photos still go through admin, whose upload path strips EXIF
 // (see LEGAL_NOTES.md) — this script has no equivalent.
@@ -212,6 +213,10 @@ function validate(
   for (const key of Object.keys(item)) {
     if (key === "update" || (key === "renameTo" && isUpdate)) {
       if (key === "renameTo" && typeof item[key] !== "string") problems.push(`"renameTo" must be text`);
+      continue;
+    }
+    if (key === "published" && isUpdate) {
+      if (typeof item[key] !== "boolean") problems.push(`"published" must be true or false`);
       continue;
     }
     const kind = fields[key];
