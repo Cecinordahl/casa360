@@ -12,7 +12,8 @@
 //   - new items are always created as drafts (published: false), so nothing
 //     reaches guests until a host ticks "Published" in admin
 //   - an item whose name already exists is skipped unless the file says
-//     "update": true, which then patches only the fields given
+//     "update": true, which then patches only the fields given ("renameTo"
+//     changes the name, since "name" is what finds the item)
 //
 // Text only: photos still go through admin, whose upload path strips EXIF
 // (see LEGAL_NOTES.md) — this script has no equivalent.
@@ -72,6 +73,7 @@ const ACTIVITY_FIELDS: Record<string, FieldKind> = {
   hostTip_no: "string?",
   priceFrom: "number?",
   location: "location?",
+  golfamore: "boolean",
 };
 
 const ACTIVITY_DEFAULTS: Partial<Activity> = {
@@ -87,6 +89,7 @@ const ACTIVITY_DEFAULTS: Partial<Activity> = {
   hostTip_no: null,
   priceFrom: null,
   location: null,
+  golfamore: false,
 };
 
 const RESTAURANT_FIELDS: Record<string, FieldKind> = {
@@ -207,7 +210,10 @@ function validate(
 ): string[] {
   const problems: string[] = [];
   for (const key of Object.keys(item)) {
-    if (key === "update") continue;
+    if (key === "update" || (key === "renameTo" && isUpdate)) {
+      if (key === "renameTo" && typeof item[key] !== "string") problems.push(`"renameTo" must be text`);
+      continue;
+    }
     const kind = fields[key];
     if (!kind) {
       problems.push(`unknown field "${key}"`);
@@ -282,8 +288,9 @@ async function importFile(path: string, commit: boolean) {
       continue;
     }
 
-    const { update: _update, ...data } = raw;
+    const { update: _update, renameTo, ...data } = raw;
     void _update;
+    if (typeof renameTo === "string") data.name = renameTo;
 
     if (isUpdate) {
       if (matches.length !== 1) {
@@ -292,7 +299,8 @@ async function importFile(path: string, commit: boolean) {
         continue;
       }
       const ref = matches[0].ref;
-      console.log(`~ update ${label} (${ref.id}): ${Object.keys(data).join(", ")}`);
+      const rename = typeof renameTo === "string" ? ` (renamed to "${renameTo}")` : "";
+      console.log(`~ update ${label} (${ref.id})${rename}: ${Object.keys(data).join(", ")}`);
       plan.push(() => ref.update({ ...data, updatedAt: FieldValue.serverTimestamp() }));
       continue;
     }

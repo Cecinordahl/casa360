@@ -97,6 +97,9 @@ export interface Activity extends BaseItem {
   // Pin for the map view. Optional because activities saved before the
   // map existed don't have one — those just don't appear on the map.
   location?: GeoPoint | null;
+  // Partner course of the Golfamore card (half green fee once a year).
+  // Optional because older activities don't have it — missing means no.
+  golfamore?: boolean;
 }
 
 export interface GeoPoint {

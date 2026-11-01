@@ -108,6 +108,7 @@ everything else guests might want to do.
 | `bookingUrl` / `websiteUrl` | string \| null | |
 | `hostTip_en` / `hostTip_no` | string \| null | |
 | `location` | `{ lat: number, lng: number }` \| null | pin for the public map view. Entered in admin by pasting a Google Maps link or a "lat, lng" pair (parsed by `src/utils/coordinates.ts`); only the numbers are stored. Missing/null means the activity is simply left off the map. Never put the villa itself here — its exact location is deliberately kept off the public guide |
+| `golfamore` | boolean (optional) | partner course of the Golfamore card; drives the Golfamore filter and card label. Missing means false |
 | `priceFrom` | number \| null | EUR, "starting from" (green fees etc. vary by season). Null means no fixed price to register (a public beach, a walking trail) — the public guide's price sort pushes null-price items to the bottom rather than treating them as free |
 | `images` | ImageItem[] | |
 | `order`, `published`, `createdAt`, `updatedAt` | | |

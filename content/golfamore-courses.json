@@ -1,0 +1,493 @@
+{
+  "collection": "activities",
+  "items": [
+    {
+      "name": "Cerrado del Águila Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Golf course in the hills above Mijas Costa, with views down to the sea.",
+      "description_no": "Golfbane i åsene over Mijas Costa, med utsikt ned mot havet.",
+      "distanceDriveMin": 60,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.52567,
+        "lng": -4.665
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Montenmedio Golf & Country Club",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course set among cork oaks and pine trees near Vejer de la Frontera, on an estate that is also known for its equestrian centre.",
+      "description_no": "Bane blant korkeik og furu ved Vejer de la Frontera, på en eiendom som også er kjent for sitt ridesenter.",
+      "distanceDriveMin": 60,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.23962,
+        "lng": -5.90164
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Islantilla Golf Resort",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "27-hole resort course on the Huelva coast, close to the Portuguese border. A long drive from the house, so best combined with an overnight stay.",
+      "description_no": "Resortbane med 27 hull på kysten av Huelva, nær grensen til Portugal. Lang kjøretur fra huset, så best kombinert med en overnatting.",
+      "distanceDriveMin": 180,
+      "websiteUrl": "https://www.islantillagolfresort.com",
+      "location": {
+        "lat": 37.21358,
+        "lng": -7.23495
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Golf Campano",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Chiclana de la Frontera, south of Cádiz, close to the beaches of La Barrosa and Sancti Petri.",
+      "description_no": "Bane i Chiclana de la Frontera sør for Cádiz, nær strendene La Barrosa og Sancti Petri.",
+      "distanceDriveMin": 70,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.3527,
+        "lng": -6.10957
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Isla Canela Links",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Links-style course at Isla Canela by Ayamonte, right at the Portuguese border. Sister course of Isla Canela Old Course. A long drive from the house, so best combined with an overnight stay.",
+      "description_no": "Links-bane på Isla Canela ved Ayamonte, helt ved grensen til Portugal. Søsterbane til Isla Canela Old Course. Lang kjøretur fra huset, så best kombinert med en overnatting.",
+      "distanceDriveMin": 185,
+      "websiteUrl": "https://www.islacanela.es/golf/isla-canela-links",
+      "location": {
+        "lat": 37.25964,
+        "lng": -7.41928
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Los Arqueros Golf & Country Club",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Par 71 course designed by Seve Ballesteros and opened in 1991, in the hills of Benahavís above Marbella. Hilly, with some blind shots and tricky greens.",
+      "description_no": "Par 71-bane tegnet av Seve Ballesteros og åpnet i 1991, i åsene i Benahavís over Marbella. Kupert, med noen blinde slag og vanskelige greener.",
+      "distanceDriveMin": 35,
+      "websiteUrl": "http://www.losarquerosgolf.com/",
+      "location": {
+        "lat": 36.5186,
+        "lng": -5.0144
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Sancti Petri Hills Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Novo Sancti Petri, Chiclana de la Frontera, near the long sandy beach of La Barrosa.",
+      "description_no": "Bane i Novo Sancti Petri i Chiclana de la Frontera, nær den lange sandstranden La Barrosa.",
+      "distanceDriveMin": 80,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.3571,
+        "lng": -6.16635
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Santa Clara Golf Marbella",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course on the east side of Marbella, close to the city.",
+      "description_no": "Bane på østsiden av Marbella, like ved byen.",
+      "distanceDriveMin": 45,
+      "websiteUrl": "https://santaclaragolfmarbella.com/",
+      "location": {
+        "lat": 36.51087,
+        "lng": -4.82447
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Villanueva Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Puerto Real on the Bay of Cádiz.",
+      "description_no": "Bane i Puerto Real ved Cádizbukta.",
+      "distanceDriveMin": 65,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.50561,
+        "lng": -6.13916
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Barceló Montecastillo Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Jack Nicklaus-designed course in Jerez, next to the motor racing circuit. It has hosted the Volvo Masters on the European Tour.",
+      "description_no": "Bane tegnet av Jack Nicklaus i Jerez, ved siden av motorsportbanen. Den har vært vertskap for Volvo Masters på European Tour.",
+      "distanceDriveMin": 70,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.70202,
+        "lng": -6.03934
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Baviera Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "18-hole course designed by José María Cañizares at Caleta de Vélez, east of Málaga.",
+      "description_no": "Bane med 18 hull tegnet av José María Cañizares i Caleta de Vélez, øst for Málaga.",
+      "distanceDriveMin": 90,
+      "websiteUrl": "http://www.bavieragolf.com/",
+      "location": {
+        "lat": 36.7588,
+        "lng": -4.07316
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Atalaya Golf, New Course",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "The New Course at Atalaya Golf & Country Club, between Estepona and Marbella. The club also has an Old Course.",
+      "description_no": "New Course på Atalaya Golf & Country Club, mellom Estepona og Marbella. Klubben har også en Old Course.",
+      "distanceDriveMin": 30,
+      "websiteUrl": "https://www.atalaya-golf.com/",
+      "location": {
+        "lat": 36.4879,
+        "lng": -5.02248
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Club de Golf Bellavista",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Aljaraque, just outside the city of Huelva. A long drive from the house, so best combined with an overnight stay.",
+      "description_no": "Bane i Aljaraque, like utenfor byen Huelva. Lang kjøretur fra huset, så best kombinert med en overnatting.",
+      "distanceDriveMin": 165,
+      "websiteUrl": null,
+      "location": {
+        "lat": 37.28458,
+        "lng": -7.01535
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Higuerón Marbella Golf Resort",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Par 72 course by Robert Trent Jones Sr., opened in 1994 and formerly called Marbella Golf & Country Club. About 5 minutes from Marbella centre, with lakes on several holes.",
+      "description_no": "Par 72-bane tegnet av Robert Trent Jones Sr., åpnet i 1994 og tidligere kalt Marbella Golf & Country Club. Ca. 5 minutter fra Marbella sentrum, med vann på flere hull.",
+      "distanceDriveMin": 40,
+      "websiteUrl": "https://higueronresort.com/en/golf/",
+      "location": {
+        "lat": 36.51333,
+        "lng": -4.81196
+      },
+      "golfamore": true
+    },
+    {
+      "name": "La Monacilla Golf Club",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Aljaraque, just outside the city of Huelva. A long drive from the house, so best combined with an overnight stay.",
+      "description_no": "Bane i Aljaraque, like utenfor byen Huelva. Lang kjøretur fra huset, så best kombinert med en overnatting.",
+      "distanceDriveMin": 165,
+      "websiteUrl": null,
+      "location": {
+        "lat": 37.28937,
+        "lng": -6.99744
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Miguel Ángel Jiménez Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Golf course and academy named after the Spanish tour player, close to Málaga Airport.",
+      "description_no": "Golfbane og akademi oppkalt etter den spanske tourspilleren, nær Málaga lufthavn.",
+      "distanceDriveMin": 60,
+      "websiteUrl": "https://miguelangeljimenezgolfacademy.com/",
+      "location": {
+        "lat": 36.63618,
+        "lng": -4.49627
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Alhaurín Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course designed by Seve Ballesteros in Alhaurín el Grande, in the Guadalhorce valley inland from Marbella.",
+      "description_no": "Bane tegnet av Seve Ballesteros i Alhaurín el Grande, i Guadalhorce-dalen innenfor Marbella.",
+      "distanceDriveMin": 65,
+      "websiteUrl": "https://alhauringolf.com/golf/campo-golf-malaga",
+      "location": {
+        "lat": 36.60797,
+        "lng": -4.7053
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Añoreta Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Rincón de la Victoria, east of Málaga, with views over the sea.",
+      "description_no": "Bane i Rincón de la Victoria øst for Málaga, med utsikt over havet.",
+      "distanceDriveMin": 85,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.72765,
+        "lng": -4.23661
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Benalmádena Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Small pitch & putt course in Benalmádena, good for a relaxed round or for practising the short game.",
+      "description_no": "Liten pitch & putt-bane i Benalmádena, fin for en avslappet runde eller for å trene på det korte spillet.",
+      "distanceDriveMin": 55,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.6019,
+        "lng": -4.55771
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Nuevo Portil Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course among pine trees in Nuevo Portil near Cartaya, on the Huelva coast. A long drive from the house, so best combined with an overnight stay.",
+      "description_no": "Bane blant furutrær i Nuevo Portil ved Cartaya, på kysten av Huelva. Lang kjøretur fra huset, så best kombinert med en overnatting.",
+      "distanceDriveMin": 175,
+      "websiteUrl": null,
+      "location": {
+        "lat": 37.21707,
+        "lng": -7.0674
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Isla Canela Old Course",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "The original course at Isla Canela by Ayamonte, right at the Portuguese border. Sister course of Isla Canela Links. A long drive from the house, so best combined with an overnight stay.",
+      "description_no": "Den opprinnelige banen på Isla Canela ved Ayamonte, helt ved grensen til Portugal. Søsterbane til Isla Canela Links. Lang kjøretur fra huset, så best kombinert med en overnatting.",
+      "distanceDriveMin": 185,
+      "websiteUrl": "http://www.islacanelagolf.com/",
+      "location": {
+        "lat": 37.19547,
+        "lng": -7.39116
+      },
+      "golfamore": true
+    },
+    {
+      "name": "La Estancia Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Chiclana de la Frontera, south of Cádiz.",
+      "description_no": "Bane i Chiclana de la Frontera, sør for Cádiz.",
+      "distanceDriveMin": 75,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.36826,
+        "lng": -6.12767
+      },
+      "golfamore": true
+    },
+    {
+      "name": "La Siesta Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Calahonda, between Marbella and Fuengirola.",
+      "description_no": "Bane i Calahonda, mellom Marbella og Fuengirola.",
+      "distanceDriveMin": 50,
+      "websiteUrl": "https://www.lasiestagolf.es/",
+      "location": {
+        "lat": 36.49892,
+        "lng": -4.72417
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Villa Padierna – Tramores",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Tramores is one of the three courses at Villa Padierna Golf Club in Benahavís, near the Anantara Villa Padierna Palace hotel.",
+      "description_no": "Tramores er en av tre baner på Villa Padierna Golf Club i Benahavís, ved hotellet Anantara Villa Padierna Palace.",
+      "distanceDriveMin": 30,
+      "websiteUrl": "https://www.villapadierna.es/en/tramores/",
+      "location": {
+        "lat": 36.47837,
+        "lng": -5.04565
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Antequera Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Inland course outside the historic town of Antequera, north of Málaga.",
+      "description_no": "Innlandsbane utenfor den historiske byen Antequera, nord for Málaga.",
+      "distanceDriveMin": 100,
+      "websiteUrl": null,
+      "location": {
+        "lat": 37.01642,
+        "lng": -4.60265
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Los Moriscos Club de Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course by the sea at Playa Granada near Motril, on Granada's Costa Tropical.",
+      "description_no": "Bane ved havet på Playa Granada ved Motril, på Costa Tropical i Granada.",
+      "distanceDriveMin": 120,
+      "websiteUrl": "https://www.moriscosgolf.com",
+      "location": {
+        "lat": 36.71987,
+        "lng": -3.55869
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Magna Marbella Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Nueva Andalucía, Marbella's \"Golf Valley\", close to Puerto Banús.",
+      "description_no": "Bane i Nueva Andalucía, Marbellas \"Golf Valley\", nær Puerto Banús.",
+      "distanceDriveMin": 35,
+      "websiteUrl": "http://www.magnamarbellagolf.com/",
+      "location": {
+        "lat": 36.50588,
+        "lng": -4.97852
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Azata Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course in Estepona, about half an hour from the house.",
+      "description_no": "Bane i Estepona, ca. en halvtime fra huset.",
+      "distanceDriveMin": 25,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.4209,
+        "lng": -5.202
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Golf La Duquesa",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Course designed by Robert Trent Jones Sr. in Manilva, above Puerto de la Duquesa, with views of the sea. One of the closest Golfamore courses to the house.",
+      "description_no": "Bane tegnet av Robert Trent Jones Sr. i Manilva, over Puerto de la Duquesa, med utsikt mot havet. En av Golfamore-banene nærmest huset.",
+      "distanceDriveMin": 22,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.35626,
+        "lng": -5.24291
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Arcos Golf",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "Par 72 course outside the white hill town of Arcos de la Frontera. It opened in 2006 as Arcos Gardens.",
+      "description_no": "Par 72-bane utenfor den hvite fjellbyen Arcos de la Frontera. Den åpnet i 2006 under navnet Arcos Gardens.",
+      "distanceDriveMin": 90,
+      "websiteUrl": null,
+      "location": {
+        "lat": 36.72546,
+        "lng": -5.75335
+      },
+      "golfamore": true
+    },
+    {
+      "name": "Club de Golf Campo de Córdoba",
+      "categories": [
+        "golf"
+      ],
+      "description_en": "18-hole course in the hills about 8 km north of Córdoba. A long drive from the house, so best combined with an overnight stay.",
+      "description_no": "Bane med 18 hull i åsene ca. 8 km nord for Córdoba. Lang kjøretur fra huset, så best kombinert med en overnatting.",
+      "distanceDriveMin": 160,
+      "websiteUrl": "https://golfcordoba.com/",
+      "location": {
+        "lat": 37.96986,
+        "lng": -4.811
+      },
+      "golfamore": true
+    },
+    {
+      "update": true,
+      "name": "San Roque Golf Resort, New Course",
+      "golfamore": true
+    },
+    {
+      "update": true,
+      "name": "Fairplay Golf & Spa Resort",
+      "golfamore": true
+    },
+    {
+      "update": true,
+      "name": "Sherry Golf Jerez",
+      "golfamore": true
+    },
+    {
+      "update": true,
+      "name": "Almenara Golf Sotogrande",
+      "golfamore": true,
+      "renameTo": "The Alto Club (formerly Almenara Golf)",
+      "description_en": "Sotogrande course that was known as Almenara Golf until it was renamed The Alto Club in 2025. It has an 18-hole par 71 course and a 9-hole par 3 academy course, and it's run by the SO/ Sotogrande hotel next door.",
+      "description_no": "Bane i Sotogrande som het Almenara Golf frem til den fikk navnet The Alto Club i 2025. Den har en 18-hullsbane (par 71) og en akademibane med 9 par 3-hull, og drives av hotellet SO/ Sotogrande like ved."
+    }
+  ]
+}

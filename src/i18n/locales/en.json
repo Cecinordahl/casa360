@@ -149,7 +149,8 @@
       "view_list": "List",
       "view_map": "Map",
       "categoriesButton": "Categories",
-      "categoriesButtonCount": "Categories ({{count}})"
+      "categoriesButtonCount": "Categories ({{count}})",
+      "golfamore": "Golfamore"
     },
     "golfTip": {
       "title": "Hot tip",
@@ -290,7 +291,8 @@
     "kind": "Kind",
     "distanceKm": "Distance (km)",
     "driveMin": "Driving time (minutes)",
-    "location": "Location on map"
+    "location": "Location on map",
+    "golfamore": "Golfamore partner course (half green fee with the card)"
   },
   "menu": {
     "villa": "The Villa",

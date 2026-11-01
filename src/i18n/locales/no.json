@@ -149,7 +149,8 @@
       "view_list": "Liste",
       "view_map": "Kart",
       "categoriesButton": "Kategorier",
-      "categoriesButtonCount": "Kategorier ({{count}})"
+      "categoriesButtonCount": "Kategorier ({{count}})",
+      "golfamore": "Golfamore"
     },
     "priceFromLabel": "Fra {{price}} €",
     "golfTip": {
@@ -290,7 +291,8 @@
     "kind": "Type",
     "distanceKm": "Avstand (km)",
     "driveMin": "Kjøretid (minutter)",
-    "location": "Posisjon på kart"
+    "location": "Posisjon på kart",
+    "golfamore": "Golfamore-bane (halv greenfee med kortet)"
   },
   "menu": {
     "villa": "Villaen",

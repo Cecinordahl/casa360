@@ -100,6 +100,7 @@ export const activityFields: FieldConfig[] = [
   { key: "hostTip", type: "bilingualText", labelKey: "field.hostTip", multiline: true },
   { key: "priceFrom", type: "number", labelKey: "field.priceFrom" },
   { key: "location", type: "coordinates", labelKey: "field.location" },
+  { key: "golfamore", type: "boolean", labelKey: "field.golfamore" },
 ];
 
 export const practicalFields: FieldConfig[] = [

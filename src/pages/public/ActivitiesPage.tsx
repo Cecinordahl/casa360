@@ -37,6 +37,7 @@ export function ActivitiesPage() {
   const [items, setItems] = useState<Activity[]>([]);
   // Empty means "All" — no category narrowing.
   const [selected, setSelected] = useState<ActivityCategory[]>([]);
+  const [golfamoreOnly, setGolfamoreOnly] = useState(false);
   const [sortMode, setSortMode] = useState<SortMode>("distance");
   const [view, setView] = useState<ViewMode>("list");
   const [focusId, setFocusId] = useState<string | null>(null);
@@ -44,8 +45,13 @@ export function ActivitiesPage() {
   useEffect(() => subscribePublished<Activity>("activities", setItems), []);
 
   const filtered = useMemo(
-    () => items.filter((a) => selected.length === 0 || a.categories.some((c) => selected.includes(c))),
-    [items, selected],
+    () =>
+      items.filter(
+        (a) =>
+          (selected.length === 0 || a.categories.some((c) => selected.includes(c))) &&
+          (!golfamoreOnly || a.golfamore),
+      ),
+    [items, selected, golfamoreOnly],
   );
 
   const anyPriceInFiltered = filtered.some((a) => a.priceFrom != null);
@@ -84,7 +90,7 @@ export function ActivitiesPage() {
 
   // Above the list, but below the map: in map view it would otherwise push
   // the map itself off-screen.
-  const golfTip = selected.includes("golf") && (
+  const golfTip = (selected.includes("golf") || golfamoreOnly) && (
     <div className="host-note golf-tip">
       <p>
         <strong>{t("activities.golfTip.title")}:</strong> {t("activities.golfTip.body")}
@@ -109,14 +115,24 @@ export function ActivitiesPage() {
       <div className="filters">
         <div>
           <div className="filter-group-label">{t("activities.filters.category")}</div>
-          <MultiSelectFilter
-            label={t("activities.filters.categoriesButton")}
-            countLabel={(count) => t("activities.filters.categoriesButtonCount", { count })}
-            options={CATEGORIES}
-            optionLabel={(c) => t(`activities.category.${c}`)}
-            selected={selected}
-            onChange={setSelected}
-          />
+          <div className="filter-chip-row">
+            <MultiSelectFilter
+              label={t("activities.filters.categoriesButton")}
+              countLabel={(count) => t("activities.filters.categoriesButtonCount", { count })}
+              options={CATEGORIES}
+              optionLabel={(c) => t(`activities.category.${c}`)}
+              selected={selected}
+              onChange={setSelected}
+            />
+            <button
+              type="button"
+              className={golfamoreOnly ? "filter-chip filter-pill active" : "filter-chip filter-pill"}
+              aria-pressed={golfamoreOnly}
+              onClick={() => setGolfamoreOnly((on) => !on)}
+            >
+              {t("activities.filters.golfamore")}
+            </button>
+          </div>
         </div>
         <div>
           <div className="filter-group-label">{t("activities.filters.view")}</div>
@@ -186,6 +202,7 @@ export function ActivitiesPage() {
               <div className="listing-body">
                 <p className="micro-label">
                   {a.categories.map((c) => t(`activities.category.${c}`)).join(", ")}
+                  {a.golfamore && ` · ${t("activities.filters.golfamore")}`}
                 </p>
                 <h2>{a.name}</h2>
                 <p className="card-meta">
