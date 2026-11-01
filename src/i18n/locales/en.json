@@ -167,6 +167,8 @@
     "map": {
       "showDetails": "Show details",
       "directions": "Directions",
+      "consentBody": "The map is provided by Google Maps. Showing it connects your browser to Google, which receives your IP address and may set cookies.",
+      "consentButton": "Show map",
       "missingPins_one": "{{count}} activity has no location yet, so it isn't on the map.",
       "missingPins_other": "{{count}} activities have no location yet, so they aren't on the map."
     }

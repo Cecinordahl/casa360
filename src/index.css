@@ -1975,6 +1975,28 @@ a.contact-card-title:hover {
   filter: grayscale(0.55) sepia(0.12);
 }
 
+/* Asked before anything loads from Google (see GoogleActivityMap). */
+.map-consent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+.map-consent > div {
+  max-width: 420px;
+}
+
+.map-consent p {
+  margin: 0 0 1.25rem;
+}
+
+/* Google's info window brings its own white box and close button. */
+.activity-map .gm-style-iw .map-popup h3 {
+  margin-top: 0;
+}
+
 /* In map view the golf tip sits under the map rather than above it. */
 .activity-map ~ .golf-tip {
   margin-top: 1.5rem;

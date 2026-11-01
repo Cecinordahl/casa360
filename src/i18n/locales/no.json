@@ -167,6 +167,8 @@
     "map": {
       "showDetails": "Vis detaljer",
       "directions": "Veibeskrivelse",
+      "consentBody": "Kartet leveres av Google Maps. Når det vises, kobler nettleseren din seg til Google, som mottar IP-adressen din og kan sette informasjonskapsler.",
+      "consentButton": "Vis kart",
       "missingPins_one": "{{count}} aktivitet har ikke posisjon ennå, så den vises ikke på kartet.",
       "missingPins_other": "{{count}} aktiviteter har ikke posisjon ennå, så de vises ikke på kartet."
     }

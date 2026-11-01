@@ -9,9 +9,14 @@ import { PageHeader } from "../../components/PageHeader";
 import { FormattedText } from "../../components/FormattedText";
 import { MultiSelectFilter } from "../../components/MultiSelectFilter";
 
-// Leaflet is the bulk of this page's weight, so it only downloads once a
-// guest actually opens the map.
-const ActivityMap = lazy(() => import("../../components/ActivityMap"));
+// The map code is the bulk of this page's weight, so it only downloads once
+// a guest actually opens the map. Google Maps when a key is configured,
+// otherwise the keyless OpenStreetMap version.
+const ActivityMap = lazy(() =>
+  import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+    ? import("../../components/GoogleActivityMap")
+    : import("../../components/ActivityMap"),
+);
 
 const CATEGORIES: ActivityCategory[] = [
   "golf",
@@ -37,7 +42,11 @@ export function ActivitiesPage() {
   const [items, setItems] = useState<Activity[]>([]);
   // Empty means "All" — no category narrowing.
   const [selected, setSelected] = useState<ActivityCategory[]>([]);
-  const [golfamoreOnly, setGolfamoreOnly] = useState(false);
+  const [golfamoreToggle, setGolfamoreToggle] = useState(false);
+  // Golfamore only makes sense while browsing golf, so the chip is hidden
+  // (and stops filtering) as soon as another category is picked.
+  const golfamoreAvailable = selected.every((c) => c === "golf");
+  const golfamoreOnly = golfamoreAvailable && golfamoreToggle;
   const [sortMode, setSortMode] = useState<SortMode>("distance");
   const [view, setView] = useState<ViewMode>("list");
   const [focusId, setFocusId] = useState<string | null>(null);
@@ -122,16 +131,21 @@ export function ActivitiesPage() {
               options={CATEGORIES}
               optionLabel={(c) => t(`activities.category.${c}`)}
               selected={selected}
-              onChange={setSelected}
+              onChange={(next) => {
+                setSelected(next);
+                if (!next.every((c) => c === "golf")) setGolfamoreToggle(false);
+              }}
             />
-            <button
-              type="button"
-              className={golfamoreOnly ? "filter-chip filter-pill active" : "filter-chip filter-pill"}
-              aria-pressed={golfamoreOnly}
-              onClick={() => setGolfamoreOnly((on) => !on)}
-            >
-              {t("activities.filters.golfamore")}
-            </button>
+            {golfamoreAvailable && (
+              <button
+                type="button"
+                className={golfamoreOnly ? "filter-chip filter-pill active" : "filter-chip filter-pill"}
+                aria-pressed={golfamoreOnly}
+                onClick={() => setGolfamoreToggle((on) => !on)}
+              >
+                {t("activities.filters.golfamore")}
+              </button>
+            )}
           </div>
         </div>
         <div>
