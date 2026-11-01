@@ -18,7 +18,7 @@ const CONTENT = {
       },
       {
         title: "Cookies & analytics",
-        body: "This site does not use cookies, analytics, or any tracking by default. Your language preference is stored in your browser's local storage (not a cookie, not sent to any server) purely so the site remembers whether you prefer English or Norwegian. Map view: if you open the map on the Golf & Leisure page, the map images are loaded from OpenStreetMap's servers (tile.openstreetmap.org), which means your browser shares your IP address with the OpenStreetMap Foundation to fetch them. Nothing is loaded from OpenStreetMap unless you open the map.",
+        body: "This site does not use cookies, analytics, or any tracking by default. Your language preference is stored in your browser's local storage (not a cookie, not sent to any server) purely so the site remembers whether you prefer English or Norwegian. Map view: if you open the map on the Golf & Leisure page, the map images (based on OpenStreetMap data) are loaded from CARTO's servers (basemaps.cartocdn.com), which means your browser shares your IP address with CARTO to fetch them. Nothing is loaded from CARTO unless you open the map.",
       },
       {
         title: "Retention",
@@ -46,7 +46,7 @@ const CONTENT = {
       },
       {
         title: "Cookies og analyse",
-        body: "Denne siden bruker ikke cookies, analyseverktøy eller sporing som standard. Språkvalget ditt lagres i nettleserens lokale lagring (ikke en cookie, sendes ikke til noen server) utelukkende for at siden skal huske om du foretrekker engelsk eller norsk. Kartvisning: hvis du åpner kartet på siden Golf og fritid, lastes kartbildene fra OpenStreetMaps servere (tile.openstreetmap.org), noe som betyr at nettleseren din deler IP-adressen din med OpenStreetMap Foundation for å hente dem. Ingenting lastes fra OpenStreetMap med mindre du åpner kartet.",
+        body: "Denne siden bruker ikke cookies, analyseverktøy eller sporing som standard. Språkvalget ditt lagres i nettleserens lokale lagring (ikke en cookie, sendes ikke til noen server) utelukkende for at siden skal huske om du foretrekker engelsk eller norsk. Kartvisning: hvis du åpner kartet på siden Golf og fritid, lastes kartbildene (basert på OpenStreetMap-data) fra CARTOs servere (basemaps.cartocdn.com), noe som betyr at nettleseren din deler IP-adressen din med CARTO for å hente dem. Ingenting lastes fra CARTO med mindre du åpner kartet.",
       },
       {
         title: "Lagringstid",
